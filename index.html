@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DUAVA Prisma · Equipos Dentales Premium</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#0B1F2F">
+    <style>
+        :root {
+            --bg: #F8FAFC;
+            --surface: #FFFFFF;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --accent: #0B1F2F;
+            --gold: #B58B5A;
+            --border: #E2E8F0;
+            --shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Navegación entre vistas */
+        .view { display: none; }
+        .view.active { display: block; }
+
+        /* ----- PORTADA (HOME) ----- */
+        .home-header {
+            padding: 24px 20px;
+            text-align: center;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+        .logo span { color: var(--gold); }
+        .hero-image {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-text {
+            padding: 32px 20px;
+            text-align: center;
+            background: var(--surface);
+        }
+        .hero-motto {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .hero-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .categories-section {
+            padding: 32px 20px;
+            background: var(--bg);
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        .category-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .category-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 10px 22px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .category-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .category-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* ----- LISTA DE PRODUCTOS ----- */
+        .products-header {
+            position: sticky;
+            top: 0;
+            background: var(--surface);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+        }
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .products-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .product-grid {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .product-card:hover { transform: translateY(-4px); }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f1f5f9;
+        }
+        .product-card-body {
+            padding: 16px;
+        }
+        .product-card-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+        .product-card-category {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .product-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ----- FICHA DETALLADA ----- */
+        .detail-header {
+            position: sticky;
+            top: 0;
+            background: var(--surface);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+        }
+        .detail-content {
+            padding: 20px;
+        }
+        .detail-img {
+            width: 100%;
+            max-height: 340px;
+            object-fit: contain;
+            background: #f1f5f9;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        .detail-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+        .detail-category {
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .specs-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .specs-box h3 {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .specs-text {
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .btn-contact {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+        .btn-call {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VISTA 1: HOME -->
+    <div id="homeView" class="view active">
+        <div class="home-header">
+            <div class="logo">DUAVA <span>Prisma</span></div>
+        </div>
+        <img id="heroImage" class="hero-image" src="" alt="DUAVA Prisma">
+        <div class="hero-text">
+            <p class="hero-motto">“La tecnología evoluciona, nuestra palabra no.”</p>
+            <p class="hero-description" id="introText"></p>
+        </div>
+        <div class="categories-section">
+            <div class="section-title">Categorías</div>
+            <div class="category-grid" id="categoryList">
+                <button class="category-btn active" data-category="todas">Todas</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISTA 2: LISTA DE PRODUCTOS -->
+    <div id="listView" class="view">
+        <div class="products-header">
+            <button class="back-btn" onclick="goHome()">←</button>
+            <div class="products-title" id="listTitle">Equipos</div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+    </div>
+
+    <!-- VISTA 3: DETALLE -->
+    <div id="detailView" class="view">
+        <div class="detail-header">
+            <button class="back-btn" onclick="goToList()">←</button>
+            <div class="products-title">Ficha técnica</div>
+        </div>
+        <div class="detail-content" id="detailContent"></div>
+    </div>
+
+    <script>
+        // =============================================
+        // CONFIGURACIÓN QUE DEBES EDITAR
+        // =============================================
+        const SHEET_CSV_URL = '1mpjvDDy-Px-Oi3fLk7jxFmhAvKSmF1cwNML9laULqHA; // ← PON AQUÍ TU ENLACE CSV
+        const HERO_IMAGE_URL = '1EeU2beD8WJTJ_PirSAyl7'; // ← IMAGEN DE PORTADA
+        const INTRO_TEXT = "Nacimos con una visión clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de fábrica; entregamos la garantía, la solución y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.";
+
+        // =============================================
+        // DATOS Y ESTADO
+        // =============================================
+        let allProducts = [];
+        let currentCategory = 'todas';
+        let currentProduct = null;
+
+        // Elementos del DOM
+        const homeView = document.getElementById('homeView');
+        const listView = document.getElementById('listView');
+        const detailView = document.getElementById('detailView');
+
+        // Inicializar imagen hero y texto
+        document.getElementById('heroImage').src = HERO_IMAGE_URL;
+        document.getElementById('introText').textContent = INTRO_TEXT;
+
+        // =============================================
+        // FUNCIONES DE NAVEGACIÓN
+        // =============================================
+        function goHome() {
+            showView('home');
+        }
+        function goToList() {
+            showView('list');
+            renderProductList();
+        }
+        function goToDetail(product) {
+            currentProduct = product;
+            showView('detail');
+            renderDetail();
+        }
+        function showView(view) {
+            homeView.classList.remove('active');
+            listView.classList.remove('active');
+            detailView.classList.remove('active');
+            if (view === 'home') homeView.classList.add('active');
+            else if (view === 'list') listView.classList.add('active');
+            else if (view === 'detail') detailView.classList.add('active');
+        }
+
+        // =============================================
+        // CARGA DE DATOS DESDE GOOGLE SHEETS (CSV)
+        // =============================================
+        async function loadData() {
+            try {
+                const response = await fetch(SHEET_CSV_URL);
+                const csvText = await response.text();
+                const rows = parseCSV(csvText);
+                if (rows.length < 2) return;
+                // La primera fila es el encabezado
+                const headers = rows[0].map(h => h.trim().toLowerCase());
+                allProducts = [];
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    if (row.length < 6) continue;
+                    const product = {
+                        id: row[0]?.trim() || '',
+                        categoria: row[1]?.trim() || '',
+                        titulo: row[2]?.trim() || '',
+                        imagen_url: row[3]?.trim() || '',
+                        descripcion_corta: row[4]?.trim() || '',
+                        especificaciones_tecnicas: row[5]?.trim() || ''
+                    };
+                    if (product.titulo) allProducts.push(product);
+                }
+                generarCategorias();
+                renderProductList();
+            } catch (error) {
+                console.error('Error al cargar datos:', error);
+            }
+        }
+
+        function parseCSV(text) {
+            const rows = [];
+            let currentRow = [];
+            let currentField = '';
+            let inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                const next = text[i + 1];
+                if (inQuotes) {
+                    if (c === '"' && next === '"') { currentField += '"'; i++; }
+                    else if (c === '"') { inQuotes = false; }
+                    else { currentField += c; }
+                } else {
+                    if (c === '"') { inQuotes = true; }
+                    else if (c === ',') { currentRow.push(currentField); currentField = ''; }
+                    else if (c === '\n' || c === '\r') {
+                        if (c === '\r' && next === '\n') i++;
+                        currentRow.push(currentField);
+                        currentField = '';
+                        if (currentRow.length > 0) rows.push(currentRow);
+                        currentRow = [];
+                    } else { currentField += c; }
+                }
+            }
+            currentRow.push(currentField);
+            if (currentRow.length > 0) rows.push(currentRow);
+            return rows;
+        }
+
+        // =============================================
+        // CATEGORÍAS DINÁMICAS
+        // =============================================
+        function generarCategorias() {
+            const categorias = [...new Set(allProducts.map(p => p.categoria).filter(Boolean))];
+            const container = document.getElementById('categoryList');
+            container.innerHTML = '<button class="category-btn active" data-category="todas">Todas</button>';
+            categorias.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'category-btn';
+                btn.textContent = cat;
+                btn.dataset.category = cat;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = cat;
+                    renderProductList();
+                });
+                container.appendChild(btn);
+            });
+            // Evento para el botón "Todas"
+            container.querySelector('[data-category="todas"]').addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                container.querySelector('[data-category="todas"]').classList.add('active');
+                currentCategory = 'todas';
+                renderProductList();
+            });
+        }
+
+        // =============================================
+        // RENDERIZADO DE LISTA
+        // =============================================
+        function renderProductList() {
+            const filtered = currentCategory === 'todas'
+                ? allProducts
+                : allProducts.filter(p => p.categoria === currentCategory);
+            const grid = document.getElementById('productGrid');
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="empty-state">No se encontraron equipos en esta categoría.</div>';
+                return;
+            }
+            grid.innerHTML = filtered.map(p => `
+                <div class="product-card" onclick="goToDetail(${allProducts.indexOf(p)})">
+                    <img src="${p.imagen_url || 'https://via.placeholder.com/400x200?text=Sin+imagen'}" alt="${p.titulo}">
+                    <div class="product-card-body">
+                        <div class="product-card-category">${p.categoria || ''}</div>
+                        <div class="product-card-title">${p.titulo}</div>
+                        <div class="product-card-desc">${p.descripcion_corta || ''}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // =============================================
+        // DETALLE DEL PRODUCTO
+        // =============================================
+        function renderDetail() {
+            if (!currentProduct) return;
+            const p = currentProduct;
+            const container = document.getElementById('detailContent');
+            const waMessage = encodeURIComponent(`Hola, me interesa cotizar el equipo: ${p.titulo}`);
+            container.innerHTML = `
+                <img class="detail-img" src="${p.imagen_url || 'https://via.placeholder.com/400x300?text=Sin+imagen'}" alt="${p.titulo}">
+                <div class="detail-title">${p.titulo}</div>
+                <div class="detail-category">${p.categoria || ''}</div>
+                <div class="specs-box">
+                    <h3>Especificaciones técnicas</h3>
+                    <div class="specs-text">${p.especificaciones_tecnicas || 'No se han especificado detalles técnicos.'}</div>
+                </div>
+                <div class="contact-buttons">
+                    <a class="btn-contact btn-whatsapp" href="https://wa.me/5358386814?text=${waMessage}" target="_blank">
+                        📱 Cotizar por WhatsApp
+                    </a>
+                    <a class="btn-contact btn-call" href="tel:5358386814">
+                        📞 Llamar ahora
+                    </a>
+                </div>
+            `;
+        }
+
+        // Evento inicial
+        document.querySelectorAll('.category-btn').forEach(b => {
+            b.addEventListener('click', () => {
+                showView('list');
+            });
+        });
+
+        // Cargar datos al iniciar
+        loadData();
+    </script>
+</body>
+</html>
