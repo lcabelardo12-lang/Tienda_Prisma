@@ -1,505 +1,424 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DUAVA Prisma · Equipos Dentales Premium</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
-    <meta name="theme-color" content="#0B1F2F">
-    <style>
-        :root {
-            --bg: #F8FAFC;
-            --surface: #FFFFFF;
-            --text: #0F172A;
-            --text-secondary: #475569;
-            --accent: #0B1F2F;
-            --gold: #B58B5A;
-            --border: #E2E8F0;
-            --shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-        /* Navegación entre vistas */
-        .view { display: none; }
-        .view.active { display: block; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>DUAVA Prisma - Equipos Dentales Premium</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg:#fafafa; --card:#ffffff; --text:#1a1a1a; --text2:#555; --text3:#888; --border:#e8e8e8;
+    --accent:#1a1a1a; --accent2:#333; --whatsapp:#25D366; --phone:#1a1a1a;
+    --radius:12px; --radius-sm:8px; --shadow:0 2px 16px rgba(0,0,0,0.06);
+    --font:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  body { font-family:var(--font); background:var(--bg); color:var(--text); line-height:1.5; -webkit-tap-highlight-color:transparent; }
+  .app { max-width:480px; margin:0 auto; min-height:100vh; position:relative; overflow-x:hidden; }
 
-        /* ----- PORTADA (HOME) ----- */
-        .home-header {
-            padding: 24px 20px;
-            text-align: center;
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-        }
-        .logo {
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--accent);
-        }
-        .logo span { color: var(--gold); }
-        .hero-image {
-            width: 100%;
-            height: auto;
-            max-height: 360px;
-            object-fit: cover;
-            display: block;
-        }
-        .hero-text {
-            padding: 32px 20px;
-            text-align: center;
-            background: var(--surface);
-        }
-        .hero-motto {
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-        .hero-description {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-        .categories-section {
-            padding: 32px 20px;
-            background: var(--bg);
-        }
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-        .category-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .category-btn {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 40px;
-            padding: 10px 22px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .category-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-        .category-btn.active {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
+  /* ===== HEADER ===== */
+  .header { padding:16px 20px; display:flex; align-items:center; justify-content:center; position:relative; background:var(--card); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+  .header .back-btn { position:absolute; left:16px; top:50%; transform:translateY(-50%); width:40px; height:40px; border-radius:50%; border:none; background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text); transition:background .2s; }
+  .header .back-btn:hover { background:var(--border); }
+  .header .back-btn svg { width:20px; height:20px; }
+  .logo { font-size:22px; font-weight:600; letter-spacing:2px; color:var(--text); text-transform:uppercase; }
+  .logo span { font-weight:300; color:var(--text3); }
 
-        /* ----- LISTA DE PRODUCTOS ----- */
-        .products-header {
-            position: sticky;
-            top: 0;
-            background: var(--surface);
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            z-index: 10;
-        }
-        .back-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--accent);
-            line-height: 1;
-        }
-        .products-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        .product-grid {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            background: var(--surface);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .product-card:hover { transform: translateY(-4px); }
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #f1f5f9;
-        }
-        .product-card-body {
-            padding: 16px;
-        }
-        .product-card-title {
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--accent);
-        }
-        .product-card-category {
-            font-size: 0.75rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-        .product-card-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+  /* ===== HERO ===== */
+  .hero { position:relative; width:100%; height:280px; overflow:hidden; background:linear-gradient(135deg,#f0f0f0 0%,#e0e0e0 100%); }
+  .hero img { width:100%; height:100%; object-fit:cover; display:block; }
+  .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%); }
+  .hero-text { position:absolute; bottom:24px; left:20px; right:20px; color:#fff; }
+  .hero-text h1 { font-size:28px; font-weight:600; line-height:1.2; margin-bottom:8px; text-shadow:0 2px 8px rgba(0,0,0,0.3); }
+  .hero-text p { font-size:14px; opacity:0.9; line-height:1.5; }
 
-        /* ----- FICHA DETALLADA ----- */
-        .detail-header {
-            position: sticky;
-            top: 0;
-            background: var(--surface);
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            z-index: 10;
-        }
-        .detail-content {
-            padding: 20px;
-        }
-        .detail-img {
-            width: 100%;
-            max-height: 340px;
-            object-fit: contain;
-            background: #f1f5f9;
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
-        .detail-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 6px;
-        }
-        .detail-category {
-            font-size: 0.85rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-        .specs-box {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-        .specs-box h3 {
-            font-size: 1rem;
-            color: var(--accent);
-            margin-bottom: 12px;
-        }
-        .specs-text {
-            white-space: pre-wrap;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        .contact-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 8px;
-        }
-        .btn-contact {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-whatsapp {
-            background: #25D366;
-            color: #fff;
-        }
-        .btn-call {
-            background: var(--accent);
-            color: #fff;
-        }
+  /* ===== MANIFESTO ===== */
+  .manifesto { padding:32px 20px; text-align:center; background:var(--card); }
+  .manifesto-quote { font-size:20px; font-weight:500; font-style:italic; color:var(--text); margin-bottom:16px; line-height:1.4; }
+  .manifesto-quote::before { content:'"'; font-size:32px; color:var(--text3); line-height:0; vertical-align:-8px; margin-right:4px; }
+  .manifesto-quote::after { content:'"'; font-size:32px; color:var(--text3); line-height:0; vertical-align:-8px; margin-left:4px; }
+  .manifesto-desc { font-size:15px; color:var(--text2); line-height:1.7; max-width:400px; margin:0 auto; }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-secondary);
-        }
-    </style>
+  /* ===== CATEGORIAS ===== */
+  .categories { padding:24px 16px; background:var(--bg); }
+  .section-title { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin-bottom:16px; padding:0 4px; }
+  .cat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .cat-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px 16px; text-align:center; cursor:pointer; transition:all .2s; box-shadow:var(--shadow); }
+  .cat-card:hover, .cat-card:active { transform:translateY(-2px); box-shadow:0 4px 20px rgba(0,0,0,0.1); border-color:var(--text); }
+  .cat-card .cat-icon { width:40px; height:40px; margin:0 auto 12px; border-radius:10px; background:var(--bg); display:flex; align-items:center; justify-content:center; }
+  .cat-card .cat-icon svg { width:22px; height:22px; color:var(--text); }
+  .cat-card h3 { font-size:14px; font-weight:600; color:var(--text); margin-bottom:4px; }
+  .cat-card span { font-size:12px; color:var(--text3); }
+
+  /* ===== PRODUCTOS GRID ===== */
+  .products { padding:16px; display:none; }
+  .products.active { display:block; }
+  .prod-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .prod-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; cursor:pointer; transition:all .2s; box-shadow:var(--shadow); }
+  .prod-card:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.1); }
+  .prod-card .prod-img { width:100%; height:160px; background:var(--bg); overflow:hidden; position:relative; }
+  .prod-card .prod-img img { width:100%; height:100%; object-fit:cover; transition:transform .3s; }
+  .prod-card:hover .prod-img img { transform:scale(1.05); }
+  .prod-card .prod-info { padding:14px 12px; }
+  .prod-card .prod-cat { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text3); margin-bottom:6px; }
+  .prod-card .prod-title { font-size:14px; font-weight:600; color:var(--text); line-height:1.3; margin-bottom:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .prod-card .prod-desc { font-size:12px; color:var(--text2); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+  /* ===== FICHA DETALLADA ===== */
+  .detail { display:none; padding-bottom:100px; }
+  .detail.active { display:block; }
+  .detail-img { width:100%; height:320px; background:var(--bg); position:relative; overflow:hidden; }
+  .detail-img img { width:100%; height:100%; object-fit:cover; }
+  .detail-body { padding:24px 20px; }
+  .detail-cat { display:inline-block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); background:var(--bg); padding:6px 12px; border-radius:20px; margin-bottom:12px; }
+  .detail-title { font-size:22px; font-weight:600; color:var(--text); line-height:1.3; margin-bottom:12px; }
+  .detail-desc { font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:24px; }
+  .specs-section { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:24px; }
+  .specs-section h3 { font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .specs-section h3 svg { width:18px; height:18px; }
+  .spec-item { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; }
+  .spec-item:last-child { border-bottom:none; }
+  .spec-label { color:var(--text3); font-weight:400; }
+  .spec-value { color:var(--text); font-weight:500; text-align:right; max-width:60%; }
+  .specs-text { font-size:14px; color:var(--text2); line-height:1.8; white-space:pre-line; }
+
+  /* ===== BOTONES FLOTANTES ===== */
+  .fab-bar { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px; padding:12px 16px 20px; background:linear-gradient(to top, var(--bg) 70%, transparent); display:flex; gap:12px; z-index:90; }
+  .fab-btn { flex:1; height:52px; border-radius:var(--radius-sm); border:none; font-size:15px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all .2s; text-decoration:none; }
+  .fab-btn.whatsapp { background:var(--whatsapp); color:#fff; }
+  .fab-btn.whatsapp:hover { background:#1da851; }
+  .fab-btn.call { background:var(--phone); color:#fff; }
+  .fab-btn.call:hover { background:#333; }
+  .fab-btn svg { width:20px; height:20px; }
+
+  /* ===== UTILS ===== */
+  .hidden { display:none !important; }
+  .fade-in { animation:fadeIn .3s ease-out; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+  .empty-state { text-align:center; padding:60px 20px; color:var(--text3); }
+  .empty-state svg { width:48px; height:48px; margin-bottom:16px; opacity:0.4; }
+  .empty-state p { font-size:14px; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+</style>
 </head>
 <body>
+<div class="app">
 
-    <!-- VISTA 1: HOME -->
-    <div id="homeView" class="view active">
-        <div class="home-header">
-            <div class="logo">DUAVA <span>Prisma</span></div>
-        </div>
-        <img id="heroImage" class="hero-image" src="" alt="DUAVA Prisma">
-        <div class="hero-text">
-            <p class="hero-motto">“La tecnología evoluciona, nuestra palabra no.”</p>
-            <p class="hero-description" id="introText"></p>
-        </div>
-        <div class="categories-section">
-            <div class="section-title">Categorías</div>
-            <div class="category-grid" id="categoryList">
-                <button class="category-btn active" data-category="todas">Todas</button>
-            </div>
-        </div>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <button class="back-btn hidden" id="backBtn" onclick="goBack()" aria-label="Volver">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="logo">DUAVA<span>Prisma</span></div>
+  </header>
+
+  <!-- HOME / PORTADA -->
+  <div id="homeView" class="fade-in">
+    <!-- HERO: Reemplaza la URL de la imagen aquí -->
+    <div class="hero">
+      <img src="https://drive.google.com/file/d/1Awmk14Nj_blN_cGCKP_qLbhWV6NBdUeI/view?usp=drivesdk">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h1>Equipos dentales de alta gama</h1>
+        <p>Directamente de fábrica a tu consultorio</p>
+      </div>
     </div>
 
-    <!-- VISTA 2: LISTA DE PRODUCTOS -->
-    <div id="listView" class="view">
-        <div class="products-header">
-            <button class="back-btn" onclick="goHome()">←</button>
-            <div class="products-title" id="listTitle">Equipos</div>
-        </div>
-        <div class="product-grid" id="productGrid"></div>
+    <!-- MANIFESTO -->
+    <div class="manifesto">
+      <p class="manifesto-quote">La tecnología evoluciona, nuestra palabra no.</p>
+      <p class="manifesto-desc">Nacimos con una visión clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de fábrica; entregamos la garantía, la solución y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.</p>
     </div>
 
-    <!-- VISTA 3: DETALLE -->
-    <div id="detailView" class="view">
-        <div class="detail-header">
-            <button class="back-btn" onclick="goToList()">←</button>
-            <div class="products-title">Ficha técnica</div>
-        </div>
-        <div class="detail-content" id="detailContent"></div>
+    <!-- CATEGORÍAS -->
+    <div class="categories">
+      <p class="section-title">Especialidades</p>
+      <div class="cat-grid" id="catGrid"></div>
     </div>
+  </div>
 
-    <script>
-        // =============================================
-        // CONFIGURACIÓN QUE DEBES EDITAR
-        // =============================================
-        const SHEET_CSV_URL = '1mpjvDDy-Px-Oi3fLk7jxFmhAvKSmF1cwNML9laULqHA; // ← PON AQUÍ TU ENLACE CSV
-        const HERO_IMAGE_URL = '1EeU2beD8WJTJ_PirSAyl7'; // ← IMAGEN DE PORTADA
-        const INTRO_TEXT = "Nacimos con una visión clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de fábrica; entregamos la garantía, la solución y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.";
+  <!-- PRODUCTOS -->
+  <div id="productsView" class="products">
+    <p class="section-title" id="prodSectionTitle">Todos los equipos</p>
+    <div class="prod-grid" id="prodGrid"></div>
+    <div class="empty-state hidden" id="emptyState">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      <p>No hay equipos en esta categoría aún.</p>
+    </div>
+  </div>
 
-        // =============================================
-        // DATOS Y ESTADO
-        // =============================================
-        let allProducts = [];
-        let currentCategory = 'todas';
-        let currentProduct = null;
+  <!-- FICHA DETALLADA -->
+  <div id="detailView" class="detail">
+    <div class="detail-img" id="detailImg"></div>
+    <div class="detail-body">
+      <span class="detail-cat" id="detailCat"></span>
+      <h2 class="detail-title" id="detailTitle"></h2>
+      <p class="detail-desc" id="detailDesc"></p>
+      <div class="specs-section">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg> Especificaciones técnicas</h3>
+        <div id="specsContent"></div>
+      </div>
+    </div>
+  </div>
 
-        // Elementos del DOM
-        const homeView = document.getElementById('homeView');
-        const listView = document.getElementById('listView');
-        const detailView = document.getElementById('detailView');
+  <!-- BOTONES FLOTANTES (solo en ficha) -->
+  <div class="fab-bar hidden" id="fabBar">
+    <a class="fab-btn whatsapp" id="waBtn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a class="fab-btn call" id="callBtn" href="tel:+1234567890">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Llamar
+    </a>
+  </div>
 
-        // Inicializar imagen hero y texto
-        document.getElementById('heroImage').src = HERO_IMAGE_URL;
-        document.getElementById('introText').textContent = INTRO_TEXT;
+</div>
 
-        // =============================================
-        // FUNCIONES DE NAVEGACIÓN
-        // =============================================
-        function goHome() {
-            showView('home');
-        }
-        function goToList() {
-            showView('list');
-            renderProductList();
-        }
-        function goToDetail(product) {
-            currentProduct = product;
-            showView('detail');
-            renderDetail();
-        }
-        function showView(view) {
-            homeView.classList.remove('active');
-            listView.classList.remove('active');
-            detailView.classList.remove('active');
-            if (view === 'home') homeView.classList.add('active');
-            else if (view === 'list') listView.classList.add('active');
-            else if (view === 'detail') detailView.classList.add('active');
-        }
+<script>
+// ═══════════════════════════════════════════════════════
+//  BASE DE DATOS DE EQUIPOS DENTALES
+//  Reemplaza estos datos con tu Google Sheets
+// ═══════════════════════════════════════════════════════
+const EQUIPOS = [
+  {
+    id: "MIC-001",
+    categoria: "Micromotores",
+    titulo: "Micromotor Eléctrico Prime 300",
+    imagen_url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop",
+    descripcion_corta: "Micromotor de alta precisión con 40,000 RPM para procedimientos de prostodoncia y cirugía.",
+    especificaciones_tecnicas: "Velocidad: 40,000 RPM\nTorque: 3.5 Ncm\nVoltaje: 110-220V auto\nFrecuencia: 50/60 Hz\nPotencia: 65W\nSistema de refrigeración: Spray interno + externo\nConexión: E-type ISO\nPedal: Control progresivo multifunción\nPeso del motor: 128g\nRuido: <55 dB\nGarantía: 2 años"
+  },
+  {
+    id: "MIC-002",
+    categoria: "Micromotores",
+    titulo: "Micromotor Brushless Pro 500",
+    imagen_url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop",
+    descripcion_corta: "Tecnología brushless sin escobillas para mayor durabilidad y cero mantenimiento.",
+    especificaciones_tecnicas: "Velocidad: 50,000 RPM\nTorque: 5.2 Ncm\nVoltaje: 110-220V auto\nFrecuencia: 50/60 Hz\nPotencia: 95W\nMotor: Brushless DC sin escobillas\nSistema de refrigeración: Triple spray\nConexión: E-type ISO / Quick\nPedal: Inalámbrico con memoria\nPeso del motor: 98g\nRuido: <45 dB\nGarantía: 3 años"
+  },
+  {
+    id: "PM-001",
+    categoria: "Piezas de Mano",
+    titulo: "Pieza de Mano de Alta Velocidad Titan",
+    imagen_url: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop",
+    descripcion_corta: "Turbina de alta velocidad con rodamientos cerámicos y cabezal miniatura para máxima visibilidad.",
+    especificaciones_tecnicas: "Velocidad: 400,000 RPM\nCabezal: Miniatura (10.5mm)\nRociado: 4 puntos de spray\nConexión: Midwest / Borden\nRuido: <58 dB\nPeso: 45g\nAcabado: Titanio anodizado\nEsterilización: Autoclave 134°C\nVida útil: 500,000 ciclos\nGarantía: 1 año"
+  },
+  {
+    id: "PM-002",
+    categoria: "Piezas de Mano",
+    titulo: "Pieza de Mano Contra Ángulo LED",
+    imagen_url: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&h=400&fit=crop",
+    descripcion_corta: "Contra ángulo con iluminación LED integrada de 35,000 lux para procedimientos de endodoncia.",
+    especificaciones_tecnicas: "Velocidad: 1-40,000 RPM\nRelación: 1:5 / 1:1 / 16:1\nIluminación: LED 35,000 lux\nRociado: 3 puntos\nConexión: E-type ISO\nPeso: 62g\nAcabado: Acero inoxidable quirúrgico\nEsterilización: Autoclave 134°C\nFibra óptica: Sí\nGarantía: 2 años"
+  },
+  {
+    id: "END-001",
+    categoria: "Endodoncia",
+    titulo: "Motor Endodóntico EndoSmart Pro",
+    imagen_url: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop",
+    descripcion_corta: "Motor endodóntico con localizador apical integrado y sistema de reciprocidad automática.",
+    especificaciones_tecnicas: "Velocidad: 100-1,200 RPM\nTorque: 0.6-5.2 Ncm\nÁngulo de reciprocidad: 30°-370°\nLocalizador apical: Integrado (16 frecuencias)\nPantalla: LCD táctil a color 4.3\nBatería: Li-ion 3.7V (8h autonomía)\nMemoria: 9 programas personalizables\nConexión: Contra ángulo 16:1\nAutoclave: Cabezal desmontable 134°C\nGarantía: 2 años"
+  },
+  {
+    id: "EST-001",
+    categoria: "Estética",
+    titulo: "Láser Dental Diodo 980nm",
+    imagen_url: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop",
+    descripcion_corta: "Láser de diodo de alta potencia para cirugía de tejidos blandos, blanqueamiento y desinfección.",
+    especificaciones_tecnicas: "Longitud de onda: 980nm\nPotencia: 1-15W ajustable\nModos: CW, Pulsado, Superpulsado\nFibras: 200μm, 300μm, 400μm\nPantalla: TFT 7\nSistema de enfriamiento: Aire + agua\nAplicaciones: Cirugía blanda, periodoncia, endodoncia, blanqueamiento\nCertificación: FDA, CE, ISO 13485\nGarantía: 2 años"
+  },
+  {
+    id: "EST-002",
+    categoria: "Estética",
+    titulo: "Lámpara de Blanqueamiento LED Plus",
+    imagen_url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop",
+    descripcion_corta: "Lámpara de blanqueamiento dental con 8 LEDs de alta intensidad y 3 modos de tratamiento.",
+    especificaciones_tecnicas: "LEDs: 8 unidades (4 azules + 4 rojos)\nIntensidad: 10,000-30,000 mW/cm²\nLongitud de onda: 420-490nm\nModos: 3 programas (15/20/30 min)\nPantalla: LCD digital\nBrazo articulado: 360°\nAltura ajustable: 80-140cm\nPeso: 12kg\nVoltaje: 110-220V auto\nGarantía: 1 año"
+  },
+  {
+    id: "RAD-001",
+    categoria: "Radiología",
+    titulo: "Sensor Radiográfico Digital RVG",
+    imagen_url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop",
+    descripcion_corta: "Sensor intraoral digital de alta resolución con tecnología CMOS para diagnóstico preciso.",
+    especificaciones_tecnicas: "Tecnología: CMOS activo\nResolución: 26 lp/mm\nTamaño activo: 20x30mm (Tamaño 1) / 25x36mm (Tamaño 2)\nCable: 3m reforzado\nSoftware: Incluido (Windows/Mac)\nConexión: USB 3.0\nImagen: 16-bit grayscale\nTiempo de exposición: 0.02-0.12s\nEsterilización: Fundas desechables\nGarantía: 2 años"
+  }
+];
 
-        // =============================================
-        // CARGA DE DATOS DESDE GOOGLE SHEETS (CSV)
-        // =============================================
-        async function loadData() {
-            try {
-                const response = await fetch(SHEET_CSV_URL);
-                const csvText = await response.text();
-                const rows = parseCSV(csvText);
-                if (rows.length < 2) return;
-                // La primera fila es el encabezado
-                const headers = rows[0].map(h => h.trim().toLowerCase());
-                allProducts = [];
-                for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i];
-                    if (row.length < 6) continue;
-                    const product = {
-                        id: row[0]?.trim() || '',
-                        categoria: row[1]?.trim() || '',
-                        titulo: row[2]?.trim() || '',
-                        imagen_url: row[3]?.trim() || '',
-                        descripcion_corta: row[4]?.trim() || '',
-                        especificaciones_tecnicas: row[5]?.trim() || ''
-                    };
-                    if (product.titulo) allProducts.push(product);
-                }
-                generarCategorias();
-                renderProductList();
-            } catch (error) {
-                console.error('Error al cargar datos:', error);
-            }
-        }
+const CATEGORIAS = [
+  { id: "todos", nombre: "Todos", icono: "grid" },
+  { id: "Micromotores", nombre: "Micromotores", icono: "zap" },
+  { id: "Piezas de Mano", nombre: "Piezas de Mano", icono: "tool" },
+  { id: "Endodoncia", nombre: "Endodoncia", icono: "activity" },
+  { id: "Estética", nombre: "Estética", icono: "sun" },
+  { id: "Radiología", nombre: "Radiología", icono: "camera" }
+];
 
-        function parseCSV(text) {
-            const rows = [];
-            let currentRow = [];
-            let currentField = '';
-            let inQuotes = false;
-            for (let i = 0; i < text.length; i++) {
-                const c = text[i];
-                const next = text[i + 1];
-                if (inQuotes) {
-                    if (c === '"' && next === '"') { currentField += '"'; i++; }
-                    else if (c === '"') { inQuotes = false; }
-                    else { currentField += c; }
-                } else {
-                    if (c === '"') { inQuotes = true; }
-                    else if (c === ',') { currentRow.push(currentField); currentField = ''; }
-                    else if (c === '\n' || c === '\r') {
-                        if (c === '\r' && next === '\n') i++;
-                        currentRow.push(currentField);
-                        currentField = '';
-                        if (currentRow.length > 0) rows.push(currentRow);
-                        currentRow = [];
-                    } else { currentField += c; }
-                }
-            }
-            currentRow.push(currentField);
-            if (currentRow.length > 0) rows.push(currentRow);
-            return rows;
-        }
+// ═══════════════════════════════════════════════════════
+//  CONFIGURACIÓN DE CONTACTO
+//  Reemplaza con tu número de WhatsApp y teléfono
+// ═══════════════════════════════════════════════════════
+const CONFIG = {
+  whatsappNumber: "59175203816",  // ← Reemplaza con tu número
+  phoneNumber: "+1234567890",    // ← Reemplaza con tu número
+  whatsappMessage: "Hola DUAVA Prisma, estoy interesado en cotizar el equipo: "
+};
 
-        // =============================================
-        // CATEGORÍAS DINÁMICAS
-        // =============================================
-        function generarCategorias() {
-            const categorias = [...new Set(allProducts.map(p => p.categoria).filter(Boolean))];
-            const container = document.getElementById('categoryList');
-            container.innerHTML = '<button class="category-btn active" data-category="todas">Todas</button>';
-            categorias.forEach(cat => {
-                const btn = document.createElement('button');
-                btn.className = 'category-btn';
-                btn.textContent = cat;
-                btn.dataset.category = cat;
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentCategory = cat;
-                    renderProductList();
-                });
-                container.appendChild(btn);
-            });
-            // Evento para el botón "Todas"
-            container.querySelector('[data-category="todas"]').addEventListener('click', () => {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                container.querySelector('[data-category="todas"]').classList.add('active');
-                currentCategory = 'todas';
-                renderProductList();
-            });
-        }
+// ═══════════════════════════════════════════════════════
+//  ESTADO DE LA APP
+// ═══════════════════════════════════════════════════════
+let currentView = 'home';
+let currentCategory = 'todos';
+let historyStack = [];
 
-        // =============================================
-        // RENDERIZADO DE LISTA
-        // =============================================
-        function renderProductList() {
-            const filtered = currentCategory === 'todas'
-                ? allProducts
-                : allProducts.filter(p => p.categoria === currentCategory);
-            const grid = document.getElementById('productGrid');
-            if (filtered.length === 0) {
-                grid.innerHTML = '<div class="empty-state">No se encontraron equipos en esta categoría.</div>';
-                return;
-            }
-            grid.innerHTML = filtered.map(p => `
-                <div class="product-card" onclick="goToDetail(${allProducts.indexOf(p)})">
-                    <img src="${p.imagen_url || 'https://via.placeholder.com/400x200?text=Sin+imagen'}" alt="${p.titulo}">
-                    <div class="product-card-body">
-                        <div class="product-card-category">${p.categoria || ''}</div>
-                        <div class="product-card-title">${p.titulo}</div>
-                        <div class="product-card-desc">${p.descripcion_corta || ''}</div>
-                    </div>
-                </div>
-            `).join('');
-        }
+// ═══════════════════════════════════════════════════════
+//  RENDERIZADO
+// ═══════════════════════════════════════════════════════
+function renderCategories() {
+  const grid = document.getElementById('catGrid');
+  const icons = {
+    grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    tool: '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>',
+    activity: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
+    sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+    camera: '<path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>'
+  };
 
-        // =============================================
-        // DETALLE DEL PRODUCTO
-        // =============================================
-        function renderDetail() {
-            if (!currentProduct) return;
-            const p = currentProduct;
-            const container = document.getElementById('detailContent');
-            const waMessage = encodeURIComponent(`Hola, me interesa cotizar el equipo: ${p.titulo}`);
-            container.innerHTML = `
-                <img class="detail-img" src="${p.imagen_url || 'https://via.placeholder.com/400x300?text=Sin+imagen'}" alt="${p.titulo}">
-                <div class="detail-title">${p.titulo}</div>
-                <div class="detail-category">${p.categoria || ''}</div>
-                <div class="specs-box">
-                    <h3>Especificaciones técnicas</h3>
-                    <div class="specs-text">${p.especificaciones_tecnicas || 'No se han especificado detalles técnicos.'}</div>
-                </div>
-                <div class="contact-buttons">
-                    <a class="btn-contact btn-whatsapp" href="https://wa.me/5358386814?text=${waMessage}" target="_blank">
-                        📱 Cotizar por WhatsApp
-                    </a>
-                    <a class="btn-contact btn-call" href="tel:5358386814">
-                        📞 Llamar ahora
-                    </a>
-                </div>
-            `;
-        }
+  grid.innerHTML = CATEGORIAS.map(cat => `
+    <div class="cat-card" onclick="showCategory('${cat.id}')">
+      <div class="cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icons[cat.icono]}</svg>
+      </div>
+      <h3>${cat.nombre}</h3>
+      <span>${cat.id === 'todos' ? EQUIPOS.length : EQUIPOS.filter(e => e.categoria === cat.id).length} equipos</span>
+    </div>
+  `).join('');
+}
 
-        // Evento inicial
-        document.querySelectorAll('.category-btn').forEach(b => {
-            b.addEventListener('click', () => {
-                showView('list');
-            });
-        });
+function renderProducts(category) {
+  const grid = document.getElementById('prodGrid');
+  const empty = document.getElementById('emptyState');
+  const title = document.getElementById('prodSectionTitle');
 
-        // Cargar datos al iniciar
-        loadData();
-    </script>
+  const filtered = category === 'todos' ? EQUIPOS : EQUIPOS.filter(e => e.categoria === category);
+
+  title.textContent = category === 'todos' ? 'Todos los equipos' : category;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+  } else {
+    empty.classList.add('hidden');
+    grid.innerHTML = filtered.map(p => `
+      <div class="prod-card" onclick="showDetail('${p.id}')">
+        <div class="prod-img">
+          <img src="${p.imagen_url}" alt="${p.titulo}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%23f0f0f0%22 width=%22600%22 height=%22400%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22>${p.titulo}</text></svg>'">
+        </div>
+        <div class="prod-info">
+          <p class="prod-cat">${p.categoria}</p>
+          <h4 class="prod-title">${p.titulo}</h4>
+          <p class="prod-desc">${p.descripcion_corta}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+function showDetail(id) {
+  const product = EQUIPOS.find(e => e.id === id);
+  if (!product) return;
+
+  document.getElementById('detailImg').innerHTML = `<img src="${product.imagen_url}" alt="${product.titulo}" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#e0e0e0,#f0f0f0)'">`;
+  document.getElementById('detailCat').textContent = product.categoria;
+  document.getElementById('detailTitle').textContent = product.titulo;
+  document.getElementById('detailDesc').textContent = product.descripcion_corta;
+
+  // Parse specs
+  const specs = product.especificaciones_tecnicas.split('\n');
+  const specsHtml = specs.map(s => {
+    const parts = s.split(':');
+    if (parts.length >= 2) {
+      return `<div class="spec-item"><span class="spec-label">${parts[0].trim()}</span><span class="spec-value">${parts.slice(1).join(':').trim()}</span></div>`;
+    }
+    return `<p class="specs-text">${s}</p>`;
+  }).join('');
+  document.getElementById('specsContent').innerHTML = specsHtml;
+
+  // Update FAB buttons
+  const waMsg = encodeURIComponent(CONFIG.whatsappMessage + product.titulo);
+  document.getElementById('waBtn').href = `https://wa.me/${CONFIG.whatsappNumber}?text=${waMsg}`;
+  document.getElementById('callBtn').href = `tel:${CONFIG.phoneNumber}`;
+
+  switchView('detail');
+}
+
+function showCategory(cat) {
+  currentCategory = cat;
+  renderProducts(cat);
+  switchView('products');
+}
+
+function switchView(view) {
+  historyStack.push(currentView);
+  currentView = view;
+
+  document.getElementById('homeView').classList.add('hidden');
+  document.getElementById('productsView').classList.remove('active');
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('fabBar').classList.add('hidden');
+
+  const backBtn = document.getElementById('backBtn');
+
+  if (view === 'home') {
+    backBtn.classList.add('hidden');
+    document.getElementById('homeView').classList.remove('hidden');
+  } else if (view === 'products') {
+    backBtn.classList.remove('hidden');
+    document.getElementById('productsView').classList.add('active');
+  } else if (view === 'detail') {
+    backBtn.classList.remove('hidden');
+    document.getElementById('detailView').classList.add('active');
+    document.getElementById('fabBar').classList.remove('hidden');
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack() {
+  const prev = historyStack.pop() || 'home';
+  currentView = prev;
+
+  document.getElementById('homeView').classList.add('hidden');
+  document.getElementById('productsView').classList.remove('active');
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('fabBar').classList.add('hidden');
+
+  const backBtn = document.getElementById('backBtn');
+
+  if (prev === 'home') {
+    backBtn.classList.add('hidden');
+    document.getElementById('homeView').classList.remove('hidden');
+  } else if (prev === 'products') {
+    backBtn.classList.remove('hidden');
+    document.getElementById('productsView').classList.add('active');
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════════════════
+//  INICIALIZACIÓN
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderCategories();
+  renderProducts('todos');
+});
+</script>
 </body>
 </html>
