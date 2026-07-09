@@ -10,28 +10,27 @@
 <title>DUAVA Prisma - Equipos Dentales Premium</title>
 <link rel="manifest" href="manifest.json">
 <meta name="application-name" content="DUAVA Prisma">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   :root {
-    --bg:#f5f0e8; --card:#ffffff; --text:#1a1a1a; --text2:#555; --text3:#888; --border:#e0d8cc;
-    --accent:#1a1a1a; --accent2:#333; --whatsapp:#25D366;
+    --bg:#f5f0e8; --card:#ffffff; --dark-card:#1a1a1a; --dark-card2:#242424; --text:#1a1a1a; --text2:#555; --text3:#888; --border:#e0d8cc; --dark-border:#333;
+    --accent:#1a1a1a; --whatsapp:#25D366;
     --warm:#f5f0e8; --warm2:#ede6d8; --warm3:#d9cfbc;
-    --radius:12px; --radius-sm:8px; --shadow:0 2px 16px rgba(0,0,0,0.06);
+    --radius:12px; --radius-sm:8px; --shadow:0 2px 16px rgba(0,0,0,0.06); --shadow-dark:0 2px 16px rgba(0,0,0,0.3);
     --font:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
   body { font-family:var(--font); background:var(--bg); color:var(--text); line-height:1.5; -webkit-tap-highlight-color:transparent; }
   .app { max-width:480px; margin:0 auto; min-height:100vh; position:relative; overflow-x:hidden; }
 
-  /* ===== HEADER ===== */
-  .header { padding:16px 20px; display:flex; align-items:center; justify-content:center; position:relative; background:var(--accent); border-bottom:1px solid rgba(255,255,255,0.1); position:sticky; top:0; z-index:100; }
+  .header { padding:16px 20px; display:flex; align-items:center; justify-content:center; position:relative; background:var(--accent); position:sticky; top:0; z-index:100; }
   .header .back-btn { position:absolute; left:16px; top:50%; transform:translateY(-50%); width:40px; height:40px; border-radius:50%; border:none; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; cursor:pointer; color:#fff; transition:background .2s; }
   .header .back-btn:hover { background:rgba(255,255,255,0.2); }
   .header .back-btn svg { width:20px; height:20px; }
   .logo { font-size:22px; font-weight:600; letter-spacing:2px; color:#fff; text-transform:uppercase; }
   .logo span { font-weight:300; color:rgba(255,255,255,0.5); }
 
-  /* ===== HERO ===== */
   .hero { position:relative; width:100%; height:280px; overflow:hidden; background:linear-gradient(135deg,#2a2a2a 0%,#1a1a1a 100%); }
   .hero img { width:100%; height:100%; object-fit:cover; display:block; }
   .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%); }
@@ -39,14 +38,12 @@
   .hero-text h1 { font-size:28px; font-weight:600; line-height:1.2; margin-bottom:8px; text-shadow:0 2px 8px rgba(0,0,0,0.4); }
   .hero-text p { font-size:14px; opacity:0.9; line-height:1.5; }
 
-  /* ===== MANIFESTO ===== */
   .manifesto { padding:32px 20px; text-align:center; background:var(--warm2); border-bottom:1px solid var(--warm3); }
   .manifesto-quote { font-size:20px; font-weight:500; font-style:italic; color:var(--text); margin-bottom:16px; line-height:1.4; }
   .manifesto-quote::before { content:'"'; font-size:32px; color:var(--warm3); line-height:0; vertical-align:-8px; margin-right:4px; }
   .manifesto-quote::after { content:'"'; font-size:32px; color:var(--warm3); line-height:0; vertical-align:-8px; margin-left:4px; }
   .manifesto-desc { font-size:15px; color:var(--text2); line-height:1.7; max-width:400px; margin:0 auto; }
 
-  /* ===== CATEGORIAS ===== */
   .categories { padding:24px 16px; background:var(--warm); }
   .section-title { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin-bottom:16px; padding:0 4px; }
   .cat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
@@ -57,45 +54,41 @@
   .cat-card h3 { font-size:14px; font-weight:600; color:var(--text); margin-bottom:4px; }
   .cat-card span { font-size:12px; color:var(--text3); }
 
-  /* ===== PRODUCTOS GRID ===== */
   .products { padding:16px; display:none; background:var(--warm); }
   .products.active { display:block; }
   .prod-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-  .prod-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; cursor:pointer; transition:all .2s; box-shadow:var(--shadow); }
-  .prod-card:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.1); }
-  .prod-card .prod-img { width:100%; height:160px; background:var(--warm2); overflow:hidden; position:relative; }
+  .prod-card { background:var(--dark-card); border:1px solid var(--dark-border); border-radius:var(--radius); overflow:hidden; cursor:pointer; transition:all .2s; box-shadow:var(--shadow-dark); }
+  .prod-card:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.3); border-color:rgba(255,255,255,0.2); }
+  .prod-card .prod-img { width:100%; height:160px; background:#111; overflow:hidden; position:relative; }
   .prod-card .prod-img img { width:100%; height:100%; object-fit:cover; transition:transform .3s; }
   .prod-card:hover .prod-img img { transform:scale(1.05); }
   .prod-card .prod-info { padding:14px 12px; }
-  .prod-card .prod-cat { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text3); margin-bottom:6px; }
-  .prod-card .prod-title { font-size:14px; font-weight:600; color:var(--text); line-height:1.3; margin-bottom:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-  .prod-card .prod-desc { font-size:12px; color:var(--text2); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .prod-card .prod-cat { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.4); margin-bottom:6px; }
+  .prod-card .prod-title { font-size:14px; font-weight:600; color:#fff; line-height:1.3; margin-bottom:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .prod-card .prod-desc { font-size:12px; color:rgba(255,255,255,0.6); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 
-  /* ===== FICHA DETALLADA ===== */
-  .detail { display:none; padding-bottom:100px; background:var(--warm); }
+  .detail { display:none; padding-bottom:100px; background:var(--dark-card); }
   .detail.active { display:block; }
-  .detail-img { width:100%; height:320px; background:linear-gradient(135deg,#2a2a2a,#1a1a1a); position:relative; overflow:hidden; }
+  .detail-img { width:100%; height:320px; background:linear-gradient(135deg,#2a2a2a,#111); position:relative; overflow:hidden; }
   .detail-img img { width:100%; height:100%; object-fit:cover; }
   .detail-body { padding:24px 20px; }
-  .detail-cat { display:inline-block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); background:var(--warm2); padding:6px 12px; border-radius:20px; margin-bottom:12px; }
-  .detail-title { font-size:22px; font-weight:600; color:var(--text); line-height:1.3; margin-bottom:12px; }
-  .detail-desc { font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:24px; }
-  .specs-section { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:24px; }
-  .specs-section h3 { font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .detail-cat { display:inline-block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.08); padding:6px 12px; border-radius:20px; margin-bottom:12px; }
+  .detail-title { font-size:22px; font-weight:600; color:#fff; line-height:1.3; margin-bottom:12px; }
+  .detail-desc { font-size:15px; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:24px; }
+  .specs-section { background:var(--dark-card2); border:1px solid var(--dark-border); border-radius:var(--radius); padding:20px; margin-bottom:24px; }
+  .specs-section h3 { font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:#fff; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
   .specs-section h3 svg { width:18px; height:18px; }
-  .spec-item { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; }
+  .spec-item { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
   .spec-item:last-child { border-bottom:none; }
-  .spec-label { color:var(--text3); font-weight:400; }
-  .spec-value { color:var(--text); font-weight:500; text-align:right; max-width:60%; }
-  .specs-text { font-size:14px; color:var(--text2); line-height:1.8; white-space:pre-line; }
+  .spec-label { color:rgba(255,255,255,0.4); font-weight:400; }
+  .spec-value { color:#fff; font-weight:500; text-align:right; max-width:60%; }
+  .specs-text { font-size:14px; color:rgba(255,255,255,0.7); line-height:1.8; white-space:pre-line; }
 
-  /* ===== BOTON FLOTANTE ===== */
-  .fab-bar { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px; padding:12px 16px 20px; background:linear-gradient(to top, var(--warm) 70%, transparent); display:flex; z-index:90; }
+  .fab-bar { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px; padding:12px 16px 20px; background:linear-gradient(to top, var(--dark-card) 70%, transparent); display:flex; z-index:90; }
   .fab-btn { width:100%; height:52px; border-radius:var(--radius-sm); border:none; font-size:15px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all .2s; text-decoration:none; background:var(--whatsapp); color:#fff; }
   .fab-btn:hover { background:#1da851; }
   .fab-btn svg { width:20px; height:20px; }
 
-  /* ===== UTILS ===== */
   .hidden { display:none !important; }
   .fade-in { animation:fadeIn .3s ease-out; }
   @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
@@ -111,7 +104,6 @@
 <body>
 <div class="app">
 
-  <!-- HEADER -->
   <header class="header" id="header">
     <button class="back-btn hidden" id="backBtn" onclick="goBack()" aria-label="Volver">
       <svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -119,7 +111,6 @@
     <div class="logo">DUAVA<span>Prisma</span></div>
   </header>
 
-  <!-- HOME -->
   <div id="homeView" class="fade-in">
     <div class="hero">
       <img src="https://raw.githubusercontent.com/lcabelardo12-lang/Tienda_Prisma/main/file_0000000037d4720ebf6d99298deae8bd.png" alt="DUAVA Prisma - Equipos Dentales Premium" onerror="this.style.display='none'">
@@ -141,7 +132,6 @@
     </div>
   </div>
 
-  <!-- PRODUCTOS -->
   <div id="productsView" class="products">
     <p class="section-title" id="prodSectionTitle">Todos los equipos</p>
     <div class="prod-grid" id="prodGrid"></div>
@@ -151,7 +141,6 @@
     </div>
   </div>
 
-  <!-- FICHA DETALLADA -->
   <div id="detailView" class="detail">
     <div class="detail-img" id="detailImg"></div>
     <div class="detail-body">
@@ -165,7 +154,6 @@
     </div>
   </div>
 
-  <!-- BOTON FLOTANTE -->
   <div class="fab-bar hidden" id="fabBar">
     <a class="fab-btn whatsapp" id="waBtn" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -220,7 +208,6 @@ function renderCategories() {
     grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
     tag: '<path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>'
   };
-
   grid.innerHTML = CATEGORIAS_LIST.map(cat => `
     <div class="cat-card" onclick="showCategory('${cat.id}')">
       <div class="cat-icon">
@@ -238,7 +225,6 @@ function renderProducts(category) {
   const title = document.getElementById('prodSectionTitle');
   const filtered = category === 'todos' ? EQUIPOS : EQUIPOS.filter(e => e.categoria === category);
   title.textContent = category === 'todos' ? 'Todos los equipos' : category;
-
   if (filtered.length === 0) {
     grid.innerHTML = '';
     empty.classList.remove('hidden');
@@ -247,7 +233,7 @@ function renderProducts(category) {
     grid.innerHTML = filtered.map(p => `
       <div class="prod-card" onclick="showDetail('${p.id}')">
         <div class="prod-img">
-          <img src="${p.imagen_url}" alt="${p.titulo}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%23f0f0f0%22 width=%22600%22 height=%22400%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22>${p.titulo}</text></svg>'">
+          <img src="${p.imagen_url}" alt="${p.titulo}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%231a1a1a%22 width=%22600%22 height=%22400%22/><text fill=%22%23555%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22>${p.titulo}</text></svg>'">
         </div>
         <div class="prod-info">
           <p class="prod-cat">${p.categoria}</p>
@@ -262,12 +248,10 @@ function renderProducts(category) {
 function showDetail(id) {
   const product = EQUIPOS.find(e => e.id === id);
   if (!product) return;
-
-  document.getElementById('detailImg').innerHTML = `<img src="${product.imagen_url}" alt="${product.titulo}" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#2a2a2a,#1a1a1a)'">`;
+  document.getElementById('detailImg').innerHTML = `<img src="${product.imagen_url}" alt="${product.titulo}" onerror="this.style.display='none'">`;
   document.getElementById('detailCat').textContent = product.categoria;
   document.getElementById('detailTitle').textContent = product.titulo;
   document.getElementById('detailDesc').textContent = product.descripcion_corta;
-
   const specs = product.especificaciones_tecnicas.split('\n');
   const specsHtml = specs.map(s => {
     const parts = s.split(':');
@@ -277,10 +261,8 @@ function showDetail(id) {
     return `<p class="specs-text">${s}</p>`;
   }).join('');
   document.getElementById('specsContent').innerHTML = specsHtml;
-
   const waMsg = encodeURIComponent(CONFIG.whatsappMessage + product.titulo);
   document.getElementById('waBtn').href = `https://wa.me/${CONFIG.whatsappNumber}?text=${waMsg}`;
-
   switchView('detail');
 }
 
@@ -293,14 +275,11 @@ function showCategory(cat) {
 function switchView(view) {
   historyStack.push(currentView);
   currentView = view;
-
   document.getElementById('homeView').classList.add('hidden');
   document.getElementById('productsView').classList.remove('active');
   document.getElementById('detailView').classList.remove('active');
   document.getElementById('fabBar').classList.add('hidden');
-
   const backBtn = document.getElementById('backBtn');
-
   if (view === 'home') {
     backBtn.classList.add('hidden');
     document.getElementById('homeView').classList.remove('hidden');
@@ -312,21 +291,17 @@ function switchView(view) {
     document.getElementById('detailView').classList.add('active');
     document.getElementById('fabBar').classList.remove('hidden');
   }
-
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function goBack() {
   const prev = historyStack.pop() || 'home';
   currentView = prev;
-
   document.getElementById('homeView').classList.add('hidden');
   document.getElementById('productsView').classList.remove('active');
   document.getElementById('detailView').classList.remove('active');
   document.getElementById('fabBar').classList.add('hidden');
-
   const backBtn = document.getElementById('backBtn');
-
   if (prev === 'home') {
     backBtn.classList.add('hidden');
     document.getElementById('homeView').classList.remove('hidden');
@@ -334,8 +309,11 @@ function goBack() {
     backBtn.classList.remove('hidden');
     document.getElementById('productsView').classList.add('active');
   }
-
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(function(){});
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
