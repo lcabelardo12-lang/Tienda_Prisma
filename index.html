@@ -187,92 +187,45 @@
 
 <script>
 // ═══════════════════════════════════════════════════════
-//  BASE DE DATOS DE EQUIPOS DENTALES
-//  Reemplaza estos datos con tu Google Sheets
+//  CONEXIÓN A GOOGLE SHEETS (GAS)
 // ═══════════════════════════════════════════════════════
-const EQUIPOS = [
-  {
-    id: "MIC-001",
-    categoria: "Micromotores",
-    titulo: "Micromotor Eléctrico Prime 300",
-    imagen_url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop",
-    descripcion_corta: "Micromotor de alta precisión con 40,000 RPM para procedimientos de prostodoncia y cirugía.",
-    especificaciones_tecnicas: "Velocidad: 40,000 RPM\nTorque: 3.5 Ncm\nVoltaje: 110-220V auto\nFrecuencia: 50/60 Hz\nPotencia: 65W\nSistema de refrigeración: Spray interno + externo\nConexión: E-type ISO\nPedal: Control progresivo multifunción\nPeso del motor: 128g\nRuido: <55 dB\nGarantía: 2 años"
-  },
-  {
-    id: "MIC-002",
-    categoria: "Micromotores",
-    titulo: "Micromotor Brushless Pro 500",
-    imagen_url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop",
-    descripcion_corta: "Tecnología brushless sin escobillas para mayor durabilidad y cero mantenimiento.",
-    especificaciones_tecnicas: "Velocidad: 50,000 RPM\nTorque: 5.2 Ncm\nVoltaje: 110-220V auto\nFrecuencia: 50/60 Hz\nPotencia: 95W\nMotor: Brushless DC sin escobillas\nSistema de refrigeración: Triple spray\nConexión: E-type ISO / Quick\nPedal: Inalámbrico con memoria\nPeso del motor: 98g\nRuido: <45 dB\nGarantía: 3 años"
-  },
-  {
-    id: "PM-001",
-    categoria: "Piezas de Mano",
-    titulo: "Pieza de Mano de Alta Velocidad Titan",
-    imagen_url: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop",
-    descripcion_corta: "Turbina de alta velocidad con rodamientos cerámicos y cabezal miniatura para máxima visibilidad.",
-    especificaciones_tecnicas: "Velocidad: 400,000 RPM\nCabezal: Miniatura (10.5mm)\nRociado: 4 puntos de spray\nConexión: Midwest / Borden\nRuido: <58 dB\nPeso: 45g\nAcabado: Titanio anodizado\nEsterilización: Autoclave 134°C\nVida útil: 500,000 ciclos\nGarantía: 1 año"
-  },
-  {
-    id: "PM-002",
-    categoria: "Piezas de Mano",
-    titulo: "Pieza de Mano Contra Ángulo LED",
-    imagen_url: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&h=400&fit=crop",
-    descripcion_corta: "Contra ángulo con iluminación LED integrada de 35,000 lux para procedimientos de endodoncia.",
-    especificaciones_tecnicas: "Velocidad: 1-40,000 RPM\nRelación: 1:5 / 1:1 / 16:1\nIluminación: LED 35,000 lux\nRociado: 3 puntos\nConexión: E-type ISO\nPeso: 62g\nAcabado: Acero inoxidable quirúrgico\nEsterilización: Autoclave 134°C\nFibra óptica: Sí\nGarantía: 2 años"
-  },
-  {
-    id: "END-001",
-    categoria: "Endodoncia",
-    titulo: "Motor Endodóntico EndoSmart Pro",
-    imagen_url: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop",
-    descripcion_corta: "Motor endodóntico con localizador apical integrado y sistema de reciprocidad automática.",
-    especificaciones_tecnicas: "Velocidad: 100-1,200 RPM\nTorque: 0.6-5.2 Ncm\nÁngulo de reciprocidad: 30°-370°\nLocalizador apical: Integrado (16 frecuencias)\nPantalla: LCD táctil a color 4.3\nBatería: Li-ion 3.7V (8h autonomía)\nMemoria: 9 programas personalizables\nConexión: Contra ángulo 16:1\nAutoclave: Cabezal desmontable 134°C\nGarantía: 2 años"
-  },
-  {
-    id: "EST-001",
-    categoria: "Estética",
-    titulo: "Láser Dental Diodo 980nm",
-    imagen_url: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop",
-    descripcion_corta: "Láser de diodo de alta potencia para cirugía de tejidos blandos, blanqueamiento y desinfección.",
-    especificaciones_tecnicas: "Longitud de onda: 980nm\nPotencia: 1-15W ajustable\nModos: CW, Pulsado, Superpulsado\nFibras: 200μm, 300μm, 400μm\nPantalla: TFT 7\nSistema de enfriamiento: Aire + agua\nAplicaciones: Cirugía blanda, periodoncia, endodoncia, blanqueamiento\nCertificación: FDA, CE, ISO 13485\nGarantía: 2 años"
-  },
-  {
-    id: "EST-002",
-    categoria: "Estética",
-    titulo: "Lámpara de Blanqueamiento LED Plus",
-    imagen_url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop",
-    descripcion_corta: "Lámpara de blanqueamiento dental con 8 LEDs de alta intensidad y 3 modos de tratamiento.",
-    especificaciones_tecnicas: "LEDs: 8 unidades (4 azules + 4 rojos)\nIntensidad: 10,000-30,000 mW/cm²\nLongitud de onda: 420-490nm\nModos: 3 programas (15/20/30 min)\nPantalla: LCD digital\nBrazo articulado: 360°\nAltura ajustable: 80-140cm\nPeso: 12kg\nVoltaje: 110-220V auto\nGarantía: 1 año"
-  },
-  {
-    id: "RAD-001",
-    categoria: "Radiología",
-    titulo: "Sensor Radiográfico Digital RVG",
-    imagen_url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop",
-    descripcion_corta: "Sensor intraoral digital de alta resolución con tecnología CMOS para diagnóstico preciso.",
-    especificaciones_tecnicas: "Tecnología: CMOS activo\nResolución: 26 lp/mm\nTamaño activo: 20x30mm (Tamaño 1) / 25x36mm (Tamaño 2)\nCable: 3m reforzado\nSoftware: Incluido (Windows/Mac)\nConexión: USB 3.0\nImagen: 16-bit grayscale\nTiempo de exposición: 0.02-0.12s\nEsterilización: Fundas desechables\nGarantía: 2 años"
-  }
-];
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbzkb0T8TDFBuXVULDlutj8fjLqvyIGp0z9Js4mRn70kC9_Ux2UKgPV4pdNHZYpchJv-7w/exec";
 
-const CATEGORIAS = [
-  { id: "todos", nombre: "Todos", icono: "grid" },
-  { id: "Micromotores", nombre: "Micromotores", icono: "zap" },
-  { id: "Piezas de Mano", nombre: "Piezas de Mano", icono: "tool" },
-  { id: "Endodoncia", nombre: "Endodoncia", icono: "activity" },
-  { id: "Estética", nombre: "Estética", icono: "sun" },
-  { id: "Radiología", nombre: "Radiología", icono: "camera" }
-];
+let EQUIPOS = [];
+let CATEGORIAS_LIST = [];
+
+async function cargarDatos() {
+  try {
+    const res = await fetch(SHEET_URL);
+    const data = await res.json();
+    EQUIPOS = data.map(p => ({
+      id: p.id || "",
+      categoria: p.categoria || "",
+      titulo: p.titulo || "",
+      imagen_url: p.imagen_url || "",
+      descripcion_corta: p.descripcion_corta || "",
+      especificaciones_tecnicas: p.especificaciones_tecnicas || ""
+    }));
+    // Build categories dynamically from data
+    const cats = [...new Set(EQUIPOS.map(e => e.categoria).filter(Boolean))];
+    CATEGORIAS_LIST = [
+      { id: "todos", nombre: "Todos", icono: "grid" },
+      ...cats.map(c => ({ id: c, nombre: c, icono: "tag" }))
+    ];
+    return true;
+  } catch (err) {
+    console.error("Error cargando datos:", err);
+    return false;
+  }
+}
 
 // ═══════════════════════════════════════════════════════
 //  CONFIGURACIÓN DE CONTACTO
 //  Reemplaza con tu número de WhatsApp y teléfono
 // ═══════════════════════════════════════════════════════
 const CONFIG = {
-  whatsappNumber: "1234567890",  // ← Reemplaza con tu número
-  phoneNumber: "+1234567890",    // ← Reemplaza con tu número
+  whatsappNumber: "1234567890",
+  phoneNumber: "+1234567890",
   whatsappMessage: "Hola DUAVA Prisma, estoy interesado en cotizar el equipo: "
 };
 
@@ -290,17 +243,13 @@ function renderCategories() {
   const grid = document.getElementById('catGrid');
   const icons = {
     grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
-    zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
-    tool: '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>',
-    activity: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
-    sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
-    camera: '<path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>'
+    tag: '<path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>'
   };
 
-  grid.innerHTML = CATEGORIAS.map(cat => `
+  grid.innerHTML = CATEGORIAS_LIST.map(cat => `
     <div class="cat-card" onclick="showCategory('${cat.id}')">
       <div class="cat-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icons[cat.icono]}</svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icons[cat.icono] || icons.tag}</svg>
       </div>
       <h3>${cat.nombre}</h3>
       <span>${cat.id === 'todos' ? EQUIPOS.length : EQUIPOS.filter(e => e.categoria === cat.id).length} equipos</span>
@@ -346,7 +295,6 @@ function showDetail(id) {
   document.getElementById('detailTitle').textContent = product.titulo;
   document.getElementById('detailDesc').textContent = product.descripcion_corta;
 
-  // Parse specs
   const specs = product.especificaciones_tecnicas.split('\n');
   const specsHtml = specs.map(s => {
     const parts = s.split(':');
@@ -357,7 +305,6 @@ function showDetail(id) {
   }).join('');
   document.getElementById('specsContent').innerHTML = specsHtml;
 
-  // Update FAB buttons
   const waMsg = encodeURIComponent(CONFIG.whatsappMessage + product.titulo);
   document.getElementById('waBtn').href = `https://wa.me/${CONFIG.whatsappNumber}?text=${waMsg}`;
   document.getElementById('callBtn').href = `tel:${CONFIG.phoneNumber}`;
@@ -420,9 +367,10 @@ function goBack() {
 }
 
 // ═══════════════════════════════════════════════════════
-//  INICIALIZACIÓN
+//  INICIALIZACIÓN - CARGA DESDE GOOGLE SHEETS
 // ═══════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await cargarDatos();
   renderCategories();
   renderProducts('todos');
 });
