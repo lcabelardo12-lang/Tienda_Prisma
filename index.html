@@ -58,7 +58,7 @@
   .feat-card img{width:100%;height:110px;object-fit:cover}
   .feat-info{padding:10px}
   .feat-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .feat-price{font-size:12px;font-weight:600;color:var(--price-color)}
+  .feat-price{font-size:12px;font-weight:600;color:var(--price-color);display:flex;align-items:baseline}
 
   .categories{padding:24px 16px;background:var(--warm)}
   .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -81,7 +81,7 @@
   .prod-cat{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:6px}
   .prod-title{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .prod-brand{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:6px}
-  .prod-price-sm{font-size:13px;font-weight:600;color:var(--price-color)}
+  .prod-price-sm{font-size:13px;font-weight:600;color:var(--price-color);display:flex;align-items:baseline}
   .prod-agotado{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:2}
   .prod-agotado span{background:var(--dark4);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;text-transform:uppercase;letter-spacing:1px}
   .empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,.4)}
@@ -104,7 +104,7 @@
   .detail-cat{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);background:#b0b0b0;padding:6px 12px;border-radius:20px;margin-bottom:12px}
   .detail-title{font-size:22px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
   .detail-brand{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:16px}
-  .detail-price{font-size:26px;font-weight:700;color:var(--price-color);margin-bottom:20px}
+  .detail-price{font-size:26px;font-weight:700;color:var(--price-color);margin-bottom:20px;display:flex;align-items:baseline}
   .detail-desc{font-size:15px;color:var(--text-w2);line-height:1.7;margin-bottom:24px}
 
   .specs-box{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:20px;margin-bottom:24px}
@@ -135,6 +135,7 @@
   .fab-btn{width:220px;height:48px;border-radius:var(--radius-sm);border:none;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;text-decoration:none;background:var(--whatsapp);color:#fff}
   .fab-btn:hover{background:#1a7a3a}
   .fab-btn svg{width:18px;height:18px}
+  .price-frac{font-size:0.55em;vertical-align:super;margin-left:1px}
 
   .hidden{display:none!important}
   .fade-in{animation:fadeIn .3s ease-out}
@@ -244,8 +245,8 @@ function fmtPrecio(precio,moneda){
   if(!tienePrecio&&!simbolo)return'\u00BF . . . ?';
   if(!tienePrecio&&simbolo)return simbolo+' \u00BF . . . ?';
   var f=n.toLocaleString('es',{minimumFractionDigits:0,maximumFractionDigits:2});
-  if(tienePrecio&&!simbolo)return f+' \u00BF . . . ?';
-  return simbolo+' '+f;
+    if(tienePrecio&&!simbolo){var s2=String(f).split('.');var e2=s2[0];var d2=s2[1]||'00';if(d2.length===1)d2=d2+'0';return e2+'<span class="price-frac">'+d2+'</span>'+' \u00BF . . . ?';}
+  var s=String(f).split('.');var entero=s[0];var dec=s[1]||'00';if(dec.length===1)dec=dec+'0';return simbolo+' '+entero+'<span class="price-frac">'+dec+'</span>';
 }
 
 function isFeatured(v){var s=String(v||'').trim().toUpperCase();return s==='1'||s==='SI'||s==='S\u00CD'||s==='TRUE'}
@@ -421,7 +422,7 @@ function showDetail(id){
   brandEl.textContent=brand;
   brandEl.style.display=brand?'block':'none';
 
-  document.getElementById('detPrice').textContent=fmtPrecio(p.precio,p.moneda);
+  document.getElementById('detPrice').innerHTML=fmtPrecio(p.precio,p.moneda);
 
   var descEl=document.getElementById('detDesc');
   descEl.textContent=p.descripcion_corta;
