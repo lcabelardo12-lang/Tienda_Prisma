@@ -55,7 +55,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .featured-scroll::-webkit-scrollbar{display:none}
 .feat-card{min-width:150px;max-width:150px;background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);overflow:hidden;cursor:pointer;flex-shrink:0;scroll-snap-align:start;transition:transform .2s}
 .feat-card:active{transform:scale(.97)}
-.feat-card img{width:100%;height:110px;object-fit:cover}
+.feat-card img{width:100%;width:100%;aspect-ratio:1/1;object-fit:cover}
 .feat-info{padding:10px}
 .feat-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .feat-price{font-size:12px;font-weight:600;color:var(--price-color)}
@@ -74,7 +74,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .prod-card{background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:0 2px 16px rgba(0,0,0,.3);position:relative}
 .prod-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.3);border-color:rgba(255,255,255,.2)}
-.prod-img{width:100%;height:160px;background:#111;overflow:hidden;position:relative}
+.prod-img{width:100%;height:228px;background:#111;overflow:hidden;position:relative}
 .prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
 .prod-card:hover .prod-img img{transform:scale(1.05)}
 .prod-info{padding:14px 12px}
@@ -91,7 +91,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .detail{display:none;padding-bottom:100px;background:var(--dark)}
 .detail.active{display:block}
 
-.carousel{position:relative;width:100%;height:320px;background:#111}
+.carousel{position:relative;width:100%;aspect-ratio:1/1;background:#111}
 .carousel-track{display:flex;overflow-x:auto;height:100%;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .carousel-track::-webkit-scrollbar{display:none}
 .carousel-slide{min-width:100%;height:100%;scroll-snap-align:start;flex-shrink:0}
