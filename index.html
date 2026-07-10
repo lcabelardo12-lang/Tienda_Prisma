@@ -18,6 +18,7 @@
     --bg:#f5f0e8;--dark:#1a1a1a;--dark2:#242424;--dark3:#2e2e2e;--dark4:#3a3a3a;
     --text-w:#fff;--text-w2:rgba(255,255,255,.7);--text-w3:rgba(255,255,255,.4);
     --border-d:#333;--whatsapp:#1e8c44;--trust-accent:#28a745;
+    --price-color:#c0c0c0;
     --warm:#f5f0e8;--warm2:#ede6d8;--warm3:#d9cfbc;
     --radius:12px;--radius-sm:8px;
     --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
@@ -57,7 +58,7 @@
   .feat-card img{width:100%;height:110px;object-fit:cover}
   .feat-info{padding:10px}
   .feat-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .feat-price{font-size:12px;font-weight:600;color:var(--trust-accent)}
+  .feat-price{font-size:12px;font-weight:600;color:var(--price-color)}
 
   .categories{padding:24px 16px;background:var(--warm)}
   .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -80,7 +81,7 @@
   .prod-cat{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:6px}
   .prod-title{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .prod-brand{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:6px}
-  .prod-price-sm{font-size:13px;font-weight:600;color:var(--trust-accent)}
+  .prod-price-sm{font-size:13px;font-weight:600;color:var(--price-color)}
   .prod-agotado{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:2}
   .prod-agotado span{background:var(--dark4);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;text-transform:uppercase;letter-spacing:1px}
   .empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,.4)}
@@ -103,7 +104,7 @@
   .detail-cat{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);background:#b0b0b0;padding:6px 12px;border-radius:20px;margin-bottom:12px}
   .detail-title{font-size:22px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
   .detail-brand{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:16px}
-  .detail-price{font-size:26px;font-weight:700;color:var(--trust-accent);margin-bottom:20px}
+  .detail-price{font-size:26px;font-weight:700;color:var(--price-color);margin-bottom:20px}
   .detail-desc{font-size:15px;color:var(--text-w2);line-height:1.7;margin-bottom:24px}
 
   .specs-box{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:20px;margin-bottom:24px}
@@ -223,109 +224,191 @@ var SHEET_URL="https://script.google.com/macros/s/AKfycbzkb0T8TDFBuXVULDlutj8fjL
 var WHATSAPP="59175203816";
 var WA_MSG="Hola, estoy interesado en cotizar el equipo: ";
 
-var EQUIPOS=[],CATS=[];
-var viewStack=[],curView='home';
+var EQUIPOS=[];
+var CATS=[];
+var viewStack=[];
+var curView='home';
 
 function h(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
-function fmtPrecio(p,mon){
-  var n=parseFloat(p);
-  if(!n||isNaN(n))return'Consultar precio';
+function fmtPrecio(precio,moneda){
+  var n=parseFloat(precio);
+  var tienePrecio=n>0&&!isNaN(n);
+  var m=String(moneda||'').toUpperCase().trim();
+  var simbolo='';
+  if(m==='USD')simbolo='$';
+  else if(m==='EUR')simbolo='\u20AC';
+  else if(m==='BS'||m==='BOB')simbolo='Bs.';
+  else if(m==='$')simbolo='$';
+
+  if(!tienePrecio&&!simbolo)return'\u00BF . . . ?';
+  if(!tienePrecio&&simbolo)return simbolo+' \u00BF . . . ?';
   var f=n.toLocaleString('es',{minimumFractionDigits:0,maximumFractionDigits:2});
-  var m=(mon||'').toUpperCase().trim();
-  if(m==='USD')return'$'+f+' USD';
-  if(m==='BS'||m==='BOB')return'Bs. '+f;
-  if(m==='EUR')return'\u20AC'+f;
-  return'$'+f;
+  if(tienePrecio&&!simbolo)return f+' \u00BF . . . ?';
+  return simbolo+' '+f;
 }
 
-function isFeatured(v){var s=String(v||'').trim().toUpperCase();return s==='1'||s==='SI'||s==='SÍ'||s==='TRUE'}
+function isFeatured(v){var s=String(v||'').trim().toUpperCase();return s==='1'||s==='SI'||s==='S\u00CD'||s==='TRUE'}
 function isDisponible(v){var s=String(v||'').trim().toLowerCase();return!s||s==='disponible'}
 
 async function loadData(){
   try{
     var r=await fetch(SHEET_URL);
     var d=await r.json();
-    EQUIPOS=d.map(function(p){
-      return{
-        id:p.id||"",categoria:p.categoria||"",marca:p.marca||"",modelo:p.modelo||"",
-        titulo:p.titulo||"",precio:p.precio||"",moneda:p.moneda||"",
-        descripcion_corta:p.descripcion_corta||"",especificaciones_tecnicas:p.especificaciones_tecnicas||"",
-        garantia_meses:p.garantia_meses||"",cobertura_garantia:p.cobertura_garantia||"",
-        soporte_digital:p.soporte_digital||"",
-        imagen_1:p.imagen_1||"",imagen_2:p.imagen_2||"",imagen_3:p.imagen_3||"",imagen_4:p.imagen_4||"",
-        estado:p.estado||"",destacado:p.destacado||"",observaciones:p.observaciones||""
-      };
-    });
+    EQUIPOS=[];
+    for(var i=0;i<d.length;i++){
+      var p=d[i];
+      if(!p)continue;
+      EQUIPOS.push({
+        id:p.id||'',
+        categoria:p.categoria||'',
+        marca:p.marca||'',
+        modelo:p.modelo||'',
+        titulo:p.titulo||'',
+        precio:p.precio||'',
+        moneda:p.moneda||'',
+        descripcion_corta:p.descripcion_corta||'',
+        especificaciones_tecnicas:p.especificaciones_tecnicas||'',
+        garantia_meses:p.garantia_meses||'',
+        cobertura_garantia:p.cobertura_garantia||'',
+        soporte_digital:p.soporte_digital||'',
+        imagen_1:p.imagen_1||'',
+        imagen_2:p.imagen_2||'',
+        imagen_3:p.imagen_3||'',
+        imagen_4:p.imagen_4||'',
+        estado:p.estado||'',
+        destacado:p.destacado||'',
+        observaciones:p.observaciones||''
+      });
+    }
     var cs=[];
-    EQUIPOS.forEach(function(e){if(e.categoria&&cs.indexOf(e.categoria)<0)cs.push(e.categoria)});
-    CATS=[{id:"todos",nombre:"Todos",icon:"grid"}];
-    cs.forEach(function(c){CATS.push({id:c,nombre:c,icon:"tag"})});
-  }catch(e){console.error(e)}
+    for(var j=0;j<EQUIPOS.length;j++){
+      var c=EQUIPOS[j].categoria;
+      if(c&&cs.indexOf(c)<0)cs.push(c);
+    }
+    CATS=[{id:'todos',nombre:'Todos',icon:'grid'}];
+    for(var k=0;k<cs.length;k++){
+      CATS.push({id:cs[k],nombre:cs[k],icon:'tag'});
+    }
+  }catch(e){console.error('Error cargando:',e)}
 }
 
-function getImages(p){return[p.imagen_1,p.imagen_2,p.imagen_3,p.imagen_4].filter(function(i){return i&&i.trim()})}
+function getImages(p){
+  var imgs=[];
+  if(p.imagen_1&&p.imagen_1.trim())imgs.push(p.imagen_1);
+  if(p.imagen_2&&p.imagen_2.trim())imgs.push(p.imagen_2);
+  if(p.imagen_3&&p.imagen_3.trim())imgs.push(p.imagen_3);
+  if(p.imagen_4&&p.imagen_4.trim())imgs.push(p.imagen_4);
+  return imgs;
+}
 
 function renderCats(){
-  var g=document.getElementById('catGrid');
+  var grid=document.getElementById('catGrid');
+  var html='';
   var icons={
     grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
     tag:'<path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>'
   };
-  g.innerHTML=CATS.map(function(c){
-    var n=c.id==='todos'?EQUIPOS.length:EQUIPOS.filter(function(e){return e.categoria===c.id}).length;
-    return'<div class="cat-card" onclick="showCat(\''+c.id+'\')"><div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(icons[c.icon]||icons.tag)+'</svg></div><h3>'+h(c.nombre)+'</h3><span class="cat-count">'+n+' equipos</span></div>';
-  }).join('');
+  for(var i=0;i<CATS.length;i++){
+    var cat=CATS[i];
+    var count=0;
+    if(cat.id==='todos'){count=EQUIPOS.length}
+    else{for(var j=0;j<EQUIPOS.length;j++){if(EQUIPOS[j].categoria===cat.id)count++}}
+    var icon=icons[cat.icon]||icons.tag;
+    html+='<div class="cat-card" onclick="showCat(\''+h(cat.id)+'\')">';
+    html+='<div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+icon+'</svg></div>';
+    html+='<h3>'+h(cat.nombre)+'</h3>';
+    html+='<span class="cat-count">'+count+' equipos</span>';
+    html+='</div>';
+  }
+  grid.innerHTML=html;
 }
 
 function renderFeatured(){
-  var feats=EQUIPOS.filter(function(e){return isFeatured(e.destacado)&&isDisponible(e.estado)});
+  var feats=[];
+  for(var i=0;i<EQUIPOS.length;i++){
+    if(isFeatured(EQUIPOS[i].destacado)&&isDisponible(EQUIPOS[i].estado)){
+      feats.push(EQUIPOS[i]);
+    }
+  }
   var sec=document.getElementById('featuredSection');
   var scroll=document.getElementById('featuredScroll');
   if(!feats.length){sec.classList.add('hidden');return}
   sec.classList.remove('hidden');
-  scroll.innerHTML=feats.map(function(p){
+  var html='';
+  for(var i=0;i<feats.length;i++){
+    var p=feats[i];
     var imgs=getImages(p);
     var img=imgs[0]||'';
-    return'<div class="feat-card" onclick="showDetail(\''+p.id+'\')"><img src="'+h(img)+'" alt="'+h(p.titulo)+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="feat-info"><p class="feat-title">'+h(p.titulo)+'</p><p class="feat-price">'+fmtPrecio(p.precio,p.moneda)+'</p></div></div>';
-  }).join('');
+    html+='<div class="feat-card" onclick="showDetail(\''+h(p.id)+'\')">';
+    html+='<img src="'+h(img)+'" alt="'+h(p.titulo)+'" loading="lazy" onerror="this.style.display=\'none\'">';
+    html+='<div class="feat-info"><p class="feat-title">'+h(p.titulo)+'</p>';
+    html+='<p class="feat-price">'+fmtPrecio(p.precio,p.moneda)+'</p></div></div>';
+  }
+  scroll.innerHTML=html;
 }
 
 function renderProducts(cat){
   var grid=document.getElementById('prodGrid');
   var empty=document.getElementById('emptyState');
   var title=document.getElementById('prodTitle');
-  var list=cat==='todos'?EQUIPOS:EQUIPOS.filter(function(e){return e.categoria===cat});
+  var list=[];
+  if(cat==='todos'){list=EQUIPOS}
+  else{for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].categoria===cat)list.push(EQUIPOS[i])}}
   title.textContent=cat==='todos'?'Todos los equipos':cat;
   if(!list.length){grid.innerHTML='';empty.classList.remove('hidden');return}
   empty.classList.add('hidden');
-  grid.innerHTML=list.map(function(p){
+  var html='';
+  for(var i=0;i<list.length;i++){
+    var p=list[i];
     var imgs=getImages(p);
     var img=imgs[0]||'';
     var disp=isDisponible(p.estado);
     var brand=[p.marca,p.modelo].filter(Boolean).join(' ');
     var overlay=disp?'':'<div class="prod-agotado"><span>Agotado</span></div>';
-    return'<div class="prod-card" onclick="showDetail(\''+p.id+'\')">'+overlay+'<div class="prod-img"><img src="'+h(img)+'" alt="'+h(p.titulo)+'" loading="lazy" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%231a1a1a%22 width=%22600%22 height=%22400%22/><text fill=%22%23555%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22>'+h(p.titulo)+'</text></svg>\'"></div><div class="prod-info"><p class="prod-cat">'+h(p.categoria)+'</p><h4 class="prod-title">'+h(p.titulo)+'</h4>'+(brand?'<p class="prod-brand">'+h(brand)+'</p>':'')+'<p class="prod-price-sm">'+fmtPrecio(p.precio,p.moneda)+'</p></div></div>';
-  }).join('');
+    html+='<div class="prod-card" onclick="showDetail(\''+h(p.id)+'\')">';
+    html+=overlay;
+    html+='<div class="prod-img"><img src="'+h(img)+'" alt="'+h(p.titulo)+'" loading="lazy"></div>';
+    html+='<div class="prod-info">';
+    html+='<p class="prod-cat">'+h(p.categoria)+'</p>';
+    html+='<h4 class="prod-title">'+h(p.titulo)+'</h4>';
+    if(brand)html+='<p class="prod-brand">'+h(brand)+'</p>';
+    html+='<p class="prod-price-sm">'+fmtPrecio(p.precio,p.moneda)+'</p>';
+    html+='</div></div>';
+  }
+  grid.innerHTML=html;
 }
 
 function initCarousel(images){
   var track=document.getElementById('carouselTrack');
   var dots=document.getElementById('carouselDots');
-  if(!images.length){track.innerHTML='<div class="carousel-slide" style="display:flex;align-items:center;justify-content:center;color:#555">Sin imagen</div>';dots.innerHTML='';return}
-  track.innerHTML=images.map(function(img){return'<div class="carousel-slide"><img src="'+h(img)+'" alt="" loading="lazy"></div>'}).join('');
+  if(!images.length){
+    track.innerHTML='<div class="carousel-slide" style="display:flex;align-items:center;justify-content:center;color:#555">Sin imagen</div>';
+    dots.innerHTML='';
+    return;
+  }
+  var html='';
+  for(var i=0;i<images.length;i++){
+    html+='<div class="carousel-slide"><img src="'+h(images[i])+'" alt="" loading="lazy"></div>';
+  }
+  track.innerHTML=html;
   if(images.length>1){
-    dots.innerHTML=images.map(function(_,i){return'<span class="cdot'+(i===0?' active':'')+'"></span>'}).join('');
+    var dotsHtml='';
+    for(var i=0;i<images.length;i++){
+      dotsHtml+='<span class="cdot'+(i===0?' active':'')+'"></span>';
+    }
+    dots.innerHTML=dotsHtml;
     track.onscroll=function(){
       var idx=Math.round(track.scrollLeft/track.clientWidth);
       var ds=dots.querySelectorAll('.cdot');
-      for(var i=0;i<ds.length;i++)ds[i].classList.toggle('active',i===idx);
+      for(var i=0;i<ds.length;i++){ds[i].classList.toggle('active',i===idx)}
     };
   }else{dots.innerHTML=''}
 }
 
 function showDetail(id){
-  var p=EQUIPOS.find(function(e){return e.id===id});
+  var p=null;
+  for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}
   if(!p)return;
 
   initCarousel(getImages(p));
@@ -346,7 +429,7 @@ function showDetail(id){
 
   var agEl=document.getElementById('detAgotado');
   if(!isDisponible(p.estado)){
-    agEl.innerHTML='<div class="agotado-notice"><span>Este equipo no está disponible actualmente</span></div>';
+    agEl.innerHTML='<div class="agotado-notice"><span>Este equipo no est\u00E1 disponible actualmente</span></div>';
   }else{agEl.innerHTML=''}
 
   var specsBox=document.getElementById('detSpecsBox');
@@ -354,65 +437,89 @@ function showDetail(id){
   if(p.especificaciones_tecnicas&&p.especificaciones_tecnicas.trim()){
     specsBox.classList.remove('hidden');
     var lines=p.especificaciones_tecnicas.split('\n');
-    specsDiv.innerHTML=lines.map(function(s){
+    var sHtml='';
+    for(var i=0;i<lines.length;i++){
+      var s=lines[i];
       var parts=s.split(':');
       if(parts.length>=2){
-        return'<div class="spec-row"><span class="spec-label">'+h(parts[0].trim())+'</span><span class="spec-value">'+h(parts.slice(1).join(':').trim())+'</span></div>';
+        sHtml+='<div class="spec-row"><span class="spec-label">'+h(parts[0].trim())+'</span><span class="spec-value">'+h(parts.slice(1).join(':').trim())+'</span></div>';
+      }else{
+        sHtml+='<div class="spec-row"><span class="spec-value">'+h(s)+'</span></div>';
       }
-      return'<div class="spec-row"><span class="spec-value">'+h(s)+'</span></div>';
-    }).join('');
+    }
+    specsDiv.innerHTML=sHtml;
   }else{specsBox.classList.add('hidden')}
 
   var trustEl=document.getElementById('detTrust');
   var gar=p.garantia_meses;
   var cob=p.cobertura_garantia;
   if(gar&&parseInt(gar)>0){
-    trustEl.innerHTML='<div class="trust-block"><div class="trust-header"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Bloque de Confianza DUAVA</h3></div><div class="trust-warranty"><div class="big">'+parseInt(gar)+'</div><div class="label">Meses de Garantía</div></div>'+(cob?'<div class="trust-coverage">'+h(cob)+'</div>':'')+'</div>';
+    var tHtml='<div class="trust-block">';
+    tHtml+='<div class="trust-header"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Bloque de Confianza DUAVA</h3></div>';
+    tHtml+='<div class="trust-warranty"><div class="big">'+parseInt(gar)+'</div><div class="label">Meses de Garant\u00EDa</div></div>';
+    if(cob)tHtml+='<div class="trust-coverage">'+h(cob)+'</div>';
+    tHtml+='</div>';
+    trustEl.innerHTML=tHtml;
   }else{trustEl.innerHTML=''}
 
   var supEl=document.getElementById('detSupport');
-  if(p.soporte_digital&&p.soporte_digital.trim()&&(p.soporte_digital.indexOf('http')>=0||p.soporte_digital.indexOf('docs.google')>=0)){
-    supEl.innerHTML='<a class="support-btn" href="'+h(p.soporte_digital)+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Ver Guía de Uso / Soporte Técnico</a>';
+  var sup=p.soporte_digital;
+  if(sup&&sup.trim()&&(sup.indexOf('http')>=0||sup.indexOf('docs.google')>=0)){
+    supEl.innerHTML='<a class="support-btn" href="'+h(sup)+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Ver Gu\u00EDa de Uso / Soporte T\u00E9cnico</a>';
   }else{supEl.innerHTML=''}
 
   document.getElementById('waBtn').href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(WA_MSG+p.titulo);
 
-  go('detail');
+  goView('detail');
 }
 
-function showCat(cat){renderProducts(cat);go('products')}
+function showCat(cat){renderProducts(cat);goView('products')}
 
-function go(view){
-  viewStack.push(curView);curView=view;
+function goView(view){
+  viewStack.push(curView);
+  curView=view;
   document.getElementById('homeView').classList.add('hidden');
   document.getElementById('productsView').classList.remove('active');
   document.getElementById('detailView').classList.remove('active');
   document.getElementById('fabBar').classList.add('hidden');
   document.getElementById('backBtn').classList.add('hidden');
-  if(view==='home'){document.getElementById('homeView').classList.remove('hidden')}
-  else if(view==='products'){document.getElementById('backBtn').classList.remove('hidden');document.getElementById('productsView').classList.add('active')}
-  else if(view==='detail'){document.getElementById('backBtn').classList.remove('hidden');document.getElementById('detailView').classList.add('active');document.getElementById('fabBar').classList.remove('hidden')}
+  if(view==='home'){
+    document.getElementById('homeView').classList.remove('hidden');
+  }else if(view==='products'){
+    document.getElementById('backBtn').classList.remove('hidden');
+    document.getElementById('productsView').classList.add('active');
+  }else if(view==='detail'){
+    document.getElementById('backBtn').classList.remove('hidden');
+    document.getElementById('detailView').classList.add('active');
+    document.getElementById('fabBar').classList.remove('hidden');
+  }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function goBack(){
-  var prev=viewStack.pop()||'home';curView=prev;
+  var prev=viewStack.pop()||'home';
+  curView=prev;
   document.getElementById('homeView').classList.add('hidden');
   document.getElementById('productsView').classList.remove('active');
   document.getElementById('detailView').classList.remove('active');
   document.getElementById('fabBar').classList.add('hidden');
   document.getElementById('backBtn').classList.add('hidden');
-  if(prev==='home'){document.getElementById('homeView').classList.remove('hidden')}
-  else if(prev==='products'){document.getElementById('backBtn').classList.remove('hidden');document.getElementById('productsView').classList.add('active')}
+  if(prev==='home'){
+    document.getElementById('homeView').classList.remove('hidden');
+  }else if(prev==='products'){
+    document.getElementById('backBtn').classList.remove('hidden');
+    document.getElementById('productsView').classList.add('active');
+  }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
 
-document.addEventListener('DOMContentLoaded',async function(){
-  await loadData();
-  renderCats();
-  renderFeatured();
+document.addEventListener('DOMContentLoaded',function(){
+  loadData().then(function(){
+    renderCats();
+    renderFeatured();
+  });
 });
 </script>
 </body>
