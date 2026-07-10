@@ -13,210 +13,210 @@
 <link rel="apple-touch-icon" href="logo.png">
 <link rel="icon" type="image/png" href="logo.png">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --bg:#f5f0e8;--dark:#1a1a1a;--dark2:#242424;--dark3:#2e2e2e;--dark4:#3a3a3a;
-    --text-w:#fff;--text-w2:rgba(255,255,255,.7);--text-w3:rgba(255,255,255,.4);
-    --border-d:#333;--whatsapp:#1e8c44;--trust-accent:#28a745;
-    --price-color:#c0c0c0;
-    --warm:#f5f0e8;--warm2:#ede6d8;--warm3:#d9cfbc;
-    --radius:12px;--radius-sm:8px;
-    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  }
-  body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:1.5;-webkit-tap-highlight-color:transparent}
-  .app{max-width:480px;margin:0 auto;min-height:100vh;position:relative;overflow-x:hidden}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#f5f0e8;--dark:#1a1a1a;--dark2:#242424;--dark3:#2e2e2e;--dark4:#3a3a3a;
+--text-w:#fff;--text-w2:rgba(255,255,255,.7);--text-w3:rgba(255,255,255,.4);
+--border-d:#333;--whatsapp:#1e8c44;--trust-accent:#28a745;
+--price-color:#c0c0c0;
+--warm:#f5f0e8;--warm2:#ede6d8;--warm3:#d9cfbc;
+--radius:12px;--radius-sm:8px;
+--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:1.5;-webkit-tap-highlight-color:transparent}
+.app{max-width:480px;margin:0 auto;min-height:100vh;position:relative;overflow-x:hidden}
 
-  .header{padding:16px 20px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--dark);position:sticky;top:0;z-index:100}
-  .back-btn{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;transition:background .2s}
-  .back-btn:hover{background:rgba(255,255,255,.2)}
-  .back-btn svg{width:20px;height:20px}
-  .logo{font-size:22px;font-weight:600;letter-spacing:2px;color:#fff;text-transform:uppercase}
-  .logo span{font-weight:300;color:rgba(255,255,255,.5)}
+.header{padding:16px 20px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--dark);position:sticky;top:0;z-index:100}
+.back-btn{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;transition:background .2s}
+.back-btn:hover{background:rgba(255,255,255,.2)}
+.back-btn svg{width:20px;height:20px}
+.logo{font-size:22px;font-weight:600;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.logo span{font-weight:300;color:rgba(255,255,255,.5)}
 
-  .hero{position:relative;width:100%;height:280px;overflow:hidden;background:linear-gradient(135deg,#2a2a2a,#1a1a1a)}
-  .hero img{width:100%;height:100%;object-fit:cover;display:block}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.7))}
-  .hero-text{position:absolute;bottom:24px;left:20px;right:20px;color:#fff}
-  .hero-text h1{font-size:28px;font-weight:600;line-height:1.2;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
-  .hero-text p{font-size:14px;opacity:.9}
+.hero{position:relative;width:100%;height:280px;overflow:hidden;background:linear-gradient(135deg,#2a2a2a,#1a1a1a)}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.7))}
+.hero-text{position:absolute;bottom:24px;left:20px;right:20px;color:#fff}
+.hero-text h1{font-size:28px;font-weight:600;line-height:1.2;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero-text p{font-size:14px;opacity:.9}
 
-  .manifesto{padding:32px 20px;text-align:center;background:var(--warm2);border-bottom:1px solid var(--warm3)}
-  .manifesto-quote{font-size:20px;font-weight:500;font-style:italic;color:var(--dark);margin-bottom:16px;line-height:1.4}
-  .manifesto-quote::before{content:'\201C';font-size:32px;color:var(--warm3);line-height:0;vertical-align:-8px;margin-right:4px}
-  .manifesto-quote::after{content:'\201D';font-size:32px;color:var(--warm3);line-height:0;vertical-align:-8px;margin-left:4px}
-  .manifesto-desc{font-size:15px;color:#555;line-height:1.7;max-width:400px;margin:0 auto}
+.manifesto{padding:32px 20px;text-align:center;background:var(--warm2);border-bottom:1px solid var(--warm3)}
+.manifesto-quote{font-size:20px;font-weight:500;font-style:italic;color:var(--dark);margin-bottom:16px;line-height:1.4}
+.manifesto-quote::before{content:'\201C';font-size:32px;color:var(--warm3);line-height:0;vertical-align:-8px;margin-right:4px}
+.manifesto-quote::after{content:'\201D';font-size:32px;color:var(--warm3);line-height:0;vertical-align:-8px;margin-left:4px}
+.manifesto-desc{font-size:15px;color:#555;line-height:1.7;max-width:400px;margin:0 auto}
 
-  .sec-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;padding:0 4px}
-  .sec-title-light{color:rgba(255,255,255,.4)}
-  .sec-title-dark{color:#888}
+.sec-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;padding:0 4px}
+.sec-title-light{color:rgba(255,255,255,.4)}
+.sec-title-dark{color:#888}
 
-  .featured-wrap{padding:24px 16px 8px;background:var(--warm)}
-  .featured-scroll{display:flex;overflow-x:auto;gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
-  .featured-scroll::-webkit-scrollbar{display:none}
-  .feat-card{min-width:150px;max-width:150px;background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);overflow:hidden;cursor:pointer;flex-shrink:0;scroll-snap-align:start;transition:transform .2s}
-  .feat-card:active{transform:scale(.97)}
-  .feat-card img{width:100%;height:110px;object-fit:cover}
-  .feat-info{padding:10px}
-  .feat-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .feat-price{font-size:12px;font-weight:600;color:var(--price-color);display:flex;align-items:baseline}
+.featured-wrap{padding:24px 16px 8px;background:var(--warm)}
+.featured-scroll{display:flex;overflow-x:auto;gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+.featured-scroll::-webkit-scrollbar{display:none}
+.feat-card{min-width:150px;max-width:150px;background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);overflow:hidden;cursor:pointer;flex-shrink:0;scroll-snap-align:start;transition:transform .2s}
+.feat-card:active{transform:scale(.97)}
+.feat-card img{width:100%;height:110px;object-fit:cover}
+.feat-info{padding:10px}
+.feat-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feat-price{font-size:12px;font-weight:600;color:var(--price-color)}
 
-  .categories{padding:24px 16px;background:var(--warm)}
-  .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .cat-card{background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);padding:20px 16px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 16px rgba(0,0,0,.3)}
-  .cat-card:hover,.cat-card:active{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.4);border-color:rgba(255,255,255,.2)}
-  .cat-icon{width:40px;height:40px;margin:0 auto 12px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
-  .cat-icon svg{width:22px;height:22px;color:rgba(255,255,255,.7)}
-  .cat-card h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
-  .cat-card .cat-count{font-size:12px;color:rgba(255,255,255,.4)}
+.categories{padding:24px 16px;background:var(--warm)}
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cat-card{background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);padding:20px 16px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.cat-card:hover,.cat-card:active{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.4);border-color:rgba(255,255,255,.2)}
+.cat-icon{width:40px;height:40px;margin:0 auto 12px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+.cat-icon svg{width:22px;height:22px;color:rgba(255,255,255,.7)}
+.cat-card h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.cat-card .cat-count{font-size:12px;color:rgba(255,255,255,.4)}
 
-  .products-view{padding:16px;display:none;background:var(--dark)}
-  .products-view.active{display:block}
-  .prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .prod-card{background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:0 2px 16px rgba(0,0,0,.3);position:relative}
-  .prod-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.3);border-color:rgba(255,255,255,.2)}
-  .prod-img{width:100%;height:160px;background:#111;overflow:hidden;position:relative}
-  .prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-  .prod-card:hover .prod-img img{transform:scale(1.05)}
-  .prod-info{padding:14px 12px}
-  .prod-cat{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:6px}
-  .prod-title{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .prod-brand{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:6px}
-  .prod-price-sm{font-size:13px;font-weight:600;color:var(--price-color);display:flex;align-items:baseline}
-  .prod-agotado{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:2}
-  .prod-agotado span{background:var(--dark4);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;text-transform:uppercase;letter-spacing:1px}
-  .empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,.4)}
-  .empty-state svg{width:48px;height:48px;margin-bottom:16px;opacity:.4}
-  .empty-state p{font-size:14px}
+.products-view{padding:16px;display:none;background:var(--dark)}
+.products-view.active{display:block}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.prod-card{background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:0 2px 16px rgba(0,0,0,.3);position:relative}
+.prod-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.3);border-color:rgba(255,255,255,.2)}
+.prod-img{width:100%;height:160px;background:#111;overflow:hidden;position:relative}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.prod-card:hover .prod-img img{transform:scale(1.05)}
+.prod-info{padding:14px 12px}
+.prod-cat{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:6px}
+.prod-title{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod-brand{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:6px}
+.prod-price-sm{font-size:13px;font-weight:600;color:var(--price-color)}
+.prod-agotado{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:2}
+.prod-agotado span{background:var(--dark4);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;text-transform:uppercase;letter-spacing:1px}
+.empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,.4)}
+.empty-state svg{width:48px;height:48px;margin-bottom:16px;opacity:.4}
+.empty-state p{font-size:14px}
 
-  .detail{display:none;padding-bottom:100px;background:var(--dark)}
-  .detail.active{display:block}
+.detail{display:none;padding-bottom:100px;background:var(--dark)}
+.detail.active{display:block}
 
-  .carousel{position:relative;width:100%;height:320px;background:#111}
-  .carousel-track{display:flex;overflow-x:auto;height:100%;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-  .carousel-track::-webkit-scrollbar{display:none}
-  .carousel-slide{min-width:100%;height:100%;scroll-snap-align:start;flex-shrink:0}
-  .carousel-slide img{width:100%;height:100%;object-fit:cover}
-  .carousel-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
-  .cdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
-  .cdot.active{background:#fff}
+.carousel{position:relative;width:100%;height:320px;background:#111}
+.carousel-track{display:flex;overflow-x:auto;height:100%;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-slide{min-width:100%;height:100%;scroll-snap-align:start;flex-shrink:0}
+.carousel-slide img{width:100%;height:100%;object-fit:cover}
+.carousel-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
+.cdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
+.cdot.active{background:#fff}
 
-  .detail-body{padding:24px 20px}
-  .detail-cat{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);background:#b0b0b0;padding:6px 12px;border-radius:20px;margin-bottom:12px}
-  .detail-title{font-size:22px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
-  .detail-brand{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:16px}
-  .detail-price{font-size:26px;font-weight:700;color:var(--price-color);margin-bottom:20px;display:flex;align-items:baseline}
-  .detail-desc{font-size:15px;color:var(--text-w2);line-height:1.7;margin-bottom:24px}
+.detail-body{padding:24px 20px}
+.detail-cat{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);background:#b0b0b0;padding:6px 12px;border-radius:20px;margin-bottom:12px}
+.detail-title{font-size:22px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
+.detail-brand{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:16px}
+.detail-price{font-size:26px;font-weight:700;color:var(--price-color);margin-bottom:20px}
+.detail-desc{font-size:15px;color:var(--text-w2);line-height:1.7;margin-bottom:24px}
+.price-frac{font-size:0.5em;vertical-align:super;margin-left:1px;line-height:0}
 
-  .specs-box{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:20px;margin-bottom:24px}
-  .specs-box h3{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-  .specs-box h3 svg{width:18px;height:18px}
-  .spec-row{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;line-height:1.6}
-  .spec-row:last-child{border-bottom:none}
-  .spec-label{color:rgba(255,255,255,.5);font-weight:600;display:block;margin-bottom:4px}
-  .spec-value{color:#fff;display:block}
+.specs-box{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:20px;margin-bottom:24px}
+.specs-box h3{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.specs-box h3 svg{width:18px;height:18px}
+.spec-row{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;line-height:1.6}
+.spec-row:last-child{border-bottom:none}
+.spec-label{color:rgba(255,255,255,.5);font-weight:600;display:block;margin-bottom:4px}
+.spec-value{color:#fff;display:block}
 
-  .trust-block{background:#fff;border:1px solid #e0e0e0;border-left:3px solid var(--trust-accent);border-radius:var(--radius);padding:24px;margin-bottom:24px}
-  .trust-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
-  .trust-header svg{width:24px;height:24px;color:var(--trust-accent);flex-shrink:0}
-  .trust-header h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark)}
-  .trust-warranty{text-align:center;margin-bottom:20px;padding:16px 0;background:#f9f9f9;border-radius:8px}
-  .trust-warranty .big{font-size:42px;font-weight:700;color:var(--trust-accent);line-height:1}
-  .trust-warranty .label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-top:6px}
-  .trust-coverage{font-size:14px;color:#444;line-height:1.7;padding-top:16px;border-top:1px dashed #d0d0d0}
+.trust-block{background:#fff;border:1px solid #e0e0e0;border-left:3px solid var(--trust-accent);border-radius:var(--radius);padding:24px;margin-bottom:24px}
+.trust-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.trust-header svg{width:24px;height:24px;color:var(--trust-accent);flex-shrink:0}
+.trust-header h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark)}
+.trust-warranty{text-align:center;margin-bottom:20px;padding:16px 0;background:#f9f9f9;border-radius:8px}
+.trust-warranty .big{font-size:42px;font-weight:700;color:var(--trust-accent);line-height:1}
+.trust-warranty .label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-top:6px}
+.trust-coverage{font-size:14px;color:#444;line-height:1.7;padding-top:16px;border-top:1px dashed #d0d0d0}
 
-  .support-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:14px;font-weight:600;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;margin-bottom:24px;transition:all .2s}
-  .support-btn:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.3)}
-  .support-btn svg{width:18px;height:18px;flex-shrink:0}
+.support-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:14px;font-weight:600;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;margin-bottom:24px;transition:all .2s}
+.support-btn:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.3)}
+.support-btn svg{width:18px;height:18px;flex-shrink:0}
 
-  .agotado-notice{background:#3a2020;border:1px solid #5a2020;border-radius:var(--radius);padding:14px;margin-bottom:24px;text-align:center}
-  .agotado-notice span{font-size:14px;font-weight:600;color:#e57373}
+.agotado-notice{background:#3a2020;border:1px solid #5a2020;border-radius:var(--radius);padding:14px;margin-bottom:24px;text-align:center}
+.agotado-notice span{font-size:14px;font-weight:600;color:#e57373}
 
-  .fab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;padding:12px 16px 20px;background:linear-gradient(to top,var(--dark) 70%,transparent);display:flex;justify-content:center;z-index:90}
-  .fab-btn{width:220px;height:48px;border-radius:var(--radius-sm);border:none;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;text-decoration:none;background:var(--whatsapp);color:#fff}
-  .fab-btn:hover{background:#1a7a3a}
-  .fab-btn svg{width:18px;height:18px}
-  .price-frac{font-size:0.55em;vertical-align:super;margin-left:1px}
+.fab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;padding:12px 16px 20px;background:linear-gradient(to top,var(--dark) 70%,transparent);display:flex;justify-content:center;z-index:90}
+.fab-btn{width:220px;height:48px;border-radius:var(--radius-sm);border:none;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;text-decoration:none;background:var(--whatsapp);color:#fff}
+.fab-btn:hover{background:#1a7a3a}
+.fab-btn svg{width:18px;height:18px}
 
-  .hidden{display:none!important}
-  .fade-in{animation:fadeIn .3s ease-out}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-  ::-webkit-scrollbar{width:4px}
-  ::-webkit-scrollbar-track{background:transparent}
-  ::-webkit-scrollbar-thumb{background:var(--warm3);border-radius:2px}
+.hidden{display:none!important}
+.fade-in{animation:fadeIn .3s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--warm3);border-radius:2px}
 </style>
 </head>
 <body>
 <div class="app">
 
-  <header class="header">
-    <button class="back-btn hidden" id="backBtn" onclick="goBack()">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div class="logo">DUAVA<span>Prisma</span></div>
-  </header>
+<header class="header">
+<button class="back-btn hidden" id="backBtn" onclick="goBack()">
+<svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="logo">DUAVA<span>Prisma</span></div>
+</header>
 
-  <div id="homeView" class="fade-in">
-    <div class="hero">
-      <img src="https://raw.githubusercontent.com/lcabelardo12-lang/Tienda_Prisma/main/file_0000000037d4720ebf6d99298deae8bd.png" alt="DUAVA Prisma" onerror="this.style.display='none'">
-      <div class="hero-overlay"></div>
-      <div class="hero-text">
-        <h1>Equipos dentales de alta gama</h1>
-        <p>Directamente de fábrica a tu consultorio</p>
-      </div>
-    </div>
+<div id="homeView" class="fade-in">
+<div class="hero">
+<img src="https://raw.githubusercontent.com/lcabelardo12-lang/Tienda_Prisma/main/file_0000000037d4720ebf6d99298deae8bd.png" alt="DUAVA Prisma" onerror="this.style.display='none'">
+<div class="hero-overlay"></div>
+<div class="hero-text">
+<h1>Equipos dentales de alta gama</h1>
+<p>Directamente de fábrica a tu consultorio</p>
+</div>
+</div>
 
-    <div class="manifesto">
-      <p class="manifesto-quote">La tecnología evoluciona, nuestra palabra no.</p>
-      <p class="manifesto-desc">Nacimos con una visión clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de fábrica; entregamos la garantía, la solución y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.</p>
-    </div>
+<div class="manifesto">
+<p class="manifesto-quote">La tecnología evoluciona, nuestra palabra no.</p>
+<p class="manifesto-desc">Nacimos con una visión clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de fábrica; entregamos la garantía, la solución y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.</p>
+</div>
 
-    <div id="featuredSection" class="featured-wrap hidden">
-      <p class="sec-title sec-title-dark">Destacados</p>
-      <div class="featured-scroll" id="featuredScroll"></div>
-    </div>
+<div id="featuredSection" class="featured-wrap hidden">
+<p class="sec-title sec-title-dark">Destacados</p>
+<div class="featured-scroll" id="featuredScroll"></div>
+</div>
 
-    <div class="categories">
-      <p class="sec-title sec-title-dark">Especialidades</p>
-      <div class="cat-grid" id="catGrid"></div>
-    </div>
-  </div>
+<div class="categories">
+<p class="sec-title sec-title-dark">Especialidades</p>
+<div class="cat-grid" id="catGrid"></div>
+</div>
+</div>
 
-  <div id="productsView" class="products-view">
-    <p class="sec-title sec-title-light" id="prodTitle">Todos los equipos</p>
-    <div class="prod-grid" id="prodGrid"></div>
-    <div class="empty-state hidden" id="emptyState">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      <p>No hay equipos en esta categoría aún.</p>
-    </div>
-  </div>
+<div id="productsView" class="products-view">
+<p class="sec-title sec-title-light" id="prodTitle">Todos los equipos</p>
+<div class="prod-grid" id="prodGrid"></div>
+<div class="empty-state hidden" id="emptyState">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+<p>No hay equipos en esta categoría aún.</p>
+</div>
+</div>
 
-  <div id="detailView" class="detail">
-    <div class="carousel" id="carouselBox">
-      <div class="carousel-track" id="carouselTrack"></div>
-      <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-    <div class="detail-body">
-      <span class="detail-cat" id="detCat"></span>
-      <h2 class="detail-title" id="detTitle"></h2>
-      <p class="detail-brand" id="detBrand"></p>
-      <p class="detail-price" id="detPrice"></p>
-      <p class="detail-desc" id="detDesc"></p>
-      <div id="detAgotado"></div>
-      <div class="specs-box hidden" id="detSpecsBox">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Especificaciones técnicas</h3>
-        <div id="detSpecs"></div>
-      </div>
-      <div id="detTrust"></div>
-      <div id="detSupport"></div>
-    </div>
-  </div>
+<div id="detailView" class="detail">
+<div class="carousel">
+<div class="carousel-track" id="carouselTrack"></div>
+<div class="carousel-dots" id="carouselDots"></div>
+</div>
+<div class="detail-body">
+<span class="detail-cat" id="detCat"></span>
+<h2 class="detail-title" id="detTitle"></h2>
+<p class="detail-brand" id="detBrand"></p>
+<p class="detail-price" id="detPrice"></p>
+<p class="detail-desc" id="detDesc"></p>
+<div id="detAgotado"></div>
+<div class="specs-box hidden" id="detSpecsBox">
+<h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Especificaciones técnicas</h3>
+<div id="detSpecs"></div>
+</div>
+<div id="detTrust"></div>
+<div id="detSupport"></div>
+</div>
+</div>
 
-  <div class="fab-bar hidden" id="fabBar">
-    <a class="fab-btn" id="waBtn" href="#" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Asesor Comercial
-    </a>
-  </div>
+<div class="fab-bar hidden" id="fabBar">
+<a class="fab-btn" id="waBtn" href="#" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Asesor Comercial
+</a>
+</div>
 
 </div>
 
@@ -244,9 +244,13 @@ function fmtPrecio(precio,moneda){
 
   if(!tienePrecio&&!simbolo)return'\u00BF . . . ?';
   if(!tienePrecio&&simbolo)return simbolo+' \u00BF . . . ?';
-  var f=n.toLocaleString('es',{minimumFractionDigits:0,maximumFractionDigits:2});
-    if(tienePrecio&&!simbolo){var s2=String(f).split('.');var e2=s2[0];var d2=s2[1]||'00';if(d2.length===1)d2=d2+'0';return e2+'<span class="price-frac">'+d2+'</span>'+' \u00BF . . . ?';}
-  var s=String(f).split('.');var entero=s[0];var dec=s[1]||'00';if(dec.length===1)dec=dec+'0';return simbolo+' '+entero+'<span class="price-frac">'+dec+'</span>';
+
+  var parts=String(n.toFixed(2)).split('.');
+  var enteroFmt=parseInt(parts[0]).toLocaleString('es');
+  var decStr=parts[1]||'00';
+
+  if(tienePrecio&&!simbolo)return enteroFmt+'<span class="price-frac">'+decStr+'</span>'+' \u00BF . . . ?';
+  return simbolo+' '+enteroFmt+'<span class="price-frac">'+decStr+'</span>';
 }
 
 function isFeatured(v){var s=String(v||'').trim().toUpperCase();return s==='1'||s==='SI'||s==='S\u00CD'||s==='TRUE'}
