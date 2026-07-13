@@ -234,7 +234,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 <div class="search-section">
 <div class="search-wrap">
 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-<input type="text" id="searchInput" placeholder="Buscar equipo, marca, categor\u00EDa..." oninput="doSearch()">
+<input type="text" id="searchInput" placeholder="Buscar equipo, marca o categoria..." oninput="doSearch()">
 <button class="search-clear" id="searchClear" onclick="clearSearch()">&times;</button>
 </div>
 <div class="search-results hidden" id="searchResults">
@@ -310,15 +310,19 @@ function fmtPrecio(precio,moneda){
   return simbolo+" "+enteroFmt+'<span class="price-frac">'+decStr+"</span>";
 }
 
+function norm(s){return String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
 function getDisp(p){
-  var cant=parseInt(p.equipo_cantidad);var disp=String(p.equipo_disponibilidad||"").trim();var dLow=disp.toLowerCase();
-  if(dLow.indexOf("agotado")>=0)return{cls:"disp-red",label:"Agotado",overlay:true};
-  if(dLow.indexOf("encargo")>=0)return{cls:"disp-yellow",label:"Bajo encargo",overlay:false};
-  if(dLow.indexOf("pr\u00F3ximo")>=0||dLow.indexOf("proximo")>=0)return{cls:"disp-blue",label:"Pr\u00F3ximamente",overlay:false};
-  if(cant===0)return{cls:"disp-red",label:"Agotado",overlay:true};
-  var estado=String(p.estado||"").trim().toLowerCase();
-  if(estado&&estado!=="disponible")return{cls:"disp-red",label:"Agotado",overlay:true};
-  return{cls:"disp-green",label:disp||"Disponible",overlay:false};
+  var cant=parseInt(p.equipo_cantidad);var hasCant=!isNaN(cant);
+  var disp=String(p.equipo_disponibilidad||"").trim();var dNorm=norm(disp.toLowerCase());
+  if(disp){
+    if(dNorm.indexOf("agotado")>=0)return{cls:"disp-red",label:"Agotado",overlay:true};
+    if(dNorm.indexOf("encargo")>=0)return{cls:"disp-yellow",label:"Bajo encargo",overlay:false};
+    if(dNorm.indexOf("proxim")>=0)return{cls:"disp-blue",label:"Proximamente",overlay:false};
+    if(dNorm.indexOf("disponible")>=0)return{cls:"disp-green",label:"Disponible",overlay:false};
+  }
+  if(hasCant&&cant===0)return{cls:"disp-red",label:"Agotado",overlay:true};
+  if(hasCant&&cant>0)return{cls:"",label:"",overlay:false};
+  return{cls:"",label:"",overlay:false};
 }
 
 function isFeatured(v){var s=String(v||"").trim().toUpperCase();return s==="1"||s==="SI"||s==="S\u00CD"||s==="TRUE"}
@@ -362,13 +366,14 @@ function mkCard(p){
 function qtyBadge(qty){
   var n=parseInt(qty);if(isNaN(n))return"";
   if(n<=0)return'<span class="qty-badge none">'+SVG.xmark+" Sin stock</span>";
-  return'<span class="qty-badge has">'+n+" unidades</span>";
+  return'<span class="qty-badge has">'+n+" ud.</span>";
 }
 
 function repQty(qty){
-  if(qty===undefined||qty===null||qty==="")return"";var n=parseInt(qty);if(isNaN(n))return"";
+  var n=parseInt(qty);
+  if(isNaN(n))return'<span class="rep-qty none">'+SVG.xmark+" Sin stock</span>";
   if(n<=0)return'<span class="rep-qty none">'+SVG.xmark+" Sin stock</span>";
-  return'<span class="rep-qty has">'+SVG.check+" "+n+" en stock</span>";
+  return'<span class="rep-qty has">'+SVG.check+" "+n+" ud. en stock</span>";
 }
 
 async function loadData(){
