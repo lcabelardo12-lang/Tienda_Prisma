@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
@@ -14,53 +14,38 @@
 <link rel="icon" type="image/png" href="logo.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
---bg:#f5f0e8;--dark:#1a1a1a;--dark2:#242424;--dark3:#2e2e2e;--dark4:#3a3a3a;
---text-w:#fff;--text-w2:rgba(255,255,255,.7);--text-w3:rgba(255,255,255,.4);
---border-d:#333;--whatsapp:#1e8c44;--trust-accent:#28a745;
---price-color:#c0c0c0;
---warm:#f5f0e8;--warm2:#ede6d8;--warm3:#d9cfbc;
---radius:12px;--radius-sm:8px;
---font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-}
+:root{--bg:#f5f0e8;--dark:#1a1a1a;--dark2:#242424;--dark3:#2e2e2e;--dark4:#3a3a3a;--text-w:#fff;--text-w2:rgba(255,255,255,.7);--text-w3:rgba(255,255,255,.4);--border-d:#333;--whatsapp:#1e8c44;--trust-accent:#28a745;--price-color:#c0c0c0;--warm:#f5f0e8;--warm2:#ede6d8;--warm3:#d9cfbc;--radius:12px;--radius-sm:8px;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
 body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:1.5;-webkit-tap-highlight-color:transparent}
 .app{max-width:480px;margin:0 auto;min-height:100vh;position:relative;overflow-x:hidden}
-
 .header{padding:16px 20px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--dark);position:sticky;top:0;z-index:100}
 .back-btn{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;transition:background .2s}
 .back-btn:hover{background:rgba(255,255,255,.2)}
 .back-btn svg{width:20px;height:20px}
 .logo{font-size:22px;font-weight:600;letter-spacing:2px;color:#fff;text-transform:uppercase}
 .logo span{font-weight:300;color:rgba(255,255,255,.5)}
-
 .hero{position:relative;width:100%;height:280px;overflow:hidden;background:linear-gradient(135deg,#2a2a2a,#1a1a1a)}
 .hero img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.7))}
 .hero-text{position:absolute;bottom:24px;left:20px;right:20px;color:#fff}
 .hero-text h1{font-size:28px;font-weight:600;line-height:1.2;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
 .hero-text p{font-size:14px;opacity:.9}
-
 .manifesto{padding:32px 20px;text-align:center;background:var(--warm2);border-bottom:1px solid var(--warm3)}
 .manifesto-quote{font-size:20px;font-weight:500;font-style:italic;color:var(--dark);margin-bottom:16px;line-height:1.4}
 .manifesto-quote::before{content:'\201C';font-size:32px;color:var(--warm3);line-height:0;vertical-align:-8px;margin-right:4px}
 .manifesto-quote::after{content:'\201D';font-size:32px;color:var(--warm3);line-height:0;vertical-align:-8px;margin-left:4px}
 .manifesto-desc{font-size:15px;color:#555;line-height:1.7;max-width:400px;margin:0 auto}
-
 .search-section{padding:20px 16px;background:var(--warm)}
 .search-wrap{position:relative}
 .search-wrap input{width:100%;padding:14px 44px 14px 44px;background:#fff;border:1px solid #e0e0e0;border-radius:var(--radius);color:#1a1a1a;font-size:15px;font-weight:500;outline:none;transition:border .2s}
-.search-wrap input:focus{border-color:rgba(255,255,255,.3)}
+.search-wrap input:focus{border-color:#aaa}
 .search-wrap input::placeholder{color:#888}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:#1a1a1a;pointer-events:none}
-.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:none;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);font-size:14px;cursor:pointer;display:none;align-items:center;justify-content:center}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:none;background:rgba(0,0,0,.06);color:#888;font-size:14px;cursor:pointer;display:none;align-items:center;justify-content:center}
 .search-clear.show{display:flex}
 .search-results{margin-top:12px}
-.search-results .sec-title{margin-bottom:12px}
-
 .sec-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;padding:0 4px}
 .sec-title-light{color:rgba(255,255,255,.4)}
 .sec-title-dark{color:#888}
-
 .featured-wrap{padding:24px 16px 8px;background:var(--warm)}
 .featured-scroll{display:flex;overflow-x:auto;gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
 .featured-scroll::-webkit-scrollbar{display:none}
@@ -70,7 +55,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .feat-info{padding:10px}
 .feat-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .feat-price{font-size:12px;font-weight:600;color:var(--price-color)}
-
 .categories{padding:24px 16px;background:var(--warm)}
 .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .cat-card{background:var(--dark);border:1px solid var(--border-d);border-radius:var(--radius);padding:20px 16px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 16px rgba(0,0,0,.3)}
@@ -79,7 +63,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .cat-icon svg{width:22px;height:22px;color:rgba(255,255,255,.7)}
 .cat-card h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
 .cat-card .cat-count{font-size:12px;color:rgba(255,255,255,.4)}
-
 .products-view{padding:16px;display:none;background:var(--dark)}
 .products-view.active{display:block}
 .prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -98,10 +81,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,.4)}
 .empty-state svg{width:48px;height:48px;margin-bottom:16px;opacity:.4}
 .empty-state p{font-size:14px}
-
 .detail{display:none;padding-bottom:100px;background:var(--dark)}
 .detail.active{display:block}
-
 .carousel{position:relative;width:100%;height:320px;background:#111}
 .carousel-track{display:flex;overflow-x:auto;height:100%;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .carousel-track::-webkit-scrollbar{display:none}
@@ -110,15 +91,25 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .carousel-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
 .cdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
 .cdot.active{background:#fff}
-
 .detail-body{padding:24px 20px}
 .detail-cat{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);background:#b0b0b0;padding:6px 12px;border-radius:20px;margin-bottom:12px}
 .detail-title{font-size:22px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
 .detail-brand{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:16px}
-.detail-price{font-size:26px;font-weight:700;color:var(--price-color);margin-bottom:20px}
+.detail-price{font-size:26px;font-weight:700;color:var(--price-color);margin-bottom:12px}
+.detail-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
 .detail-desc{font-size:15px;color:var(--text-w2);line-height:1.7;margin-bottom:24px}
 .price-frac{font-size:0.5em;vertical-align:super;margin-left:1px;line-height:0}
-
+.avail-badge{position:absolute;top:8px;left:8px;padding:4px 10px;border-radius:12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;display:flex;align-items:center;gap:5px;pointer-events:none}
+.avail-badge.inline{position:static}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.avail-badge.disp-green{background:rgba(26,74,26,.9);color:#34d399}
+.avail-badge.disp-red{background:rgba(74,26,26,.9);color:#f87171}
+.avail-badge.disp-yellow{background:rgba(74,58,26,.9);color:#fbbf24}
+.avail-badge.disp-blue{background:rgba(26,42,74,.9);color:#60a5fa}
+.qty-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:700}
+.qty-badge.has{background:rgba(255,255,255,.06);color:#fff}
+.qty-badge.none{background:rgba(239,68,68,.15);color:#ef4444}
+.qty-badge svg{width:14px;height:14px}
 .specs-box{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:20px;margin-bottom:24px}
 .specs-box h3{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .specs-box h3 svg{width:18px;height:18px}
@@ -126,7 +117,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .spec-row:last-child{border-bottom:none}
 .spec-label{color:rgba(255,255,255,.5);font-weight:600;display:block;margin-bottom:4px}
 .spec-value{color:#fff;display:block}
-
 .trust-block{background:#fff;border:1px solid #e0e0e0;border-left:3px solid var(--trust-accent);border-radius:var(--radius);padding:24px;margin-bottom:24px}
 .trust-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .trust-header svg{width:24px;height:24px;color:var(--trust-accent);flex-shrink:0}
@@ -135,14 +125,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .trust-warranty .big{font-size:42px;font-weight:700;color:var(--trust-accent);line-height:1}
 .trust-warranty .label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-top:6px}
 .trust-coverage{font-size:14px;color:#444;line-height:1.7;padding-top:16px;border-top:1px dashed #d0d0d0}
-
 .support-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:14px;font-weight:600;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;margin-bottom:24px;transition:all .2s}
 .support-btn:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.3)}
 .support-btn svg{width:18px;height:18px;flex-shrink:0}
-
 .agotado-notice{background:#3a2020;border:1px solid #5a2020;border-radius:var(--radius);padding:14px;margin-bottom:24px;text-align:center}
 .agotado-notice span{font-size:14px;font-weight:600;color:#e57373}
-
 .expandable{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);margin-bottom:24px;overflow:hidden}
 .expandable summary{padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;list-style:none;user-select:none}
 .expandable summary::-webkit-details-marker{display:none}
@@ -150,47 +137,38 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .expandable[open] summary::after{transform:rotate(180deg)}
 .expandable summary svg{width:18px;height:18px;color:rgba(255,255,255,.5);flex-shrink:0}
 .expand-body{padding:0 20px 20px}
-
 .brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .brand-item-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);margin-bottom:4px}
 .brand-item-value{font-size:14px;color:#fff}
 .brand-desc{grid-column:1/-1;margin-top:8px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:14px;color:rgba(255,255,255,.7);line-height:1.7}
-
 .provider-block{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px}
 .provider-block svg{width:20px;height:20px;color:rgba(255,255,255,.4);flex-shrink:0}
 .provider-name{font-size:15px;font-weight:600;color:#fff}
 .provider-label{font-size:11px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1px}
-
 .centro-duava{margin-bottom:24px}
 .centro-header{text-align:center;padding:24px 20px;background:linear-gradient(135deg,#1a2e1a,#162a1e);border:1px solid #2a4a2a;border-radius:var(--radius);margin-bottom:16px}
 .centro-header svg{width:28px;height:28px;color:var(--trust-accent);margin-bottom:8px}
 .centro-header h2{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:1.5px;text-transform:uppercase}
 .centro-header p{font-size:13px;color:rgba(255,255,255,.45)}
-
 .centro-card{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:16px 20px;margin-bottom:12px}
 .centro-card-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .centro-card-header svg{width:18px;height:18px;color:var(--trust-accent);flex-shrink:0}
 .centro-card-header h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff}
-
 .soporte-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .soporte-item:last-child{border-bottom:none}
 .soporte-check{color:var(--trust-accent);flex-shrink:0}
 .soporte-check svg{width:16px;height:16px}
 .soporte-label{font-size:13px;color:rgba(255,255,255,.45);min-width:100px}
 .soporte-value{font-size:14px;color:#fff;font-weight:500}
-
 .repuesto-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:20px;border:none;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;color:#fff;margin-top:10px}
 .repuesto-btn.disp{background:#1a4a1a;border:1px solid #2a6a2a}
 .repuesto-btn.nodisp{background:#4a1a1a;border:1px solid #6a2a2a}
 .repuesto-btn svg{width:14px;height:14px}
-
 .compat-tags{display:flex;flex-wrap:wrap;gap:6px}
 .compat-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:500}
-
 .entrega-display{display:flex;align-items:center;gap:10px;padding:10px 0}
 .entrega-display svg{width:20px;height:20px;color:var(--trust-accent);flex-shrink:0}
 .entrega-text{font-size:16px;font-weight:600;color:#fff}
-
 .eval-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .eval-item:last-child{border-bottom:none}
 .eval-label{font-size:13px;color:rgba(255,255,255,.5)}
@@ -200,7 +178,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .eval-text-block{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)}
 .eval-text-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);margin-bottom:6px}
 .eval-text-content{font-size:14px;color:rgba(255,255,255,.7);line-height:1.7}
-
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:flex;align-items:flex-end;justify-content:center}
 .modal-overlay.hidden{display:none}
 .modal-card{background:var(--dark);width:100%;max-width:480px;max-height:85vh;border-radius:18px 18px 0 0;overflow:hidden;display:flex;flex-direction:column}
@@ -213,21 +190,22 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .modal-btn.tech{background:#1a3a4a}
 .modal-btn.quote{background:var(--whatsapp)}
 .modal-btn svg{width:16px;height:16px;flex-shrink:0}
-
 .rep-card{display:flex;gap:12px;padding:12px;background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius-sm);margin-bottom:10px}
 .rep-card img{width:80px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#111}
 .rep-info{display:flex;flex-direction:column;justify-content:center}
 .rep-name{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
 .rep-price{font-size:14px;font-weight:700;color:var(--price-color)}
+.rep-qty{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;margin-top:4px}
+.rep-qty.has{color:#34d399}
+.rep-qty.none{color:#ef4444}
+.rep-qty svg{width:12px;height:12px}
 .rep-msg{text-align:center;padding:24px 16px}
 .rep-msg svg{width:40px;height:40px;color:rgba(255,255,255,.2);margin-bottom:16px}
 .rep-msg p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:8px}
-
 .fab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;padding:12px 16px 20px;background:linear-gradient(to top,var(--dark) 70%,transparent);display:flex;justify-content:center;z-index:90}
 .fab-btn{width:220px;height:48px;border-radius:var(--radius-sm);border:none;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;text-decoration:none;background:var(--whatsapp);color:#fff}
 .fab-btn:hover{background:#1a7a3a}
 .fab-btn svg{width:18px;height:18px}
-
 .hidden{display:none!important}
 .fade-in{animation:fadeIn .3s ease-out}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -238,11 +216,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 </head>
 <body>
 <div class="app">
-
 <header class="header">
-<button class="back-btn hidden" id="backBtn" onclick="goBack()">
-<svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
+<button class="back-btn hidden" id="backBtn" onclick="goBack()"><svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="logo">DUAVA<span>Prisma</span></div>
 </header>
 
@@ -250,69 +225,47 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 <div class="hero">
 <img src="https://raw.githubusercontent.com/lcabelardo12-lang/Tienda_Prisma/main/file_0000000037d4720ebf6d99298deae8bd.png" alt="DUAVA Prisma" onerror="this.style.display='none'">
 <div class="hero-overlay"></div>
-<div class="hero-text">
-<h1>Equipos dentales de alta gama</h1>
-<p>Directamente de fábrica a tu consultorio</p>
-</div>
+<div class="hero-text"><h1>Equipos dentales de alta gama</h1><p>Directamente de f\u00E1brica a tu consultorio</p></div>
 </div>
 <div class="manifesto">
-<p class="manifesto-quote">La tecnología evoluciona, nuestra palabra no.</p>
-<p class="manifesto-desc">Nacimos con una visión clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de fábrica; entregamos la garantía, la solución y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.</p>
+<p class="manifesto-quote">La tecnolog\u00EDa evoluciona, nuestra palabra no.</p>
+<p class="manifesto-desc">Nacimos con una visi\u00F3n clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de f\u00E1brica; entregamos la garant\u00EDa, la soluci\u00F3n y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.</p>
 </div>
-
 <div class="search-section">
 <div class="search-wrap">
 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-<input type="text" id="searchInput" placeholder="Buscar equipo, marca, categora..." oninput="doSearch()">
+<input type="text" id="searchInput" placeholder="Buscar equipo, marca, categor\u00EDa..." oninput="doSearch()">
 <button class="search-clear" id="searchClear" onclick="clearSearch()">&times;</button>
 </div>
 <div class="search-results hidden" id="searchResults">
 <p class="sec-title sec-title-dark" id="searchTitle">Resultados</p>
 <div class="prod-grid" id="searchGrid"></div>
-<div class="empty-state hidden" id="searchEmpty">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-<p>No se encontraron equipos.</p>
+<div class="empty-state hidden" id="searchEmpty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p>No se encontraron equipos.</p></div>
 </div>
 </div>
-</div>
-
 <div id="homeDefault">
-<div id="featuredSection" class="featured-wrap hidden">
-<p class="sec-title sec-title-dark">Destacados</p>
-<div class="featured-scroll" id="featuredScroll"></div>
-</div>
-<div class="categories">
-<p class="sec-title sec-title-dark">Especialidades</p>
-<div class="cat-grid" id="catGrid"></div>
-</div>
+<div id="featuredSection" class="featured-wrap hidden"><p class="sec-title sec-title-dark">Destacados</p><div class="featured-scroll" id="featuredScroll"></div></div>
+<div class="categories"><p class="sec-title sec-title-dark">Especialidades</p><div class="cat-grid" id="catGrid"></div></div>
 </div>
 </div>
 
 <div id="productsView" class="products-view">
 <p class="sec-title sec-title-light" id="prodTitle">Todos los equipos</p>
 <div class="prod-grid" id="prodGrid"></div>
-<div class="empty-state hidden" id="emptyState">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-<p>No hay equipos en esta categora an.</p>
-</div>
+<div class="empty-state hidden" id="emptyState"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><p>No hay equipos en esta categor\u00EDa a\u00FAn.</p></div>
 </div>
 
 <div id="detailView" class="detail">
-<div class="carousel">
-<div class="carousel-track" id="carouselTrack"></div>
-<div class="carousel-dots" id="carouselDots"></div>
-</div>
+<div class="carousel"><div class="carousel-track" id="carouselTrack"></div><div class="carousel-dots" id="carouselDots"></div></div>
 <div class="detail-body">
 <span class="detail-cat" id="detCat"></span>
 <h2 class="detail-title" id="detTitle"></h2>
 <p class="detail-brand" id="detBrand"></p>
 <p class="detail-price" id="detPrice"></p>
+<div class="detail-meta" id="detMeta"></div>
 <p class="detail-desc" id="detDesc"></p>
 <div id="detAgotado"></div>
-<div class="specs-box hidden" id="detSpecsBox">
-<h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Especificaciones tcnicas</h3>
-<div id="detSpecs"></div>
-</div>
+<div class="specs-box hidden" id="detSpecsBox"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Especificaciones t\u00E9cnicas</h3><div id="detSpecs"></div></div>
 <div id="detTrust"></div>
 <div id="detBrandSection"></div>
 <div id="detProvider"></div>
@@ -323,108 +276,105 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 
 <div class="modal-overlay hidden" id="modalRep" onclick="if(event.target===this)closeModal()">
 <div class="modal-card">
-<div class="modal-top">
-<h3 id="modalName"></h3>
-<button class="modal-close" onclick="closeModal()">&times;</button>
-</div>
+<div class="modal-top"><h3 id="modalName"></h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
 <div class="modal-body" id="modalBody"></div>
 <div class="modal-footer">
-<a class="modal-btn tech" id="btnTec" href="#" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Asesor tcnico</a>
+<a class="modal-btn tech" id="btnTec" href="#" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Asesor t\u00E9cnico</a>
 <a class="modal-btn quote" id="btnRep" href="#" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar repuesto</a>
 </div>
 </div>
 </div>
 
 <div class="fab-bar hidden" id="fabBar">
-<a class="fab-btn" id="waBtn" href="#" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-Asesor Comercial
-</a>
+<a class="fab-btn" id="waBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Asesor Comercial</a>
 </div>
 </div>
 
 <script>
-var SHEET_URL="https://script.google.com/macros/s/AKfycbzkb0T8TDFBuXVULDlutj8fjLqvyIGp0z9Js4mRn70kC9_Ux2UKgPV4pdNHZYpchJv-7w/exec";
+var SHEET_URL="https://script.google.com/macros/s/AKfycby-9Di0K5NLJPjx-Mu6Tdfj1edO4x5gN9tSplz1eDu3o5Jr41AccYtVh7PJYGwMg0h2zg/exec";
 var WHATSAPP="59175203816";
 var ASESOR_TECNICO="59175203816";
 var WA_MSG="Hola, estoy interesado en cotizar el equipo: ";
-var EQUIPOS=[];
-var CATS=[];
-var viewStack=[];
-var curView="home";
+var EQUIPOS=[];var CATS=[];var viewStack=[];var curView="home";
 
 function hx(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 
 function fmtPrecio(precio,moneda){
-  var n=parseFloat(precio);
-  var tienePrecio=n>0&&!isNaN(n);
-  var m=String(moneda||"").toUpperCase().trim();
-  var simbolo="";
-  if(m==="USD")simbolo="$";
-  else if(m==="EUR")simbolo="\u20AC";
-  else if(m==="BS"||m==="BOB")simbolo="Bs.";
-  else if(m==="$")simbolo="$";
+  var n=parseFloat(precio);var tienePrecio=n>0&&!isNaN(n);
+  var m=String(moneda||"").toUpperCase().trim();var simbolo="";
+  if(m==="USD")simbolo="$";else if(m==="EUR")simbolo="\u20AC";else if(m==="BS"||m==="BOB")simbolo="Bs.";else if(m==="$")simbolo="$";
   if(!tienePrecio&&!simbolo)return"\u00BF . . . ?";
   if(!tienePrecio&&simbolo)return simbolo+" \u00BF . . . ?";
-  var parts=String(n.toFixed(2)).split(".");
-  var enteroFmt=parseInt(parts[0]).toLocaleString("es");
-  var decStr=parts[1]||"00";
+  var parts=String(n.toFixed(2)).split(".");var enteroFmt=parseInt(parts[0]).toLocaleString("es");var decStr=parts[1]||"00";
   if(tienePrecio&&!simbolo)return enteroFmt+'<span class="price-frac">'+decStr+"</span>"+" \u00BF . . . ?";
   return simbolo+" "+enteroFmt+'<span class="price-frac">'+decStr+"</span>";
 }
 
+function getDisp(p){
+  var cant=parseInt(p.equipo_cantidad);var disp=String(p.equipo_disponibilidad||"").trim();var dLow=disp.toLowerCase();
+  if(dLow.indexOf("agotado")>=0)return{cls:"disp-red",label:"Agotado",overlay:true};
+  if(dLow.indexOf("encargo")>=0)return{cls:"disp-yellow",label:"Bajo encargo",overlay:false};
+  if(dLow.indexOf("pr\u00F3ximo")>=0||dLow.indexOf("proximo")>=0)return{cls:"disp-blue",label:"Pr\u00F3ximamente",overlay:false};
+  if(cant===0)return{cls:"disp-red",label:"Agotado",overlay:true};
+  var estado=String(p.estado||"").trim().toLowerCase();
+  if(estado&&estado!=="disponible")return{cls:"disp-red",label:"Agotado",overlay:true};
+  return{cls:"disp-green",label:disp||"Disponible",overlay:false};
+}
+
 function isFeatured(v){var s=String(v||"").trim().toUpperCase();return s==="1"||s==="SI"||s==="S\u00CD"||s==="TRUE"}
-function isDisponible(v){var s=String(v||"").trim().toLowerCase();return !s||s==="disponible"}
 
-function ratingDots(val){
-  var n=parseInt(val)||0;
-  if(n<0)n=0;
-  if(n>5)n=5;
-  var r="";
-  for(var i=0;i<5;i++)r+='<span class="eval-dot'+(i<n?" filled":"")+'"></span>';
-  return r;
-}
+function ratingDots(val){var n=parseInt(val)||0;if(n<0)n=0;if(n>5)n=5;var r="";for(var i=0;i<5;i++)r+='<span class="eval-dot'+(i<n?" filled":"")+'"></span>';return r;}
 
-function hasAny(obj,fields){
-  for(var i=0;i<fields.length;i++){if(obj[fields[i]]&&String(obj[fields[i]]).trim())return true;}
-  return false;
-}
+function hasAny(obj,fields){for(var i=0;i<fields.length;i++){if(obj[fields[i]]&&String(obj[fields[i]]).trim())return true;}return false;}
+
+var SVG={
+  building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h4M8 10h4M8 14h4"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
+  cog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>',
+  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+  award:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>',
+  xmark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+  circle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>',
+  box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'
+};
+
+function getImages(p){var imgs=[];if(p.imagen_1&&p.imagen_1.trim())imgs.push(p.imagen_1);if(p.imagen_2&&p.imagen_2.trim())imgs.push(p.imagen_2);if(p.imagen_3&&p.imagen_3.trim())imgs.push(p.imagen_3);if(p.imagen_4&&p.imagen_4.trim())imgs.push(p.imagen_4);return imgs;}
 
 function mkCard(p){
-  var imgs=[p.imagen_1,p.imagen_2,p.imagen_3,p.imagen_4].filter(function(i){return i&&i.trim()});
-  var img=imgs[0]||"";
-  var disp=isDisponible(p.estado);
-  var brand=[p.marca,p.modelo].filter(Boolean).join(" ");
-  var overlay=disp?"":'<div class="prod-agotado"><span>Agotado</span></div>';
-  var html='<div class="prod-card" onclick="showDetail(\''+hx(p.id)+"')\">"+overlay+'<div class="prod-img"><img src="'+hx(img)+'" alt="'+hx(p.titulo)+'" loading="lazy"></div><div class="prod-info"><p class="prod-cat">'+hx(p.categoria)+"</p>"+'<h4 class="prod-title">'+hx(p.titulo)+"</h4>";
+  var av=getDisp(p);var imgs=getImages(p);var img=imgs[0]||"";var brand=[p.marca,p.modelo].filter(Boolean).join(" ");
+  var overlay=av.overlay?'<div class="prod-agotado"><span>Agotado</span></div>':"";
+  var html='<div class="prod-card" onclick="showDetail(\''+hx(p.id)+"')\">";
+  html+=overlay;
+  html+='<div class="prod-img"><img src="'+hx(img)+'" alt="'+hx(p.titulo)+'" loading="lazy">';
+  html+='<div class="avail-badge '+av.cls+'"><span class="avail-dot"></span>'+hx(av.label)+"</div></div>";
+  html+='<div class="prod-info"><p class="prod-cat">'+hx(p.categoria)+"</p>";
+  html+='<h4 class="prod-title">'+hx(p.titulo)+"</h4>";
   if(brand)html+='<p class="prod-brand">'+hx(brand)+"</p>";
   html+='<p class="prod-price-sm">'+fmtPrecio(p.precio,p.moneda)+"</p></div></div>";
   return html;
 }
 
-var SVG={
-  building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M10 6h4"/><path d="M8 10h.01M16 10h.01M10 10h4"/><path d="M8 14h.01M16 14h.01M10 14h4"/></svg>',
-  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
-  wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
-  cog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>',
-  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>',
-  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
-  award:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
-  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
-  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
-  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
-  circle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>',
-  box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'
-};
+function qtyBadge(qty){
+  var n=parseInt(qty);if(isNaN(n))return"";
+  if(n<=0)return'<span class="qty-badge none">'+SVG.xmark+" Sin stock</span>";
+  return'<span class="qty-badge has">'+n+" unidades</span>";
+}
+
+function repQty(qty){
+  if(qty===undefined||qty===null||qty==="")return"";var n=parseInt(qty);if(isNaN(n))return"";
+  if(n<=0)return'<span class="rep-qty none">'+SVG.xmark+" Sin stock</span>";
+  return'<span class="rep-qty has">'+SVG.check+" "+n+" en stock</span>";
+}
 
 async function loadData(){
   try{
-    var r=await fetch(SHEET_URL);
-    var d=await r.json();
-    EQUIPOS=[];
-    for(var i=0;i<d.length;i++){
-      var p=d[i];
-      if(!p)continue;
+    var r=await fetch(SHEET_URL);var d=await r.json();EQUIPOS=[];
+    for(var i=0;i<d.length;i++){var p=d[i];if(!p)continue;
       EQUIPOS.push({
         id:p.id||"",categoria:p.categoria||"",marca:p.marca||"",modelo:p.modelo||"",
         titulo:p.titulo||"",precio:p.precio||"",moneda:p.moneda||"",
@@ -433,6 +383,7 @@ async function loadData(){
         soporte_digital:p.soporte_digital||"",
         imagen_1:p.imagen_1||"",imagen_2:p.imagen_2||"",imagen_3:p.imagen_3||"",imagen_4:p.imagen_4||"",
         estado:p.estado||"",destacado:p.destacado||"",observaciones:p.observaciones||"",
+        equipo_cantidad:p.equipo_cantidad||"",equipo_disponibilidad:p.equipo_disponibilidad||"",
         proveedor_autorizado:p.proveedor_autorizado||"",
         marca_pais:p.marca_pais||"",marca_fundacion:p.marca_fundacion||"",
         marca_especialidad:p.marca_especialidad||"",marca_mercados:p.marca_mercados||"",
@@ -446,33 +397,27 @@ async function loadData(){
         eval_repuestos:p.eval_repuestos||"",eval_mantenimiento:p.eval_mantenimiento||"",
         eval_tecnologia:p.eval_tecnologia||"",eval_recomendacion:p.eval_recomendacion||"",
         eval_observaciones:p.eval_observaciones||"",
-        repuesto_1_nombre:p.repuesto_1_nombre||"",repuesto_1_precio:p.repuesto_1_precio||"",repuesto_1_imagen:p.repuesto_1_imagen||"",
-        repuesto_2_nombre:p.repuesto_2_nombre||"",repuesto_2_precio:p.repuesto_2_precio||"",repuesto_2_imagen:p.repuesto_2_imagen||"",
-        repuesto_3_nombre:p.repuesto_3_nombre||"",repuesto_3_precio:p.repuesto_3_precio||"",repuesto_3_imagen:p.repuesto_3_imagen||"",
-        repuesto_4_nombre:p.repuesto_4_nombre||"",repuesto_4_precio:p.repuesto_4_precio||"",repuesto_4_imagen:p.repuesto_4_imagen||"",
-        repuesto_5_nombre:p.repuesto_5_nombre||"",repuesto_5_precio:p.repuesto_5_precio||"",repuesto_5_imagen:p.repuesto_5_imagen||"",
-        repuesto_6_nombre:p.repuesto_6_nombre||"",repuesto_6_precio:p.repuesto_6_precio||"",repuesto_6_imagen:p.repuesto_6_imagen||""
+        repuesto_1_nombre:p.repuesto_1_nombre||"",repuesto_1_precio:p.repuesto_1_precio||"",repuesto_1_imagen:p.repuesto_1_imagen||"",repuesto_1_cantidad:p.repuesto_1_cantidad||"",
+        repuesto_2_nombre:p.repuesto_2_nombre||"",repuesto_2_precio:p.repuesto_2_precio||"",repuesto_2_imagen:p.repuesto_2_imagen||"",repuesto_2_cantidad:p.repuesto_2_cantidad||"",
+        repuesto_3_nombre:p.repuesto_3_nombre||"",repuesto_3_precio:p.repuesto_3_precio||"",repuesto_3_imagen:p.repuesto_3_imagen||"",repuesto_3_cantidad:p.repuesto_3_cantidad||"",
+        repuesto_4_nombre:p.repuesto_4_nombre||"",repuesto_4_precio:p.repuesto_4_precio||"",repuesto_4_imagen:p.repuesto_4_imagen||"",repuesto_4_cantidad:p.repuesto_4_cantidad||"",
+        repuesto_5_nombre:p.repuesto_5_nombre||"",repuesto_5_precio:p.repuesto_5_precio||"",repuesto_5_imagen:p.repuesto_5_imagen||"",repuesto_5_cantidad:p.repuesto_5_cantidad||"",
+        repuesto_6_nombre:p.repuesto_6_nombre||"",repuesto_6_precio:p.repuesto_6_precio||"",repuesto_6_imagen:p.repuesto_6_imagen||"",repuesto_6_cantidad:p.repuesto_6_cantidad||""
       });
     }
-    var cs=[];
-    for(var j=0;j<EQUIPOS.length;j++){var c=EQUIPOS[j].categoria;if(c&&cs.indexOf(c)<0)cs.push(c);}
-    CATS=[{id:"todos",nombre:"Todos",icon:"grid"}];
-    for(var k=0;k<cs.length;k++)CATS.push({id:cs[k],nombre:cs[k],icon:"tag"});
+    var cs=[];for(var j=0;j<EQUIPOS.length;j++){var c=EQUIPOS[j].categoria;if(c&&cs.indexOf(c)<0)cs.push(c);}
+    CATS=[{id:"todos",nombre:"Todos",icon:"grid"}];for(var k=0;k<cs.length;k++)CATS.push({id:cs[k],nombre:cs[k],icon:"tag"});
   }catch(e){console.error("Error:",e)}
 }
 
-function getImages(p){var imgs=[];if(p.imagen_1&&p.imagen_1.trim())imgs.push(p.imagen_1);if(p.imagen_2&&p.imagen_2.trim())imgs.push(p.imagen_2);if(p.imagen_3&&p.imagen_3.trim())imgs.push(p.imagen_3);if(p.imagen_4&&p.imagen_4.trim())imgs.push(p.imagen_4);return imgs;}
-
 function renderCats(){
-  var grid=document.getElementById("catGrid");
-  var html="";
-  var icons={grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',tag:'<path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>'};
+  var grid=document.getElementById("catGrid");var html="";var icons={grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',tag:'<path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>'};
   for(var i=0;i<CATS.length;i++){var cat=CATS[i];var count=0;if(cat.id==="todos")count=EQUIPOS.length;else{for(var j=0;j<EQUIPOS.length;j++){if(EQUIPOS[j].categoria===cat.id)count++}}var icon=icons[cat.icon]||icons.tag;html+='<div class="cat-card" onclick="showCat(\''+hx(cat.id)+'\')"><div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+icon+'</svg></div><h3>'+hx(cat.nombre)+'</h3><span class="cat-count">'+count+" equipos</span></div>";}
   grid.innerHTML=html;
 }
 
 function renderFeatured(){
-  var feats=[];for(var i=0;i<EQUIPOS.length;i++){if(isFeatured(EQUIPOS[i].destacado)&&isDisponible(EQUIPOS[i].estado))feats.push(EQUIPOS[i]);}
+  var feats=[];for(var i=0;i<EQUIPOS.length;i++){var av=getDisp(EQUIPOS[i]);if(isFeatured(EQUIPOS[i].destacado)&&!av.overlay)feats.push(EQUIPOS[i]);}
   var sec=document.getElementById("featuredSection");var scroll=document.getElementById("featuredScroll");
   if(!feats.length){sec.classList.add("hidden");return;}sec.classList.remove("hidden");
   var html="";for(var i=0;i<feats.length;i++){var p=feats[i];var imgs=getImages(p);var img=imgs[0]||"";html+='<div class="feat-card" onclick="showDetail(\''+hx(p.id)+'\')"><img src="'+hx(img)+'" alt="'+hx(p.titulo)+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="feat-info"><p class="feat-title">'+hx(p.titulo)+'</p><p class="feat-price">'+fmtPrecio(p.precio,p.moneda)+"</p></div></div>";}
@@ -484,39 +429,22 @@ function renderProducts(cat){
   var list=[];if(cat==="todos")list=EQUIPOS;else{for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].categoria===cat)list.push(EQUIPOS[i])}}
   title.textContent=cat==="todos"?"Todos los equipos":cat;
   if(!list.length){grid.innerHTML="";empty.classList.remove("hidden");return;}empty.classList.add("hidden");
-  var html="";for(var i=0;i<list.length;i++)html+=mkCard(list[i]);
-  grid.innerHTML=html;
+  var html="";for(var i=0;i<list.length;i++)html+=mkCard(list[i]);grid.innerHTML=html;
 }
 
 function doSearch(){
   var term=document.getElementById("searchInput").value.toLowerCase().trim();
-  var results=document.getElementById("searchResults");
-  var def=document.getElementById("homeDefault");
-  var grid=document.getElementById("searchGrid");
-  var empty=document.getElementById("searchEmpty");
-  var clear=document.getElementById("searchClear");
-  var title=document.getElementById("searchTitle");
+  var results=document.getElementById("searchResults");var def=document.getElementById("homeDefault");
+  var grid=document.getElementById("searchGrid");var empty=document.getElementById("searchEmpty");
+  var clear=document.getElementById("searchClear");var title=document.getElementById("searchTitle");
   if(!term){results.classList.add("hidden");def.style.display="";clear.classList.remove("show");return;}
-  clear.classList.add("show");
-  def.style.display="none";
-  results.classList.remove("hidden");
-  var filtered=[];
-  for(var i=0;i<EQUIPOS.length;i++){
-    var p=EQUIPOS[i];
-    var s=[p.titulo,p.marca,p.modelo,p.categoria].join(" ").toLowerCase();
-    if(s.indexOf(term)>=0)filtered.push(p);
-  }
+  clear.classList.add("show");def.style.display="none";results.classList.remove("hidden");
+  var filtered=[];for(var i=0;i<EQUIPOS.length;i++){var p=EQUIPOS[i];var s=[p.titulo,p.marca,p.modelo,p.categoria].join(" ").toLowerCase();if(s.indexOf(term)>=0)filtered.push(p);}
   title.textContent=filtered.length+" resultado"+(filtered.length!==1?"s":"");
-  if(!filtered.length){grid.innerHTML="";empty.classList.remove("hidden");return;}
-  empty.classList.add("hidden");
-  var html="";for(var i=0;i<filtered.length;i++)html+=mkCard(filtered[i]);
-  grid.innerHTML=html;
+  if(!filtered.length){grid.innerHTML="";empty.classList.remove("hidden");return;}empty.classList.add("hidden");
+  var html="";for(var i=0;i<filtered.length;i++)html+=mkCard(filtered[i]);grid.innerHTML=html;
 }
-
-function clearSearch(){
-  document.getElementById("searchInput").value="";
-  doSearch();
-}
+function clearSearch(){document.getElementById("searchInput").value="";doSearch();}
 
 function initCarousel(images){
   var track=document.getElementById("carouselTrack");var dots=document.getElementById("carouselDots");
@@ -527,18 +455,18 @@ function initCarousel(images){
 }
 
 function showDetail(id){
-  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}
-  if(!p)return;
+  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}if(!p)return;
   initCarousel(getImages(p));
   document.getElementById("detCat").textContent=p.categoria;
   document.getElementById("detTitle").textContent=p.titulo;
   var brand=[p.marca,p.modelo].filter(Boolean).join(" \u00B7 ");
   var brandEl=document.getElementById("detBrand");brandEl.textContent=brand;brandEl.style.display=brand?"block":"none";
   document.getElementById("detPrice").innerHTML=fmtPrecio(p.precio,p.moneda);
+  var av=getDisp(p);
+  document.getElementById("detMeta").innerHTML='<span class="avail-badge inline '+av.cls+'"><span class="avail-dot"></span>'+hx(av.label)+"</span>"+qtyBadge(p.equipo_cantidad);
   var descEl=document.getElementById("detDesc");descEl.textContent=p.descripcion_corta;descEl.style.display=p.descripcion_corta?"block":"none";
   var agEl=document.getElementById("detAgotado");
-  if(!isDisponible(p.estado))agEl.innerHTML='<div class="agotado-notice"><span>Este equipo no est disponible actualmente</span></div>';
-  else agEl.innerHTML="";
+  if(av.overlay)agEl.innerHTML='<div class="agotado-notice"><span>Este equipo no est\u00E1 disponible actualmente</span></div>';else agEl.innerHTML="";
   var specsBox=document.getElementById("detSpecsBox");var specsDiv=document.getElementById("detSpecs");
   if(p.especificaciones_tecnicas&&p.especificaciones_tecnicas.trim()){
     specsBox.classList.remove("hidden");var lines=p.especificaciones_tecnicas.split("\n");var sHtml="";
@@ -546,136 +474,67 @@ function showDetail(id){
     specsDiv.innerHTML=sHtml;
   }else specsBox.classList.add("hidden");
   var trustEl=document.getElementById("detTrust");var gar=p.garantia_meses;var cob=p.cobertura_garantia;
-  if(gar&&parseInt(gar)>0){var t='<div class="trust-block"><div class="trust-header">'+SVG.shield+'<h3>Bloque de Confianza DUAVA</h3></div><div class="trust-warranty"><div class="big">'+parseInt(gar)+'</div><div class="label">Meses de Garanta</div></div>'+(cob?'<div class="trust-coverage">'+hx(cob)+"</div>":"")+"</div>";trustEl.innerHTML=t;}else trustEl.innerHTML="";
-  var bSec=document.getElementById("detBrandSection");
-  var bm=hasAny(p,["marca_pais","marca_fundacion","marca_especialidad","marca_mercados","marca_certificaciones","marca_descripcion"]);
-  if(bm){
-    var b='<details class="expandable"><summary>'+SVG.building+" Sobre la Marca</summary><div class='expand-body'><div class='brand-grid'>";
-    if(p.marca_pais)b+="<div><div class='brand-item-label'>Pas de origen</div><div class='brand-item-value'>"+hx(p.marca_pais)+"</div></div>";
-    if(p.marca_fundacion)b+="<div><div class='brand-item-label'>Ao de fundacin</div><div class='brand-item-value'>"+hx(p.marca_fundacion)+"</div></div>";
+  if(gar&&parseInt(gar)>0){trustEl.innerHTML='<div class="trust-block"><div class="trust-header">'+SVG.shield+'<h3>Bloque de Confianza DUAVA</h3></div><div class="trust-warranty"><div class="big">'+parseInt(gar)+'</div><div class="label">Meses de Garant\u00EDa</div></div>'+(cob?'<div class="trust-coverage">'+hx(cob)+"</div>":"")+"</div>";}else trustEl.innerHTML="";
+  var bSec=document.getElementById("detBrandSection");var bm=hasAny(p,["marca_pais","marca_fundacion","marca_especialidad","marca_mercados","marca_certificaciones","marca_descripcion"]);
+  if(bm){var b='<details class="expandable"><summary>'+SVG.building+" Sobre la Marca</summary><div class='expand-body'><div class='brand-grid'>";
+    if(p.marca_pais)b+="<div><div class='brand-item-label'>Pa\u00EDs de origen</div><div class='brand-item-value'>"+hx(p.marca_pais)+"</div></div>";
+    if(p.marca_fundacion)b+="<div><div class='brand-item-label'>A\u00F1o de fundaci\u00F3n</div><div class='brand-item-value'>"+hx(p.marca_fundacion)+"</div></div>";
     if(p.marca_especialidad)b+="<div><div class='brand-item-label'>Especialidad</div><div class='brand-item-value'>"+hx(p.marca_especialidad)+"</div></div>";
     if(p.marca_mercados)b+="<div><div class='brand-item-label'>Mercados</div><div class='brand-item-value'>"+hx(p.marca_mercados)+"</div></div>";
     if(p.marca_certificaciones)b+="<div><div class='brand-item-label'>Certificaciones</div><div class='brand-item-value'>"+hx(p.marca_certificaciones)+"</div></div>";
     if(p.marca_descripcion)b+="<div class='brand-desc'>"+hx(p.marca_descripcion)+"</div>";
-    b+="</div></div></details>";
-    bSec.innerHTML=b;
+    b+="</div></div></details>";bSec.innerHTML=b;
   }else bSec.innerHTML="";
   var provEl=document.getElementById("detProvider");
-  if(p.proveedor_autorizado&&p.proveedor_autorizado.trim())provEl.innerHTML='<div class="provider-block">'+SVG.shield+'<div><div class="provider-label">Proveedor Autorizado</div><div class="provider-name">'+hx(p.proveedor_autorizado)+"</div></div></div>";
-  else provEl.innerHTML="";
+  if(p.proveedor_autorizado&&p.proveedor_autorizado.trim())provEl.innerHTML='<div class="provider-block">'+SVG.shield+'<div><div class="provider-label">Proveedor Autorizado</div><div class="provider-name">'+hx(p.proveedor_autorizado)+"</div></div></div>";else provEl.innerHTML="";
   var supEl=document.getElementById("detSupport");var sup=p.soporte_digital;
-  if(sup&&sup.trim()&&(sup.indexOf("http")>=0||sup.indexOf("docs.google")>=0))supEl.innerHTML='<a class="support-btn" href="'+hx(sup)+'" target="_blank" rel="noopener">'+SVG.doc+" Ver Gua de Uso / Soporte Tcnico</a>";
-  else supEl.innerHTML="";
-
+  if(sup&&sup.trim()&&(sup.indexOf("http")>=0||sup.indexOf("docs.google")>=0))supEl.innerHTML='<a class="support-btn" href="'+hx(sup)+'" target="_blank" rel="noopener">'+SVG.doc+" Ver Gu\u00EDa de Uso / Soporte T\u00E9cnico</a>";else supEl.innerHTML="";
   var centroEl=document.getElementById("detCentro");
   var hasCentro=hasAny(p,["soporte_garantia","soporte_capacitacion","soporte_remoto","soporte_instalacion","soporte_tecnico","repuestos_estado","compatibilidad","tiempo_entrega","eval_facilidad","eval_calidad_precio","eval_repuestos","eval_mantenimiento","eval_tecnologia","eval_recomendacion","eval_observaciones"]);
   if(hasCentro){
     var c='<div class="centro-duava"><div class="centro-header">'+SVG.heart+"<h2>Centro DUAVA</h2><p>El respaldo que tu consultorio merece</p></div>";
     var hasSoporte=hasAny(p,["soporte_garantia","soporte_capacitacion","soporte_remoto","soporte_instalacion","soporte_tecnico"]);
-    if(hasSoporte){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.wrench+"<h4>Nivel de Soporte DUAVA</h4></div>";
-      var items=[{k:"soporte_garantia",l:"Garanta"},{k:"soporte_capacitacion",l:"Capacitacin"},{k:"soporte_remoto",l:"Soporte Remoto"},{k:"soporte_instalacion",l:"Instalacin"},{k:"soporte_tecnico",l:"Asistencia Tcnica"}];
-      for(var i=0;i<items.length;i++){var it=items[i];if(p[it.k]&&p[it.k].trim())c+='<div class="soporte-item"><span class="soporte-check">'+SVG.check+'</span><span class="soporte-label">'+it.l+'</span><span class="soporte-value">'+hx(p[it.k])+"</span></div>";}
-      c+="</div>";
-    }
-
+    if(hasSoporte){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.wrench+"<h4>Nivel de Soporte DUAVA</h4></div>";
+      var items=[{k:"soporte_garantia",l:"Garant\u00EDa"},{k:"soporte_capacitacion",l:"Capacitaci\u00F3n"},{k:"soporte_remoto",l:"Soporte Remoto"},{k:"soporte_instalacion",l:"Instalaci\u00F3n"},{k:"soporte_tecnico",l:"Asistencia T\u00E9cnica"}];
+      for(var i=0;i<items.length;i++){var it=items[i];if(p[it.k]&&p[it.k].trim())c+='<div class="soporte-item"><span class="soporte-check">'+SVG.check+'</span><span class="soporte-label">'+it.l+'</span><span class="soporte-value">'+hx(p[it.k])+"</span></div>";}c+="</div>";}
     if(p.repuestos_estado&&p.repuestos_estado.trim()){
-      var repEst=p.repuestos_estado.trim().toLowerCase();
-      var isDisp=repEst.indexOf("disponible")>=0&&repEst.indexOf("no ")<0&&repEst.indexOf("no.")<0;
+      var repEst=p.repuestos_estado.trim().toLowerCase();var isRepDisp=repEst.indexOf("disponible")>=0&&repEst.indexOf("no ")<0;
       c+='<div class="centro-card"><div class="centro-card-header">'+SVG.cog+"<h4>Disponibilidad de Repuestos</h4></div>";
-      if(isDisp){
-        c+='<div><button class="repuesto-btn disp" onclick="openRepuestos(\''+hx(p.id)+"')\">"+SVG.check+" Disponible</button></div>";
-      }else{
-        c+='<div><button class="repuesto-btn nodisp" onclick="openRepuestos(\''+hx(p.id)+"')\">"+SVG.circle+" No disponible</button></div>";
-      }
-      c+="</div>";
-    }
-
-    if(p.compatibilidad&&p.compatibilidad.trim()){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.link+"<h4>Compatibilidad</h4></div>";
-      var tags=p.compatibilidad.split(",");
-      c+='<div class="compat-tags">';
-      for(var i=0;i<tags.length;i++){var t=tags[i].trim();if(t)c+='<span class="compat-tag">'+hx(t)+"</span>";}
-      c+="</div></div>";
-    }
-    if(p.tiempo_entrega&&p.tiempo_entrega.trim()){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.truck+"<h4>Tiempo Estimado de Entrega</h4></div>";
-      c+='<div class="entrega-display">'+SVG.truck+'<span class="entrega-text">'+hx(p.tiempo_entrega)+"</span></div></div>";
-    }
+      if(isRepDisp)c+='<div><button class="repuesto-btn disp" onclick="openRepuestos(\''+hx(p.id)+"')\">"+SVG.check+" Disponible</button></div>";
+      else c+='<div><button class="repuesto-btn nodisp" onclick="openRepuestos(\''+hx(p.id)+"')\">"+SVG.circle+" No disponible</button></div>";
+      c+="</div>";}
+    if(p.compatibilidad&&p.compatibilidad.trim()){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.link+"<h4>Compatibilidad</h4></div><div class='compat-tags'>";var tags=p.compatibilidad.split(",");for(var i=0;i<tags.length;i++){var t=tags[i].trim();if(t)c+='<span class="compat-tag">'+hx(t)+"</span>";}c+="</div></div>";}
+    if(p.tiempo_entrega&&p.tiempo_entrega.trim()){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.truck+"<h4>Tiempo Estimado de Entrega</h4></div><div class='entrega-display'>"+SVG.truck+'<span class="entrega-text">'+hx(p.tiempo_entrega)+"</span></div></div>";}
     var hasEval=hasAny(p,["eval_facilidad","eval_calidad_precio","eval_repuestos","eval_mantenimiento","eval_tecnologia","eval_recomendacion","eval_observaciones"]);
-    if(hasEval){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.award+"<h4>Evaluacin DUAVA</h4></div>";
-      var evals=[{k:"eval_facilidad",l:"Facilidad de uso"},{k:"eval_calidad_precio",l:"Relacin calidad-precio"},{k:"eval_repuestos",l:"Disponibilidad de repuestos"},{k:"eval_mantenimiento",l:"Facilidad de mantenimiento"},{k:"eval_tecnologia",l:"Nivel de tecnologa"}];
+    if(hasEval){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.award+"<h4>Evaluaci\u00F3n DUAVA</h4></div>";
+      var evals=[{k:"eval_facilidad",l:"Facilidad de uso"},{k:"eval_calidad_precio",l:"Relaci\u00F3n calidad-precio"},{k:"eval_repuestos",l:"Disponibilidad de repuestos"},{k:"eval_mantenimiento",l:"Facilidad de mantenimiento"},{k:"eval_tecnologia",l:"Nivel de tecnolog\u00EDa"}];
       for(var i=0;i<evals.length;i++){var it=evals[i];if(p[it.k]&&String(p[it.k]).trim())c+='<div class="eval-item"><span class="eval-label">'+it.l+'</span><div class="eval-dots">'+ratingDots(p[it.k])+"</div></div>";}
-      if(p.eval_recomendacion&&p.eval_recomendacion.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Recomendacin DUAVA</div><div class="eval-text-content">'+hx(p.eval_recomendacion)+"</div></div>";
-      if(p.eval_observaciones&&p.eval_observaciones.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Observaciones</div><div class="eval-text-content">'+hx(p.eval_observaciones)+"</div></div>";
-      c+="</div>";
-    }
-    c+="</div>";
-    centroEl.innerHTML=c;
+      if(p.eval_recomendacion&&p.eval_recomendacion.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Recomendaci\u00F3n DUAVA</div><div class="eval-text-content">'+hx(p.eval_recomendacion)+"</div></div>";
+      if(p.eval_observaciones&&p.eval_observaciones.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Observaciones</div><div class="eval-text-content">'+hx(p.eval_observaciones)+"</div></div>";c+="</div>";}
+    c+="</div>";centroEl.innerHTML=c;
   }else centroEl.innerHTML="";
-
   document.getElementById("waBtn").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(WA_MSG+p.titulo);
   goView("detail");
 }
 
 function openRepuestos(id){
-  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}
-  if(!p)return;
-  document.getElementById("modalName").textContent=p.titulo;
-  var body=document.getElementById("modalBody");
-  var est=(p.repuestos_estado||"").toLowerCase();
-  var isDisp=est.indexOf("disponible")>=0&&est.indexOf("no ")<0&&est.indexOf("no.")<0;
+  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}if(!p)return;
+  document.getElementById("modalName").textContent=p.titulo;var body=document.getElementById("modalBody");
+  var est=(p.repuestos_estado||"").toLowerCase();var isDisp=est.indexOf("disponible")>=0&&est.indexOf("no ")<0;
   if(isDisp){
-    var html="";
-    for(var i=1;i<=6;i++){
-      var nombre=p["repuesto_"+i+"_nombre"];
-      var precio=p["repuesto_"+i+"_precio"];
-      var imagen=p["repuesto_"+i+"_imagen"];
-      if(nombre&&nombre.trim()){
-        html+='<div class="rep-card">';
-        if(imagen&&imagen.trim())html+='<img src="'+hx(imagen)+'" alt="'+hx(nombre)+'" onerror="this.style.display=\'none\'">';
-        html+='<div class="rep-info"><p class="rep-name">'+hx(nombre)+'</p><p class="rep-price">'+fmtPrecio(precio,p.moneda)+"</p></div></div>";
-      }
-    }
-    if(!html)html='<div class="rep-msg">'+SVG.box+"<p>No hay repuestos registrados an para este equipo.</p></div>";
-    body.innerHTML=html;
-  }else{
-    body.innerHTML='<div class="rep-msg">'+SVG.cog+'<p>Actualmente este equipo no cuenta con repuestos en stock en DUAVA Prisma.</p><p>Podemos gestionarlos directamente con el fabricante o proveedor internacional.</p><p>Consulte disponibilidad y tiempo estimado de entrega.</p></div>';
-  }
-  document.getElementById("btnTec").href="https://wa.me/"+ASESOR_TECNICO+"?text="+encodeURIComponent("Hola, necesito asesora tcnica para: "+p.titulo);
+    var html="";for(var i=1;i<=6;i++){var nombre=p["repuesto_"+i+"_nombre"];var precio=p["repuesto_"+i+"_precio"];var imagen=p["repuesto_"+i+"_imagen"];var cant=p["repuesto_"+i+"_cantidad"];
+      if(nombre&&nombre.trim()){html+='<div class="rep-card">';if(imagen&&imagen.trim())html+='<img src="'+hx(imagen)+'" alt="'+hx(nombre)+'" onerror="this.style.display=\'none\'">';html+='<div class="rep-info"><p class="rep-name">'+hx(nombre)+"</p><p class='rep-price'>"+fmtPrecio(precio,p.moneda)+"</p>"+repQty(cant)+"</div></div>";}}
+    if(!html)html='<div class="rep-msg">'+SVG.box+"<p>No hay repuestos registrados a\u00FAn para este equipo.</p></div>";body.innerHTML=html;
+  }else{body.innerHTML='<div class="rep-msg">'+SVG.cog+'<p>Actualmente este equipo no cuenta con repuestos en stock en DUAVA Prisma.</p><p>Podemos gestionarlos directamente con el fabricante o proveedor internacional.</p><p>Consulte disponibilidad y tiempo estimado de entrega.</p></div>';}
+  document.getElementById("btnTec").href="https://wa.me/"+ASESOR_TECNICO+"?text="+encodeURIComponent("Hola, necesito asesor\u00EDa t\u00E9cnica para: "+p.titulo);
   document.getElementById("btnRep").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Hola, necesito cotizar repuestos para: "+p.titulo);
   document.getElementById("modalRep").classList.remove("hidden");
 }
-
 function closeModal(){document.getElementById("modalRep").classList.add("hidden");}
 
 function showCat(cat){renderProducts(cat);goView("products");}
-
-function goView(view){
-  viewStack.push(curView);curView=view;
-  document.getElementById("homeView").classList.add("hidden");
-  document.getElementById("productsView").classList.remove("active");
-  document.getElementById("detailView").classList.remove("active");
-  document.getElementById("fabBar").classList.add("hidden");
-  document.getElementById("backBtn").classList.add("hidden");
-  if(view==="home")document.getElementById("homeView").classList.remove("hidden");
-  else if(view==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}
-  else if(view==="detail"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("detailView").classList.add("active");document.getElementById("fabBar").classList.remove("hidden");}
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function goBack(){
-  var prev=viewStack.pop()||"home";curView=prev;
-  document.getElementById("homeView").classList.add("hidden");
-  document.getElementById("productsView").classList.remove("active");
-  document.getElementById("detailView").classList.remove("active");
-  document.getElementById("fabBar").classList.add("hidden");
-  document.getElementById("backBtn").classList.add("hidden");
-  if(prev==="home"){document.getElementById("homeView").classList.remove("hidden");clearSearch();}
-  else if(prev==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}
-  window.scrollTo({top:0,behavior:"smooth"});
-}
+function goView(view){viewStack.push(curView);curView=view;document.getElementById("homeView").classList.add("hidden");document.getElementById("productsView").classList.remove("active");document.getElementById("detailView").classList.remove("active");document.getElementById("fabBar").classList.add("hidden");document.getElementById("backBtn").classList.add("hidden");if(view==="home")document.getElementById("homeView").classList.remove("hidden");else if(view==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}else if(view==="detail"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("detailView").classList.add("active");document.getElementById("fabBar").classList.remove("hidden");}window.scrollTo({top:0,behavior:"smooth"});}
+function goBack(){var prev=viewStack.pop()||"home";curView=prev;document.getElementById("homeView").classList.add("hidden");document.getElementById("productsView").classList.remove("active");document.getElementById("detailView").classList.remove("active");document.getElementById("fabBar").classList.add("hidden");document.getElementById("backBtn").classList.add("hidden");if(prev==="home"){document.getElementById("homeView").classList.remove("hidden");clearSearch();}else if(prev==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}window.scrollTo({top:0,behavior:"smooth"});}
 
 if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(err){});}
 document.addEventListener("DOMContentLoaded",function(){loadData().then(function(){renderCats();renderFeatured();});});
