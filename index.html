@@ -7,21 +7,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#1a1a1a">
-<title>DUAVA Prisma — Equipos Dentales Premium</title>
+<title>DUAVA Prisma - Equipos Dentales Premium</title>
 <link rel="manifest" href="manifest.json">
+<meta name="application-name" content="DUAVA Prisma">
 <link rel="apple-touch-icon" href="logo.png">
 <link rel="icon" type="image/png" href="logo.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
---bg:#f5f0e8;--dark:#1a1a1a;--dark2:#242424;--dark3:#2e2e2e;--dark4:#3a3a3a;
---text-w:#fff;--text-w2:rgba(255,255,255,.7);--text-w3:rgba(255,255,255,.4);
---border-d:#333;--whatsapp:#1e8c44;--trust-accent:#28a745;
---price-color:#c0c0c0;
---warm:#f5f0e8;--warm2:#ede6d8;--warm3:#d9cfbc;
---radius:12px;--radius-sm:8px;
---font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-}
+:root{--bg:#f5f0e8;--dark:#1a1a1a;--dark2:#242424;--dark3:#2e2e2e;--dark4:#3a3a3a;--text-w:#fff;--text-w2:rgba(255,255,255,.7);--text-w3:rgba(255,255,255,.4);--border-d:#333;--whatsapp:#1e8c44;--trust-accent:#28a745;--price-color:#c0c0c0;--warm:#f5f0e8;--warm2:#ede6d8;--warm3:#d9cfbc;--radius:12px;--radius-sm:8px;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
 body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:1.5;-webkit-tap-highlight-color:transparent}
 .app{max-width:480px;margin:0 auto;min-height:100vh;position:relative;overflow-x:hidden}
 .header{padding:16px 20px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--dark);position:sticky;top:0;z-index:100}
@@ -106,20 +99,20 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .detail-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
 .detail-desc{font-size:15px;color:var(--text-w2);line-height:1.7;margin-bottom:24px}
 .price-frac{font-size:0.5em;vertical-align:super;margin-left:1px;line-height:0}
-.avail-badge{position:absolute;top:8px;left:8px;padding:4px 10px;border-radius:12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;display:flex;align-items:center;gap:5px;pointer-events:none}
+.avail-badge{position:absolute;top:8px;left:8px;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:600;letter-spacing:.3px;z-index:3;display:flex;align-items:center;gap:4px;pointer-events:none;color:#fff}
 .avail-badge.inline{position:static}
-.avail-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.avail-badge.disp-green{background:rgba(22,48,26,.92);color:#fff}
+.avail-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.avail-badge.disp-green{background:#1a3a2a;border:1px solid rgba(126,203,135,.2)}
 .avail-badge.disp-green .avail-dot{background:#7ecb87}
-.avail-badge.disp-red{background:rgba(52,22,22,.92);color:#fff}
+.avail-badge.disp-red{background:#3a1a1a;border:1px solid rgba(212,113,107,.2)}
 .avail-badge.disp-red .avail-dot{background:#d4716b}
-.avail-badge.disp-yellow{background:rgba(52,44,22,.92);color:#fff}
+.avail-badge.disp-yellow{background:#2e2a1a;border:1px solid rgba(196,169,78,.2)}
 .avail-badge.disp-yellow .avail-dot{background:#c4a94e}
-.avail-badge.disp-blue{background:rgba(22,36,52,.92);color:#fff}
+.avail-badge.disp-blue{background:#1a3a4a;border:1px solid rgba(122,173,207,.2)}
 .avail-badge.disp-blue .avail-dot{background:#7aadcf}
-.qty-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:700}
-.qty-badge.has{background:rgba(22,48,26,.7);color:#fff;border:1px solid rgba(126,203,135,.15)}
-.qty-badge.none{background:rgba(52,22,22,.7);color:#fff;border:1px solid rgba(212,113,107,.15)}
+.qty-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600}
+.qty-badge.has{background:#1a3a2a;color:#fff;border:1px solid rgba(126,203,135,.15)}
+.qty-badge.none{background:#3a1a1a;color:#fff;border:1px solid rgba(212,113,107,.15)}
 .qty-badge svg{width:14px;height:14px}
 .specs-box{background:var(--dark4);border:1px solid #4a4a4a;border-radius:var(--radius);padding:20px;margin-bottom:24px}
 .specs-box h3{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
@@ -206,10 +199,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 .rep-info{display:flex;flex-direction:column;justify-content:center}
 .rep-name{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
 .rep-price{font-size:14px;font-weight:700;color:var(--price-color)}
-.rep-qty{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;margin-top:4px}
+.rep-qty{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;margin-top:4px}
 .rep-qty.has{color:#7ecb87}
 .rep-qty.none{color:#d4716b}
-.rep-qty svg{width:12px;height:12px}
+.rep-qty svg{width:11px;height:11px}
 .rep-msg{text-align:center;padding:24px 16px}
 .rep-msg svg{width:40px;height:40px;color:rgba(255,255,255,.2);margin-bottom:16px}
 .rep-msg p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:8px}
@@ -227,11 +220,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 </head>
 <body>
 <div class="app">
-
 <header class="header">
-<button class="back-btn hidden" id="backBtn" onclick="goBack()">
-<svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
+<button class="back-btn hidden" id="backBtn" onclick="goBack()"><svg viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="logo">DUAVA<span>Prisma</span></div>
 </header>
 
@@ -239,17 +229,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 <div class="hero">
 <img src="https://raw.githubusercontent.com/lcabelardo12-lang/Tienda_Prisma/main/file_0000000037d4720ebf6d99298deae8bd.png" alt="DUAVA Prisma" onerror="this.style.display='none'">
 <div class="hero-overlay"></div>
-<div class="hero-text">
-<h1>Equipos dentales de alta gama</h1>
-<p>Directamente de fábrica a tu consultorio</p>
+<div class="hero-text"><h1>Equipos dentales de alta gama</h1><p>Directamente de f\u00E1brica a tu consultorio</p></div>
 </div>
-</div>
-
 <div class="manifesto">
-<p class="manifesto-quote">La tecnología evoluciona, nuestra palabra no.</p>
-<p class="manifesto-desc">Nacimos con una visión clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de fábrica; entregamos la garantía, la solución y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.</p>
+<p class="manifesto-quote">La tecnolog\u00EDa evoluciona, nuestra palabra no.</p>
+<p class="manifesto-desc">Nacimos con una visi\u00F3n clara: devolverle la confianza al profesional de la salud. No solo distribuimos equipos dentales de alta gama directamente de f\u00E1brica; entregamos la garant\u00EDa, la soluci\u00F3n y el servicio honesto que tu consultorio merece para trabajar con total tranquilidad.</p>
 </div>
-
 <div class="search-section">
 <div class="search-wrap">
 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -259,39 +244,23 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 <div class="search-results hidden" id="searchResults">
 <p class="sec-title sec-title-dark" id="searchTitle">Resultados</p>
 <div class="prod-grid" id="searchGrid"></div>
-<div class="empty-state hidden" id="searchEmpty">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-<p>No se encontraron equipos.</p>
+<div class="empty-state hidden" id="searchEmpty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p>No se encontraron equipos.</p></div>
 </div>
 </div>
-</div>
-
 <div id="homeDefault">
-<div id="featuredSection" class="featured-wrap hidden">
-<p class="sec-title sec-title-dark">Destacados</p>
-<div class="featured-scroll" id="featuredScroll"></div>
-</div>
-<div class="categories">
-<p class="sec-title sec-title-dark">Especialidades</p>
-<div class="cat-grid" id="catGrid"></div>
-</div>
+<div id="featuredSection" class="featured-wrap hidden"><p class="sec-title sec-title-dark">Destacados</p><div class="featured-scroll" id="featuredScroll"></div></div>
+<div class="categories"><p class="sec-title sec-title-dark">Especialidades</p><div class="cat-grid" id="catGrid"></div></div>
 </div>
 </div>
 
 <div id="productsView" class="products-view">
 <p class="sec-title sec-title-light" id="prodTitle">Todos los equipos</p>
 <div class="prod-grid" id="prodGrid"></div>
-<div class="empty-state hidden" id="emptyState">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-<p>No hay equipos en esta categoria aun.</p>
-</div>
+<div class="empty-state hidden" id="emptyState"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><p>No hay equipos en esta categor\u00EDa a\u00FAn.</p></div>
 </div>
 
 <div id="detailView" class="detail">
-<div class="carousel">
-<div class="carousel-track" id="carouselTrack"></div>
-<div class="carousel-dots" id="carouselDots"></div>
-</div>
+<div class="carousel"><div class="carousel-track" id="carouselTrack"></div><div class="carousel-dots" id="carouselDots"></div></div>
 <div class="detail-body">
 <span class="detail-cat" id="detCat"></span>
 <h2 class="detail-title" id="detTitle"></h2>
@@ -300,10 +269,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 <div class="detail-meta" id="detMeta"></div>
 <p class="detail-desc" id="detDesc"></p>
 <div id="detAgotado"></div>
-<div class="specs-box hidden" id="detSpecsBox">
-<h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Especificaciones tecnicas</h3>
-<div id="detSpecs"></div>
-</div>
+<div class="specs-box hidden" id="detSpecsBox"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Especificaciones t\u00E9cnicas</h3><div id="detSpecs"></div></div>
 <div id="detTrust"></div>
 <div id="detBrandSection"></div>
 <div id="detProvider"></div>
@@ -314,25 +280,18 @@ body{font-family:var(--font);background:var(--bg);color:var(--dark);line-height:
 
 <div class="modal-overlay hidden" id="modalRep" onclick="if(event.target===this)closeModal()">
 <div class="modal-card">
-<div class="modal-top">
-<h3 id="modalName"></h3>
-<button class="modal-close" onclick="closeModal()">&times;</button>
-</div>
+<div class="modal-top"><h3 id="modalName"></h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
 <div class="modal-body" id="modalBody"></div>
 <div class="modal-footer">
-<a class="modal-btn tech" id="btnTec" href="#" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Asesor tecnico</a>
+<a class="modal-btn tech" id="btnTec" href="#" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Asesor t\u00E9cnico</a>
 <a class="modal-btn quote" id="btnRep" href="#" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar repuesto</a>
 </div>
 </div>
 </div>
 
 <div class="fab-bar hidden" id="fabBar">
-<a class="fab-btn" id="waBtn" href="#" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-Asesor Comercial
-</a>
+<a class="fab-btn" id="waBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.99 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.3A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Asesor Comercial</a>
 </div>
-
 </div>
 
 <script>
@@ -340,46 +299,29 @@ var SHEET_URL="https://script.google.com/macros/s/AKfycbzkb0T8TDFBuXVULDlutj8fjL
 var WHATSAPP="59175203816";
 var ASESOR_TECNICO="59175203816";
 var WA_MSG="Hola, estoy interesado en cotizar el equipo: ";
-var EQUIPOS=[];
-var CATS=[];
-var viewStack=[];
-var curView="home";
+var EQUIPOS=[];var CATS=[];var viewStack=[];var curView="home";
 
-function hx(s){
-  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-}
-
-function norm(s){
-  return String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-}
+function hx(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 
 function fmtPrecio(precio,moneda){
-  var n=parseFloat(precio);
-  var tienePrecio=n>0&&!isNaN(n);
-  var m=String(moneda||"").toUpperCase().trim();
-  var simbolo="";
-  if(m==="USD")simbolo="$";
-  else if(m==="EUR")simbolo="\u20AC";
-  else if(m==="BS"||m==="BOB")simbolo="Bs.";
-  else if(m==="$")simbolo="$";
-  if(!tienePrecio&&!simbolo)return "\u00BF . . . ?";
+  var n=parseFloat(precio);var tienePrecio=n>0&&!isNaN(n);
+  var m=String(moneda||"").toUpperCase().trim();var simbolo="";
+  if(m==="USD")simbolo="$";else if(m==="EUR")simbolo="\u20AC";else if(m==="BS"||m==="BOB")simbolo="Bs.";else if(m==="$")simbolo="$";
+  if(!tienePrecio&&!simbolo)return"\u00BF . . . ?";
   if(!tienePrecio&&simbolo)return simbolo+" \u00BF . . . ?";
-  var parts=String(n.toFixed(2)).split(".");
-  var enteroFmt=parseInt(parts[0]).toLocaleString("es");
-  var decStr=parts[1]||"00";
+  var parts=String(n.toFixed(2)).split(".");var enteroFmt=parseInt(parts[0]).toLocaleString("es");var decStr=parts[1]||"00";
   if(tienePrecio&&!simbolo)return enteroFmt+'<span class="price-frac">'+decStr+"</span>"+" \u00BF . . . ?";
   return simbolo+" "+enteroFmt+'<span class="price-frac">'+decStr+"</span>";
 }
 
+function norm(s){return String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
 function getDisp(p){
-  var cant=parseInt(p.equipo_cantidad);
-  var hasCant=!isNaN(cant);
-  var disp=String(p.equipo_disponibilidad||"").trim();
-  var dNorm=norm(disp.toLowerCase());
+  var cant=parseInt(p.equipo_cantidad);var hasCant=!isNaN(cant);
+  var disp=String(p.equipo_disponibilidad||"").trim();var dNorm=norm(disp.toLowerCase());
   if(disp){
     if(dNorm.indexOf("agotado")>=0)return{cls:"disp-red",label:"Agotado",overlay:true};
     if(dNorm.indexOf("encargo")>=0)return{cls:"disp-yellow",label:"Bajo encargo",overlay:false};
-    if(dNorm.indexOf("proxim")>=0)return{cls:"disp-blue",label:"Proximamente",overlay:false};
+    if(dNorm.indexOf("proxim")>=0)return{cls:"disp-blue",label:"Pr\u00F3ximamente",overlay:false};
     if(dNorm.indexOf("disponible")>=0)return{cls:"disp-green",label:"Disponible",overlay:false};
   }
   if(hasCant&&cant===0)return{cls:"disp-red",label:"Agotado",overlay:true};
@@ -387,40 +329,11 @@ function getDisp(p){
   return{cls:"",label:"",overlay:false};
 }
 
-function isFeatured(v){
-  var s=String(v||"").trim().toUpperCase();
-  return s==="1"||s==="SI"||s==="TRUE";
-}
+function isFeatured(v){var s=String(v||"").trim().toUpperCase();return s==="1"||s==="SI"||s==="S\u00CD"||s==="TRUE"}
 
-function ratingDots(val){
-  var n=parseInt(val)||0;
-  if(n<0)n=0;
-  if(n>5)n=5;
-  var r="";
-  for(var i=0;i<5;i++)r+='<span class="eval-dot'+(i<n?" filled":"")+'"></span>';
-  return r;
-}
+function ratingDots(val){var n=parseInt(val)||0;if(n<0)n=0;if(n>5)n=5;var r="";for(var i=0;i<5;i++)r+='<span class="eval-dot'+(i<n?" filled":"")+'"></span>';return r;}
 
-function hasAny(obj,fields){
-  for(var i=0;i<fields.length;i++){
-    if(obj[fields[i]]&&String(obj[fields[i]]).trim())return true;
-  }
-  return false;
-}
-
-function qtyBadge(qty){
-  var n=parseInt(qty);
-  if(isNaN(n))return"";
-  if(n<=0)return'<span class="qty-badge none">'+SVG.xmark+" Sin stock</span>";
-  return'<span class="qty-badge has">'+n+" ud.</span>";
-}
-
-function repQty(qty){
-  var n=parseInt(qty);
-  if(isNaN(n))return'<span class="rep-qty none">'+SVG.xmark+" Sin stock</span>";
-  if(n<=0)return'<span class="rep-qty none">'+SVG.xmark+" Sin stock</span>";
-  return'<span class="rep-qty has">'+SVG.check+" "+n+" ud. en stock</span>";
-}
+function hasAny(obj,fields){for(var i=0;i<fields.length;i++){if(obj[fields[i]]&&String(obj[fields[i]]).trim())return true;}return false;}
 
 var SVG={
   building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h4M8 10h4M8 14h4"/></svg>',
@@ -438,26 +351,16 @@ var SVG={
   box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'
 };
 
-function getImages(p){
-  var imgs=[];
-  if(p.imagen_1&&p.imagen_1.trim())imgs.push(p.imagen_1);
-  if(p.imagen_2&&p.imagen_2.trim())imgs.push(p.imagen_2);
-  if(p.imagen_3&&p.imagen_3.trim())imgs.push(p.imagen_3);
-  if(p.imagen_4&&p.imagen_4.trim())imgs.push(p.imagen_4);
-  return imgs;
-}
+function getImages(p){var imgs=[];if(p.imagen_1&&p.imagen_1.trim())imgs.push(p.imagen_1);if(p.imagen_2&&p.imagen_2.trim())imgs.push(p.imagen_2);if(p.imagen_3&&p.imagen_3.trim())imgs.push(p.imagen_3);if(p.imagen_4&&p.imagen_4.trim())imgs.push(p.imagen_4);return imgs;}
 
 function mkCard(p){
-  var av=getDisp(p);
-  var imgs=getImages(p);
-  var img=imgs[0]||"";
-  var brand=[p.marca,p.modelo].filter(Boolean).join(" ");
+  var av=getDisp(p);var imgs=getImages(p);var img=imgs[0]||"";var brand=[p.marca,p.modelo].filter(Boolean).join(" ");
   var overlay=av.overlay?'<div class="prod-agotado"><span>Agotado</span></div>':"";
-  var badge=av.label?'<div class="avail-badge '+av.cls+'"><span class="avail-dot"></span>'+hx(av.label)+"</div>":"";
   var html='<div class="prod-card" onclick="showDetail(\''+hx(p.id)+"')\">";
   html+=overlay;
   html+='<div class="prod-img"><img src="'+hx(img)+'" alt="'+hx(p.titulo)+'" loading="lazy">';
-  html+=badge+"</div>";
+  if(av.label)html+='<div class="avail-badge '+av.cls+'"><span class="avail-dot"></span>'+hx(av.label)+"</div>";
+  html+="</div>";
   html+='<div class="prod-info"><p class="prod-cat">'+hx(p.categoria)+"</p>";
   html+='<h4 class="prod-title">'+hx(p.titulo)+"</h4>";
   if(brand)html+='<p class="prod-brand">'+hx(brand)+"</p>";
@@ -465,14 +368,22 @@ function mkCard(p){
   return html;
 }
 
+function qtyBadge(qty){
+  var n=parseInt(qty);if(isNaN(n))return"";
+  if(n<=0)return'<span class="qty-badge none">'+SVG.xmark+" Sin stock</span>";
+  return'<span class="qty-badge has">'+n+" ud.</span>";
+}
+
+function repQty(qty){
+  var n=parseInt(qty);
+  if(isNaN(n)||n<=0)return'<span class="rep-qty none">'+SVG.xmark+" Sin stock</span>";
+  return'<span class="rep-qty has">'+SVG.check+" "+n+" ud. en stock</span>";
+}
+
 async function loadData(){
   try{
-    var r=await fetch(SHEET_URL);
-    var d=await r.json();
-    EQUIPOS=[];
-    for(var i=0;i<d.length;i++){
-      var p=d[i];
-      if(!p)continue;
+    var r=await fetch(SHEET_URL);var d=await r.json();EQUIPOS=[];
+    for(var i=0;i<d.length;i++){var p=d[i];if(!p)continue;
       EQUIPOS.push({
         id:p.id||"",categoria:p.categoria||"",marca:p.marca||"",modelo:p.modelo||"",
         titulo:p.titulo||"",precio:p.precio||"",moneda:p.moneda||"",
@@ -503,278 +414,136 @@ async function loadData(){
         repuesto_6_nombre:p.repuesto_6_nombre||"",repuesto_6_precio:p.repuesto_6_precio||"",repuesto_6_imagen:p.repuesto_6_imagen||"",repuesto_6_cantidad:p.repuesto_6_cantidad||""
       });
     }
-    var cs=[];
-    for(var j=0;j<EQUIPOS.length;j++){var c=EQUIPOS[j].categoria;if(c&&cs.indexOf(c)<0)cs.push(c);}
-    CATS=[{id:"todos",nombre:"Todos",icon:"grid"}];
-    for(var k=0;k<cs.length;k++)CATS.push({id:cs[k],nombre:cs[k],icon:"tag"});
+    var cs=[];for(var j=0;j<EQUIPOS.length;j++){var c=EQUIPOS[j].categoria;if(c&&cs.indexOf(c)<0)cs.push(c);}
+    CATS=[{id:"todos",nombre:"Todos",icon:"grid"}];for(var k=0;k<cs.length;k++)CATS.push({id:cs[k],nombre:cs[k],icon:"tag"});
   }catch(e){console.error("Error:",e)}
 }
 
 function renderCats(){
-  var grid=document.getElementById("catGrid");
-  var html="";
-  var icons={grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',tag:'<path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>'};
-  for(var i=0;i<CATS.length;i++){
-    var cat=CATS[i];
-    var count=0;
-    if(cat.id==="todos")count=EQUIPOS.length;
-    else{for(var j=0;j<EQUIPOS.length;j++){if(EQUIPOS[j].categoria===cat.id)count++}}
-    var icon=icons[cat.icon]||icons.tag;
-    html+='<div class="cat-card" onclick="showCat(\''+hx(cat.id)+'\')">';
-    html+='<div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+icon+'</svg></div>';
-    html+='<h3>'+hx(cat.nombre)+'</h3>';
-    html+='<span class="cat-count">'+count+" equipos</span></div>";
-  }
+  var grid=document.getElementById("catGrid");var html="";var icons={grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',tag:'<path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>'};
+  for(var i=0;i<CATS.length;i++){var cat=CATS[i];var count=0;if(cat.id==="todos")count=EQUIPOS.length;else{for(var j=0;j<EQUIPOS.length;j++){if(EQUIPOS[j].categoria===cat.id)count++}}var icon=icons[cat.icon]||icons.tag;html+='<div class="cat-card" onclick="showCat(\''+hx(cat.id)+'\')"><div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+icon+'</svg></div><h3>'+hx(cat.nombre)+'</h3><span class="cat-count">'+count+" equipos</span></div>";}
   grid.innerHTML=html;
 }
 
 function renderFeatured(){
-  var feats=[];
-  for(var i=0;i<EQUIPOS.length;i++){
-    var av=getDisp(EQUIPOS[i]);
-    if(isFeatured(EQUIPOS[i].destacado)&&!av.overlay)feats.push(EQUIPOS[i]);
-  }
-  var sec=document.getElementById("featuredSection");
-  var scroll=document.getElementById("featuredScroll");
-  if(!feats.length){sec.classList.add("hidden");return;}
-  sec.classList.remove("hidden");
-  var html="";
-  for(var i=0;i<feats.length;i++){
-    var p=feats[i];var imgs=getImages(p);var img=imgs[0]||"";
-    html+='<div class="feat-card" onclick="showDetail(\''+hx(p.id)+'\')">';
-    html+='<img src="'+hx(img)+'" alt="'+hx(p.titulo)+'" loading="lazy" onerror="this.style.display=\'none\'">';
-    html+='<div class="feat-info"><p class="feat-title">'+hx(p.titulo)+'</p>';
-    html+='<p class="feat-price">'+fmtPrecio(p.precio,p.moneda)+"</p></div></div>";
-  }
+  var feats=[];for(var i=0;i<EQUIPOS.length;i++){var av=getDisp(EQUIPOS[i]);if(isFeatured(EQUIPOS[i].destacado)&&!av.overlay)feats.push(EQUIPOS[i]);}
+  var sec=document.getElementById("featuredSection");var scroll=document.getElementById("featuredScroll");
+  if(!feats.length){sec.classList.add("hidden");return;}sec.classList.remove("hidden");
+  var html="";for(var i=0;i<feats.length;i++){var p=feats[i];var imgs=getImages(p);var img=imgs[0]||"";html+='<div class="feat-card" onclick="showDetail(\''+hx(p.id)+'\')"><img src="'+hx(img)+'" alt="'+hx(p.titulo)+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="feat-info"><p class="feat-title">'+hx(p.titulo)+'</p><p class="feat-price">'+fmtPrecio(p.precio,p.moneda)+"</p></div></div>";}
   scroll.innerHTML=html;
 }
 
 function renderProducts(cat){
-  var grid=document.getElementById("prodGrid");
-  var empty=document.getElementById("emptyState");
-  var title=document.getElementById("prodTitle");
-  var list=[];
-  if(cat==="todos")list=EQUIPOS;
-  else{for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].categoria===cat)list.push(EQUIPOS[i])}}
+  var grid=document.getElementById("prodGrid");var empty=document.getElementById("emptyState");var title=document.getElementById("prodTitle");
+  var list=[];if(cat==="todos")list=EQUIPOS;else{for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].categoria===cat)list.push(EQUIPOS[i])}}
   title.textContent=cat==="todos"?"Todos los equipos":cat;
-  if(!list.length){grid.innerHTML="";empty.classList.remove("hidden");return;}
-  empty.classList.add("hidden");
-  var html="";for(var i=0;i<list.length;i++)html+=mkCard(list[i]);
-  grid.innerHTML=html;
+  if(!list.length){grid.innerHTML="";empty.classList.remove("hidden");return;}empty.classList.add("hidden");
+  var html="";for(var i=0;i<list.length;i++)html+=mkCard(list[i]);grid.innerHTML=html;
 }
 
 function doSearch(){
   var term=document.getElementById("searchInput").value.toLowerCase().trim();
-  var results=document.getElementById("searchResults");
-  var def=document.getElementById("homeDefault");
-  var grid=document.getElementById("searchGrid");
-  var empty=document.getElementById("searchEmpty");
-  var clear=document.getElementById("searchClear");
-  var title=document.getElementById("searchTitle");
+  var results=document.getElementById("searchResults");var def=document.getElementById("homeDefault");
+  var grid=document.getElementById("searchGrid");var empty=document.getElementById("searchEmpty");
+  var clear=document.getElementById("searchClear");var title=document.getElementById("searchTitle");
   if(!term){results.classList.add("hidden");def.style.display="";clear.classList.remove("show");return;}
-  clear.classList.add("show");
-  def.style.display="none";
-  results.classList.remove("hidden");
-  var filtered=[];
-  for(var i=0;i<EQUIPOS.length;i++){
-    var p=EQUIPOS[i];
-    var s=[p.titulo,p.marca,p.modelo,p.categoria].join(" ").toLowerCase();
-    if(s.indexOf(term)>=0)filtered.push(p);
-  }
+  clear.classList.add("show");def.style.display="none";results.classList.remove("hidden");
+  var filtered=[];for(var i=0;i<EQUIPOS.length;i++){var p=EQUIPOS[i];var s=[p.titulo,p.marca,p.modelo,p.categoria].join(" ").toLowerCase();if(s.indexOf(term)>=0)filtered.push(p);}
   title.textContent=filtered.length+" resultado"+(filtered.length!==1?"s":"");
-  if(!filtered.length){grid.innerHTML="";empty.classList.remove("hidden");return;}
-  empty.classList.add("hidden");
-  var html="";for(var i=0;i<filtered.length;i++)html+=mkCard(filtered[i]);
-  grid.innerHTML=html;
+  if(!filtered.length){grid.innerHTML="";empty.classList.remove("hidden");return;}empty.classList.add("hidden");
+  var html="";for(var i=0;i<filtered.length;i++)html+=mkCard(filtered[i]);grid.innerHTML=html;
 }
-
 function clearSearch(){document.getElementById("searchInput").value="";doSearch();}
 
 function initCarousel(images){
-  var track=document.getElementById("carouselTrack");
-  var dots=document.getElementById("carouselDots");
-  if(!images.length){
-    track.innerHTML='<div class="carousel-slide" style="display:flex;align-items:center;justify-content:center;color:#555">Sin imagen</div>';
-    dots.innerHTML="";return;
-  }
+  var track=document.getElementById("carouselTrack");var dots=document.getElementById("carouselDots");
+  if(!images.length){track.innerHTML='<div class="carousel-slide" style="display:flex;align-items:center;justify-content:center;color:#555">Sin imagen</div>';dots.innerHTML="";return;}
   var html="";for(var i=0;i<images.length;i++)html+='<div class="carousel-slide"><img src="'+hx(images[i])+'" alt="" loading="lazy"></div>';
   track.innerHTML=html;
-  if(images.length>1){
-    var dh="";for(var i=0;i<images.length;i++)dh+='<span class="cdot'+(i===0?" active":"")+'"></span>';
-    dots.innerHTML=dh;
-    track.onscroll=function(){
-      var idx=Math.round(track.scrollLeft/track.clientWidth);
-      var ds=dots.querySelectorAll(".cdot");
-      for(var i=0;i<ds.length;i++)ds[i].classList.toggle("active",i===idx);
-    };
-  }else dots.innerHTML="";
+  if(images.length>1){var dh="";for(var i=0;i<images.length;i++)dh+='<span class="cdot'+(i===0?" active":"")+'"></span>';dots.innerHTML=dh;track.onscroll=function(){var idx=Math.round(track.scrollLeft/track.clientWidth);var ds=dots.querySelectorAll(".cdot");for(var i=0;i<ds.length;i++)ds[i].classList.toggle("active",i===idx)};}else dots.innerHTML="";
 }
 
 function showDetail(id){
-  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}
-  if(!p)return;
+  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}if(!p)return;
   initCarousel(getImages(p));
   document.getElementById("detCat").textContent=p.categoria;
   document.getElementById("detTitle").textContent=p.titulo;
   var brand=[p.marca,p.modelo].filter(Boolean).join(" \u00B7 ");
-  var brandEl=document.getElementById("detBrand");
-  brandEl.textContent=brand;brandEl.style.display=brand?"block":"none";
+  var brandEl=document.getElementById("detBrand");brandEl.textContent=brand;brandEl.style.display=brand?"block":"none";
   document.getElementById("detPrice").innerHTML=fmtPrecio(p.precio,p.moneda);
   var av=getDisp(p);
-  var metaHtml="";
-  if(av.label)metaHtml+='<span class="avail-badge inline '+av.cls+'"><span class="avail-dot"></span>'+hx(av.label)+"</span>";
-  var qBadge=qtyBadge(p.equipo_cantidad);
-  if(qBadge)metaHtml+=qBadge;
-  document.getElementById("detMeta").innerHTML=metaHtml;
-  var descEl=document.getElementById("detDesc");
-  descEl.textContent=p.descripcion_corta;descEl.style.display=p.descripcion_corta?"block":"none";
+  var metaHtml="";if(av.label)metaHtml+='<span class="avail-badge inline '+av.cls+'"><span class="avail-dot"></span>'+hx(av.label)+"</span>";metaHtml+=qtyBadge(p.equipo_cantidad);document.getElementById("detMeta").innerHTML=metaHtml;
+  var descEl=document.getElementById("detDesc");descEl.textContent=p.descripcion_corta;descEl.style.display=p.descripcion_corta?"block":"none";
   var agEl=document.getElementById("detAgotado");
-  if(av.overlay)agEl.innerHTML='<div class="agotado-notice"><span>Este equipo no esta disponible actualmente</span></div>';
-  else agEl.innerHTML="";
-  var specsBox=document.getElementById("detSpecsBox");
-  var specsDiv=document.getElementById("detSpecs");
+  if(av.overlay)agEl.innerHTML='<div class="agotado-notice"><span>Este equipo no est\u00E1 disponible actualmente</span></div>';else agEl.innerHTML="";
+  var specsBox=document.getElementById("detSpecsBox");var specsDiv=document.getElementById("detSpecs");
   if(p.especificaciones_tecnicas&&p.especificaciones_tecnicas.trim()){
-    specsBox.classList.remove("hidden");
-    var lines=p.especificaciones_tecnicas.split("\n");
-    var sHtml="";
-    for(var i=0;i<lines.length;i++){
-      var s=lines[i];var parts=s.split(":");
-      if(parts.length>=2)sHtml+='<div class="spec-row"><span class="spec-label">'+hx(parts[0].trim())+'</span><span class="spec-value">'+hx(parts.slice(1).join(":").trim())+"</span></div>";
-      else sHtml+='<div class="spec-row"><span class="spec-value">'+hx(s)+"</span></div>";
-    }
+    specsBox.classList.remove("hidden");var lines=p.especificaciones_tecnicas.split("\n");var sHtml="";
+    for(var i=0;i<lines.length;i++){var s=lines[i];var parts=s.split(":");if(parts.length>=2)sHtml+='<div class="spec-row"><span class="spec-label">'+hx(parts[0].trim())+'</span><span class="spec-value">'+hx(parts.slice(1).join(":").trim())+"</span></div>";else sHtml+='<div class="spec-row"><span class="spec-value">'+hx(s)+"</span></div>";}
     specsDiv.innerHTML=sHtml;
   }else specsBox.classList.add("hidden");
-  var trustEl=document.getElementById("detTrust");
-  var gar=p.garantia_meses;var cob=p.cobertura_garantia;
-  if(gar&&parseInt(gar)>0){
-    trustEl.innerHTML='<div class="trust-block"><div class="trust-header">'+SVG.shield+'<h3>Bloque de Confianza DUAVA</h3></div><div class="trust-warranty"><div class="big">'+parseInt(gar)+'</div><div class="label">Meses de Garantia</div></div>'+(cob?'<div class="trust-coverage">'+hx(cob)+"</div>":"")+"</div>";
-  }else trustEl.innerHTML="";
-  var bSec=document.getElementById("detBrandSection");
-  var bm=hasAny(p,["marca_pais","marca_fundacion","marca_especialidad","marca_mercados","marca_certificaciones","marca_descripcion"]);
-  if(bm){
-    var b='<details class="expandable"><summary>'+SVG.building+" Sobre la Marca</summary><div class='expand-body'><div class='brand-grid'>";
-    if(p.marca_pais)b+="<div><div class='brand-item-label'>Pais de origen</div><div class='brand-item-value'>"+hx(p.marca_pais)+"</div></div>";
-    if(p.marca_fundacion)b+="<div><div class='brand-item-label'>Ano de fundacion</div><div class='brand-item-value'>"+hx(p.marca_fundacion)+"</div></div>";
+  var trustEl=document.getElementById("detTrust");var gar=p.garantia_meses;var cob=p.cobertura_garantia;
+  if(gar&&parseInt(gar)>0){trustEl.innerHTML='<div class="trust-block"><div class="trust-header">'+SVG.shield+'<h3>Bloque de Confianza DUAVA</h3></div><div class="trust-warranty"><div class="big">'+parseInt(gar)+'</div><div class="label">Meses de Garant\u00EDa</div></div>'+(cob?'<div class="trust-coverage">'+hx(cob)+"</div>":"")+"</div>";}else trustEl.innerHTML="";
+  var bSec=document.getElementById("detBrandSection");var bm=hasAny(p,["marca_pais","marca_fundacion","marca_especialidad","marca_mercados","marca_certificaciones","marca_descripcion"]);
+  if(bm){var b='<details class="expandable"><summary>'+SVG.building+" Sobre la Marca</summary><div class='expand-body'><div class='brand-grid'>";
+    if(p.marca_pais)b+="<div><div class='brand-item-label'>Pa\u00EDs de origen</div><div class='brand-item-value'>"+hx(p.marca_pais)+"</div></div>";
+    if(p.marca_fundacion)b+="<div><div class='brand-item-label'>A\u00F1o de fundaci\u00F3n</div><div class='brand-item-value'>"+hx(p.marca_fundacion)+"</div></div>";
     if(p.marca_especialidad)b+="<div><div class='brand-item-label'>Especialidad</div><div class='brand-item-value'>"+hx(p.marca_especialidad)+"</div></div>";
     if(p.marca_mercados)b+="<div><div class='brand-item-label'>Mercados</div><div class='brand-item-value'>"+hx(p.marca_mercados)+"</div></div>";
     if(p.marca_certificaciones)b+="<div><div class='brand-item-label'>Certificaciones</div><div class='brand-item-value'>"+hx(p.marca_certificaciones)+"</div></div>";
     if(p.marca_descripcion)b+="<div class='brand-desc'>"+hx(p.marca_descripcion)+"</div>";
-    b+="</div></div></details>";
-    bSec.innerHTML=b;
+    b+="</div></div></details>";bSec.innerHTML=b;
   }else bSec.innerHTML="";
   var provEl=document.getElementById("detProvider");
-  if(p.proveedor_autorizado&&p.proveedor_autorizado.trim())
-    provEl.innerHTML='<div class="provider-block">'+SVG.shield+'<div><div class="provider-label">Proveedor Autorizado</div><div class="provider-name">'+hx(p.proveedor_autorizado)+"</div></div></div>";
-  else provEl.innerHTML="";
+  if(p.proveedor_autorizado&&p.proveedor_autorizado.trim())provEl.innerHTML='<div class="provider-block">'+SVG.shield+'<div><div class="provider-label">Proveedor Autorizado</div><div class="provider-name">'+hx(p.proveedor_autorizado)+"</div></div></div>";else provEl.innerHTML="";
   var supEl=document.getElementById("detSupport");var sup=p.soporte_digital;
-  if(sup&&sup.trim()&&(sup.indexOf("http")>=0||sup.indexOf("docs.google")>=0))
-    supEl.innerHTML='<a class="support-btn" href="'+hx(sup)+'" target="_blank" rel="noopener">'+SVG.doc+" Ver Guia de Uso / Soporte Tecnico</a>";
-  else supEl.innerHTML="";
+  if(sup&&sup.trim()&&(sup.indexOf("http")>=0||sup.indexOf("docs.google")>=0))supEl.innerHTML='<a class="support-btn" href="'+hx(sup)+'" target="_blank" rel="noopener">'+SVG.doc+" Ver Gu\u00EDa de Uso / Soporte T\u00E9cnico</a>";else supEl.innerHTML="";
   var centroEl=document.getElementById("detCentro");
   var hasCentro=hasAny(p,["soporte_garantia","soporte_capacitacion","soporte_remoto","soporte_instalacion","soporte_tecnico","repuestos_estado","compatibilidad","tiempo_entrega","eval_facilidad","eval_calidad_precio","eval_repuestos","eval_mantenimiento","eval_tecnologia","eval_recomendacion","eval_observaciones"]);
   if(hasCentro){
     var c='<div class="centro-duava"><div class="centro-header">'+SVG.heart+"<h2>Centro DUAVA</h2><p>El respaldo que tu consultorio merece</p></div>";
     var hasSoporte=hasAny(p,["soporte_garantia","soporte_capacitacion","soporte_remoto","soporte_instalacion","soporte_tecnico"]);
-    if(hasSoporte){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.wrench+"<h4>Nivel de Soporte DUAVA</h4></div>";
-      var items=[{k:"soporte_garantia",l:"Garantia"},{k:"soporte_capacitacion",l:"Capacitacion"},{k:"soporte_remoto",l:"Soporte Remoto"},{k:"soporte_instalacion",l:"Instalacion"},{k:"soporte_tecnico",l:"Asistencia Tecnica"}];
-      for(var i=0;i<items.length;i++){var it=items[i];if(p[it.k]&&p[it.k].trim())c+='<div class="soporte-item"><span class="soporte-check">'+SVG.check+'</span><span class="soporte-label">'+it.l+'</span><span class="soporte-value">'+hx(p[it.k])+"</span></div>";}
-      c+="</div>";
-    }
+    if(hasSoporte){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.wrench+"<h4>Nivel de Soporte DUAVA</h4></div>";
+      var items=[{k:"soporte_garantia",l:"Garant\u00EDa"},{k:"soporte_capacitacion",l:"Capacitaci\u00F3n"},{k:"soporte_remoto",l:"Soporte Remoto"},{k:"soporte_instalacion",l:"Instalaci\u00F3n"},{k:"soporte_tecnico",l:"Asistencia T\u00E9cnica"}];
+      for(var i=0;i<items.length;i++){var it=items[i];if(p[it.k]&&p[it.k].trim())c+='<div class="soporte-item"><span class="soporte-check">'+SVG.check+'</span><span class="soporte-label">'+it.l+'</span><span class="soporte-value">'+hx(p[it.k])+"</span></div>";}c+="</div>";}
     if(p.repuestos_estado&&p.repuestos_estado.trim()){
-      var repEst=norm(p.repuestos_estado.trim().toLowerCase());
-      var isRepDisp=repEst.indexOf("disponible")>=0&&repEst.indexOf("no ")<0;
+      var repEst=p.repuestos_estado.trim().toLowerCase();var isRepDisp=repEst.indexOf("disponible")>=0&&repEst.indexOf("no ")<0;
       c+='<div class="centro-card"><div class="centro-card-header">'+SVG.cog+"<h4>Disponibilidad de Repuestos</h4></div>";
       if(isRepDisp)c+='<div><button class="repuesto-btn disp" onclick="openRepuestos(\''+hx(p.id)+"')\">"+SVG.check+" Disponible</button></div>";
       else c+='<div><button class="repuesto-btn nodisp" onclick="openRepuestos(\''+hx(p.id)+"')\">"+SVG.circle+" No disponible</button></div>";
-      c+="</div>";
-    }
-    if(p.compatibilidad&&p.compatibilidad.trim()){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.link+"<h4>Compatibilidad</h4></div><div class='compat-tags'>";
-      var tags=p.compatibilidad.split(",");
-      for(var i=0;i<tags.length;i++){var t=tags[i].trim();if(t)c+='<span class="compat-tag">'+hx(t)+"</span>";}
-      c+="</div></div>";
-    }
-    if(p.tiempo_entrega&&p.tiempo_entrega.trim()){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.truck+"<h4>Tiempo Estimado de Entrega</h4></div>";
-      c+='<div class="entrega-display">'+SVG.truck+'<span class="entrega-text">'+hx(p.tiempo_entrega)+"</span></div></div>";
-    }
+      c+="</div>";}
+    if(p.compatibilidad&&p.compatibilidad.trim()){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.link+"<h4>Compatibilidad</h4></div><div class='compat-tags'>";var tags=p.compatibilidad.split(",");for(var i=0;i<tags.length;i++){var t=tags[i].trim();if(t)c+='<span class="compat-tag">'+hx(t)+"</span>";}c+="</div></div>";}
+    if(p.tiempo_entrega&&p.tiempo_entrega.trim()){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.truck+"<h4>Tiempo Estimado de Entrega</h4></div><div class='entrega-display'>"+SVG.truck+'<span class="entrega-text">'+hx(p.tiempo_entrega)+"</span></div></div>";}
     var hasEval=hasAny(p,["eval_facilidad","eval_calidad_precio","eval_repuestos","eval_mantenimiento","eval_tecnologia","eval_recomendacion","eval_observaciones"]);
-    if(hasEval){
-      c+='<div class="centro-card"><div class="centro-card-header">'+SVG.award+"<h4>Evaluacion DUAVA</h4></div>";
-      var evals=[{k:"eval_facilidad",l:"Facilidad de uso"},{k:"eval_calidad_precio",l:"Relacion calidad-precio"},{k:"eval_repuestos",l:"Disponibilidad de repuestos"},{k:"eval_mantenimiento",l:"Facilidad de mantenimiento"},{k:"eval_tecnologia",l:"Nivel de tecnologia"}];
+    if(hasEval){c+='<div class="centro-card"><div class="centro-card-header">'+SVG.award+"<h4>Evaluaci\u00F3n DUAVA</h4></div>";
+      var evals=[{k:"eval_facilidad",l:"Facilidad de uso"},{k:"eval_calidad_precio",l:"Relaci\u00F3n calidad-precio"},{k:"eval_repuestos",l:"Disponibilidad de repuestos"},{k:"eval_mantenimiento",l:"Facilidad de mantenimiento"},{k:"eval_tecnologia",l:"Nivel de tecnolog\u00EDa"}];
       for(var i=0;i<evals.length;i++){var it=evals[i];if(p[it.k]&&String(p[it.k]).trim())c+='<div class="eval-item"><span class="eval-label">'+it.l+'</span><div class="eval-dots">'+ratingDots(p[it.k])+"</div></div>";}
-      if(p.eval_recomendacion&&p.eval_recomendacion.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Recomendacion DUAVA</div><div class="eval-text-content">'+hx(p.eval_recomendacion)+"</div></div>";
-      if(p.eval_observaciones&&p.eval_observaciones.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Observaciones</div><div class="eval-text-content">'+hx(p.eval_observaciones)+"</div></div>";
-      c+="</div>";
-    }
-    c+="</div>";
-    centroEl.innerHTML=c;
+      if(p.eval_recomendacion&&p.eval_recomendacion.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Recomendaci\u00F3n DUAVA</div><div class="eval-text-content">'+hx(p.eval_recomendacion)+"</div></div>";
+      if(p.eval_observaciones&&p.eval_observaciones.trim())c+='<div class="eval-text-block"><div class="eval-text-title">Observaciones</div><div class="eval-text-content">'+hx(p.eval_observaciones)+"</div></div>";c+="</div>";}
+    c+="</div>";centroEl.innerHTML=c;
   }else centroEl.innerHTML="";
   document.getElementById("waBtn").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(WA_MSG+p.titulo);
   goView("detail");
 }
 
 function openRepuestos(id){
-  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}
-  if(!p)return;
-  document.getElementById("modalName").textContent=p.titulo;
-  var body=document.getElementById("modalBody");
-  var est=norm((p.repuestos_estado||"").toLowerCase());
-  var isDisp=est.indexOf("disponible")>=0&&est.indexOf("no ")<0;
+  var p=null;for(var i=0;i<EQUIPOS.length;i++){if(EQUIPOS[i].id===id){p=EQUIPOS[i];break}}if(!p)return;
+  document.getElementById("modalName").textContent=p.titulo;var body=document.getElementById("modalBody");
+  var est=(p.repuestos_estado||"").toLowerCase();var isDisp=est.indexOf("disponible")>=0&&est.indexOf("no ")<0;
   if(isDisp){
-    var html="";
-    for(var i=1;i<=6;i++){
-      var nombre=p["repuesto_"+i+"_nombre"];
-      var precio=p["repuesto_"+i+"_precio"];
-      var imagen=p["repuesto_"+i+"_imagen"];
-      var cant=p["repuesto_"+i+"_cantidad"];
-      if(nombre&&nombre.trim()){
-        html+='<div class="rep-card">';
-        if(imagen&&imagen.trim())html+='<img src="'+hx(imagen)+'" alt="'+hx(nombre)+'" onerror="this.style.display=\'none\'">';
-        html+='<div class="rep-info"><p class="rep-name">'+hx(nombre)+"</p>";
-        html+='<p class="rep-price">'+fmtPrecio(precio,p.moneda)+"</p>";
-        html+=repQty(cant)+"</div></div>";
-      }
-    }
-    if(!html)html='<div class="rep-msg">'+SVG.box+"<p>No hay repuestos registrados aun para este equipo.</p></div>";
-    body.innerHTML=html;
-  }else{
-    body.innerHTML='<div class="rep-msg">'+SVG.cog+'<p>Actualmente este equipo no cuenta con repuestos en stock en DUAVA Prisma.</p><p>Podemos gestionarlos directamente con el fabricante o proveedor internacional.</p><p>Consulte disponibilidad y tiempo estimado de entrega.</p></div>';
-  }
-  document.getElementById("btnTec").href="https://wa.me/"+ASESOR_TECNICO+"?text="+encodeURIComponent("Hola, necesito asesoria tecnica para: "+p.titulo);
+    var html="";for(var i=1;i<=6;i++){var nombre=p["repuesto_"+i+"_nombre"];var precio=p["repuesto_"+i+"_precio"];var imagen=p["repuesto_"+i+"_imagen"];var cant=p["repuesto_"+i+"_cantidad"];
+      if(nombre&&nombre.trim()){html+='<div class="rep-card">';if(imagen&&imagen.trim())html+='<img src="'+hx(imagen)+'" alt="'+hx(nombre)+'" onerror="this.style.display=\'none\'">';html+='<div class="rep-info"><p class="rep-name">'+hx(nombre)+"</p><p class='rep-price'>"+fmtPrecio(precio,p.moneda)+"</p>"+repQty(cant)+"</div></div>";}}
+    if(!html)html='<div class="rep-msg">'+SVG.box+"<p>No hay repuestos registrados a\u00FAn para este equipo.</p></div>";body.innerHTML=html;
+  }else{body.innerHTML='<div class="rep-msg">'+SVG.cog+'<p>Actualmente este equipo no cuenta con repuestos en stock en DUAVA Prisma.</p><p>Podemos gestionarlos directamente con el fabricante o proveedor internacional.</p><p>Consulte disponibilidad y tiempo estimado de entrega.</p></div>';}
+  document.getElementById("btnTec").href="https://wa.me/"+ASESOR_TECNICO+"?text="+encodeURIComponent("Hola, necesito asesor\u00EDa t\u00E9cnica para: "+p.titulo);
   document.getElementById("btnRep").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Hola, necesito cotizar repuestos para: "+p.titulo);
   document.getElementById("modalRep").classList.remove("hidden");
 }
-
 function closeModal(){document.getElementById("modalRep").classList.add("hidden");}
 
 function showCat(cat){renderProducts(cat);goView("products");}
-
-function goView(view){
-  viewStack.push(curView);curView=view;
-  document.getElementById("homeView").classList.add("hidden");
-  document.getElementById("productsView").classList.remove("active");
-  document.getElementById("detailView").classList.remove("active");
-  document.getElementById("fabBar").classList.add("hidden");
-  document.getElementById("backBtn").classList.add("hidden");
-  if(view==="home")document.getElementById("homeView").classList.remove("hidden");
-  else if(view==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}
-  else if(view==="detail"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("detailView").classList.add("active");document.getElementById("fabBar").classList.remove("hidden");}
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function goBack(){
-  var prev=viewStack.pop()||"home";curView=prev;
-  document.getElementById("homeView").classList.add("hidden");
-  document.getElementById("productsView").classList.remove("active");
-  document.getElementById("detailView").classList.remove("active");
-  document.getElementById("fabBar").classList.add("hidden");
-  document.getElementById("backBtn").classList.add("hidden");
-  if(prev==="home"){document.getElementById("homeView").classList.remove("hidden");clearSearch();}
-  else if(prev==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}
-  window.scrollTo({top:0,behavior:"smooth"});
-}
+function goView(view){viewStack.push(curView);curView=view;document.getElementById("homeView").classList.add("hidden");document.getElementById("productsView").classList.remove("active");document.getElementById("detailView").classList.remove("active");document.getElementById("fabBar").classList.add("hidden");document.getElementById("backBtn").classList.add("hidden");if(view==="home")document.getElementById("homeView").classList.remove("hidden");else if(view==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}else if(view==="detail"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("detailView").classList.add("active");document.getElementById("fabBar").classList.remove("hidden");}window.scrollTo({top:0,behavior:"smooth"});}
+function goBack(){var prev=viewStack.pop()||"home";curView=prev;document.getElementById("homeView").classList.add("hidden");document.getElementById("productsView").classList.remove("active");document.getElementById("detailView").classList.remove("active");document.getElementById("fabBar").classList.add("hidden");document.getElementById("backBtn").classList.add("hidden");if(prev==="home"){document.getElementById("homeView").classList.remove("hidden");clearSearch();}else if(prev==="products"){document.getElementById("backBtn").classList.remove("hidden");document.getElementById("productsView").classList.add("active");}window.scrollTo({top:0,behavior:"smooth"});}
 
 if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(err){});}
 document.addEventListener("DOMContentLoaded",function(){loadData().then(function(){renderCats();renderFeatured();});});
