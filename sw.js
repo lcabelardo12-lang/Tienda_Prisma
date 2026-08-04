@@ -1,4 +1,4 @@
-var CACHE_NAME = 'duava-prisma-v3';
+var CACHE_NAME = 'duava-prisma-v4';
 var urlsToCache = ['./index.html', './manifest.json', './logo.png'];
 
 self.addEventListener('install', function(event) {
