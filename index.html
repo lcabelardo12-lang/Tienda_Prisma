@@ -511,13 +511,15 @@ function handlePBAuth(){
   var rows=getPlaybookForProduct(pbCurrentId);
   if(!rows.length){document.getElementById("pbModalError").textContent="Equipo no encontrado.";return}
   var inputNorm=input.replace(/\s+/g,'').toLowerCase();
-  var valid=false;
+  var valid=false;var debugInfo="";
   for(var r=0;r<rows.length;r++){
     var raw=String(rows[r].Claves_Acceso||"").replace(/[\u200B\u200C\u200D\uFEFF]/g,'').trim();
+    debugInfo+="Fila "+r+": ["+raw+"]\n";
     if(!raw)continue;
     var keys=raw.split(/[,;|]+/);
     for(var i=0;i<keys.length;i++){
       var k=keys[i].replace(/\s+/g,'').toLowerCase();
+      debugInfo+="  Clave "+i+": ["+k+"] vs ["+inputNorm+"]\n";
       if(k&&k===inputNorm){valid=true;break}
     }
     if(valid)break
@@ -528,6 +530,7 @@ function handlePBAuth(){
     if(btn)btn.style.display="none";if(panel){panel.style.display="block";panel.classList.add("fade-in")}
   }else{
     document.getElementById("pbModalError").textContent="Clave incorrecta.";
+    alert("DEBUG - Borrar después:\n\nTu clave: ["+inputNorm+"]\n\n"+debugInfo);
     var modal=document.querySelector(".pb-modal");modal.classList.add("shake-anim");
     setTimeout(function(){modal.classList.remove("shake-anim")},300)
   }
