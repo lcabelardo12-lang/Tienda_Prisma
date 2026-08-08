@@ -458,26 +458,17 @@ function toggleFAQ(idx){var item=document.getElementById("faq-item-"+idx);var an
 
 /* ===== PLAYBOOK (MULTI-FILA + LIGHT THEME) ===== */
 function loadPlaybook(){
-  var url="https://docs.google.com/spreadsheets/d/"+PB_SHEET_ID+"/gviz/tq?tqx=out:csv&sheet="+encodeURIComponent(PB_SHEET_NAME);
-  return fetch(url).then(function(r){if(!r.ok)throw new Error("PB HTTP "+r.status);return r.text()}).then(function(csv){
-    var p=Papa.parse(csv,{header:false,skipEmptyLines:true});
-    pbData=[];
-    for(var i=1;i<p.data.length;i++){
-      var row=p.data[i];
-      pbData.push({
-        ID_Equipo:(row[0]||"").trim(),
-        Claves_Acceso:(row[1]||"").trim(),
-        Politica_y_Certificados:(row[2]||"").trim(),
-        Detector_de_Copias:(row[3]||"").trim(),
-        Anatomia_y_Riesgos:(row[4]||"").trim(),
-        Objeciones_Frecuentes:(row[5]||"").trim(),
-        Comparativa_de_Marcas:(row[6]||"").trim(),
-        Preguntas_Frecuentes:(row[7]||"").trim(),
-        Accesorios_Recomendados:(row[8]||"").trim(),
-        Garantia_y_Postventa:(row[9]||"").trim(),
-        Plantillas_de_Respuesta:(row[10]||"").trim(),
-        Fecha_Ultima_Actualizacion:(row[11]||"").trim()
-      });
+  var url="https://docs.google.com/spreadsheets/d/"+PB_SHEET_ID+"/gviz/tq?tqx=out:json&sheet="+encodeURIComponent(PB_SHEET_NAME);
+  return fetch(url).then(function(r){return r.text()}).then(function(text){
+    var si=text.indexOf('(');var ei=text.lastIndexOf(')');
+    var jsonStr=(si>=0&&ei>si)?text.substring(si+1,ei):text;
+    var data=JSON.parse(jsonStr);pbData=[];
+    if(data&&data.table&&data.table.rows){
+      for(var i=0;i<data.table.rows.length;i++){
+        var cells=data.table.rows[i].c;if(!cells)continue;
+        var g=function(idx){return cells[idx]&&cells[idx].v!=null?String(cells[idx].v).trim():""};
+        pbData.push({ID_Equipo:g(0),Claves_Acceso:g(1),Politica_y_Certificados:g(2),Detector_de_Copias:g(3),Anatomia_y_Riesgos:g(4),Objeciones_Frecuentes:g(5),Comparativa_de_Marcas:g(6),Preguntas_Frecuentes:g(7),Accesorios_Recomendados:g(8),Garantia_y_Postventa:g(9),Plantillas_de_Respuesta:g(10),Fecha_Ultima_Actualizacion:g(11)});
+      }
     }
     pbLoaded=true;
   }).catch(function(e){console.error("PB err:",e);pbData=[];pbLoaded=true})
