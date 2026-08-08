@@ -457,7 +457,31 @@ function renderFAQ(faq){if(!faq)return"";var blocks=[];if(faq.P1_Pregunta&&faq.P
 function toggleFAQ(idx){var item=document.getElementById("faq-item-"+idx);var ans=document.getElementById("faq-answer-"+idx);if(!item||!ans)return;if(item.classList.contains("open")){ans.style.maxHeight=null;item.classList.remove("open")}else{ans.style.maxHeight=ans.scrollHeight+"px";item.classList.add("open")}}
 
 /* ===== PLAYBOOK (MULTI-FILA + LIGHT THEME) ===== */
-function loadPlaybook(){var url="https://docs.google.com/spreadsheets/d/"+PB_SHEET_ID+"/gviz/tq?tqx=out:csv&sheet="+encodeURIComponent(PB_SHEET_NAME);return fetch(url).then(function(r){if(!r.ok)throw new Error("PB HTTP "+r.status);return r.text()}).then(function(csv){var p=Papa.parse(csv,{header:true,skipEmptyLines:true});pbData=p.data.map(function(row){var c={};Object.keys(row).forEach(function(k){c[k.trim()]=row[k]});return c});pbLoaded=true}).catch(function(e){console.error("PB err:",e);pbData=[];pbLoaded=true})}
+function loadPlaybook(){
+  var url="https://docs.google.com/spreadsheets/d/"+PB_SHEET_ID+"/gviz/tq?tqx=out:csv&sheet="+encodeURIComponent(PB_SHEET_NAME);
+  return fetch(url).then(function(r){if(!r.ok)throw new Error("PB HTTP "+r.status);return r.text()}).then(function(csv){
+    var p=Papa.parse(csv,{header:false,skipEmptyLines:true});
+    pbData=[];
+    for(var i=1;i<p.data.length;i++){
+      var row=p.data[i];
+      pbData.push({
+        ID_Equipo:(row[0]||"").trim(),
+        Claves_Acceso:(row[1]||"").trim(),
+        Politica_y_Certificados:(row[2]||"").trim(),
+        Detector_de_Copias:(row[3]||"").trim(),
+        Anatomia_y_Riesgos:(row[4]||"").trim(),
+        Objeciones_Frecuentes:(row[5]||"").trim(),
+        Comparativa_de_Marcas:(row[6]||"").trim(),
+        Preguntas_Frecuentes:(row[7]||"").trim(),
+        Accesorios_Recomendados:(row[8]||"").trim(),
+        Garantia_y_Postventa:(row[9]||"").trim(),
+        Plantillas_de_Respuesta:(row[10]||"").trim(),
+        Fecha_Ultima_Actualizacion:(row[11]||"").trim()
+      });
+    }
+    pbLoaded=true;
+  }).catch(function(e){console.error("PB err:",e);pbData=[];pbLoaded=true})
+}
 
 function getPlaybookForProduct(id){
   if(!pbLoaded||!pbData.length)return[];
@@ -511,15 +535,13 @@ function handlePBAuth(){
   var rows=getPlaybookForProduct(pbCurrentId);
   if(!rows.length){document.getElementById("pbModalError").textContent="Equipo no encontrado.";return}
   var inputNorm=input.replace(/\s+/g,'').toLowerCase();
-  var valid=false;var debugInfo="";
+  var valid=false;
   for(var r=0;r<rows.length;r++){
     var raw=String(rows[r].Claves_Acceso||"").replace(/[\u200B\u200C\u200D\uFEFF]/g,'').trim();
-    debugInfo+="Fila "+r+": ["+raw+"]\n";
     if(!raw)continue;
     var keys=raw.split(/[,;|]+/);
     for(var i=0;i<keys.length;i++){
       var k=keys[i].replace(/\s+/g,'').toLowerCase();
-      debugInfo+="  Clave "+i+": ["+k+"] vs ["+inputNorm+"]\n";
       if(k&&k===inputNorm){valid=true;break}
     }
     if(valid)break
@@ -530,7 +552,6 @@ function handlePBAuth(){
     if(btn)btn.style.display="none";if(panel){panel.style.display="block";panel.classList.add("fade-in")}
   }else{
     document.getElementById("pbModalError").textContent="Clave incorrecta.";
-    alert("DEBUG - Borrar después:\n\nTu clave: ["+inputNorm+"]\n\n"+debugInfo);
     var modal=document.querySelector(".pb-modal");modal.classList.add("shake-anim");
     setTimeout(function(){modal.classList.remove("shake-anim")},300)
   }
