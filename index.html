@@ -510,8 +510,18 @@ function handlePBAuth(){
   if(!input){document.getElementById("pbModalError").textContent="Ingresa la clave.";return}
   var rows=getPlaybookForProduct(pbCurrentId);
   if(!rows.length){document.getElementById("pbModalError").textContent="Equipo no encontrado.";return}
+  var inputNorm=input.replace(/\s+/g,'').toLowerCase();
   var valid=false;
-  for(var r=0;r<rows.length;r++){var keys=String(rows[r].Claves_Acceso||"").split(",");for(var i=0;i<keys.length;i++){if(keys[i].trim()===input){valid=true;break}}if(valid)break}
+  for(var r=0;r<rows.length;r++){
+    var raw=String(rows[r].Claves_Acceso||"").replace(/[\u200B\u200C\u200D\uFEFF]/g,'').trim();
+    if(!raw)continue;
+    var keys=raw.split(/[,;|]+/);
+    for(var i=0;i<keys.length;i++){
+      var k=keys[i].replace(/\s+/g,'').toLowerCase();
+      if(k&&k===inputNorm){valid=true;break}
+    }
+    if(valid)break
+  }
   if(valid){
     pbAccessGranted[pbCurrentId]=true;closePBModal();
     var btn=document.getElementById("pbAccessBtn");var panel=document.getElementById("pbPanelContainer");
